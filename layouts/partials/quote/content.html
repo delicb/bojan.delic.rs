@@ -27,6 +27,9 @@
 		{{ if .Params.author }}
 			<footer>{{ .Params.author }}</footer>
 		{{ end }}
+        {{ if .Params.source }}
+            <footer><a href="{{ .Params.source }}">{{ .Params.source }}</a></footer>
+        {{ end }}
 	</blockquote>
 <section>
 
