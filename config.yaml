@@ -1,4 +1,4 @@
-baseURL: http://localhost:1313
+baseURL: https://test.delic.rs
 languageCode: en-us
 buildDrafts: false
 canonifyURLs: true
