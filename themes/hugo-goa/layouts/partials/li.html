@@ -1,0 +1,29 @@
+<section id="list-pane" class="row list">
+  <ul >
+    {{ range .Data.Pages.ByPublishDate }}
+    <li class="list-entry">
+      <a class="list-entry-link" href="{{ .Permalink }}">{{ .Title }}</a>
+      {{ if .Site.Params.summary }}
+        <div class="col-md-12 text-justify content">
+          <p>{{ .Summary }}</p>
+        </div>
+      {{ end }}
+      <p class="meta">
+        {{ .Date.Format .Site.Params.dateformat | upper }} 
+        {{ with .Params.categories }}
+          <span class="category">
+          {{ $total := len . }}
+          {{ if gt $total 0 }}
+            —
+            {{ $total := sub $total 1 }}
+            {{ range $i, $cat := sort . }}
+            <a class="category" href="{{ "/categories/" | relURL }}{{ $cat | humanize | urlize }}">{{ $cat | upper }}</a>{{ if lt $i $total }}, {{ end }}
+            {{ end }}
+          {{ end }}
+          </span>
+        {{ end }}
+      </p>
+    </li>
+    {{ end }}
+  </ul>
+</section>
