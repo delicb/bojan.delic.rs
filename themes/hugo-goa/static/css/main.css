@@ -228,6 +228,8 @@ section.meta {
 .social a
 {
     color: #526d7a;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 .title
 {
