@@ -1,4 +1,4 @@
-baseURL: https://test.delic.rs
+baseURL: https://bojan.delic.rs
 languageCode: en-us
 buildDrafts: false
 canonifyURLs: true
