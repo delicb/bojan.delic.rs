@@ -24,7 +24,7 @@ taxonomies:
 params:
   author: Bojan Delić
   intro: "\"First, solve the problem. Then, write the code\" - John Johnson"
-  description: Software engineer from Belgrade, Serbia. Writing code at [SevenBridges](https://sevenbridges.com)
+  description: Software engineer from Belgrade, Serbia.
   authorimage: avatar.jpg
   dateformat: Jan 2, 2006
   summary: true
