@@ -1,0 +1,184 @@
+/* ==========================================================================
+   Responsive + Print
+   ========================================================================== */
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header .container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .site-nav {
+    gap: 1rem;
+  }
+
+  .post-item > a {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .article-header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  /* Force light colors for print */
+  :root {
+    --color-bg: #ffffff;
+    --color-bg-secondary: #ffffff;
+    --color-text: #000000;
+    --color-text-secondary: #333333;
+    --color-border: #cccccc;
+    --color-accent: #2d6a4f;
+    --color-link: #000000;
+    --color-code-bg: #f5f5f5;
+    --color-card-bg: #ffffff;
+    --color-tag-bg: #eeeeee;
+    --color-tag-text: #333333;
+  }
+
+  /* Hide site chrome */
+  .site-header,
+  .site-footer,
+  .theme-toggle {
+    display: none !important;
+  }
+
+  /* Reset layout for print */
+  body {
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* Remove top padding since header is gone */
+  .page-header {
+    padding-top: 0;
+    border-bottom: 2px solid #000;
+    margin-bottom: 1.5em;
+  }
+
+  .page-header h1 {
+    font-size: 18pt;
+    margin-bottom: 0.2em;
+  }
+
+  /* Resume-specific print styles */
+  .resume-section {
+    margin-bottom: 1.5em;
+  }
+
+  .resume-section h2 {
+    font-size: 13pt;
+    border-bottom-width: 1px;
+    border-bottom-color: #000;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.6em;
+  }
+
+  .resume-entry {
+    margin-bottom: 1em;
+    /* Avoid breaking a role across pages */
+    break-inside: avoid;
+  }
+
+  .resume-entry h3 {
+    font-size: 11pt;
+  }
+
+  .resume-entry .meta {
+    font-size: 9.5pt;
+    color: #444;
+  }
+
+  .resume-entry p,
+  .resume-entry li {
+    font-size: 10pt;
+    color: #222;
+  }
+
+  .resume-entry ul {
+    margin-left: 1em;
+  }
+
+  /* Never orphan a section heading — glue it to the first entry */
+  .resume-section h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .resume-section h2 + .resume-entry {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  .resume-entry h3,
+  .resume-entry .meta {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Links: show URL for external, plain text for internal */
+  a {
+    text-decoration: none !important;
+    color: #000 !important;
+  }
+
+  /* Article print styles */
+  .article-header {
+    padding-top: 0;
+  }
+
+  .article-content {
+    font-size: 10.5pt;
+  }
+
+  .article-content pre {
+    border: 1px solid #ccc;
+    font-size: 8.5pt;
+    break-inside: avoid;
+  }
+
+  .article-content img {
+    max-width: 80%;
+    break-inside: avoid;
+  }
+
+  .article-content blockquote {
+    break-inside: avoid;
+  }
+
+  .article-nav {
+    display: none;
+  }
+
+  /* Avoid widows/orphans */
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2, h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+}

@@ -1,0 +1,78 @@
+{{- /*
+  include: render code from a page bundle file.
+
+  Params:
+    file    — filename in the page bundle (required)
+    lang    — language for syntax highlighting (auto-detected from extension)
+    lines   — line range, e.g. "5-12"
+    hl      — original file lines to highlight, e.g. "7 9-10" (auto-adjusted when using lines)
+    linenos — "table" or "inline"
+*/ -}}
+{{- $file := .Get "file" -}}
+{{- $lang := .Get "lang" -}}
+{{- $lines := .Get "lines" -}}
+{{- $hl := .Get "hl" -}}
+{{- $linenos := .Get "linenos" -}}
+{{- $linenostart := 1 -}}
+{{- $rangeFrom := 0 -}}
+
+{{- $resource := .Page.Resources.Get $file -}}
+{{- if not $resource -}}
+  {{- errorf "include shortcode: file %q not found in page bundle %s" $file .Page.File.Path -}}
+{{- end -}}
+
+{{- $content := $resource.Content -}}
+
+{{- if not $lang -}}
+  {{- $lang = path.Ext $file | strings.TrimPrefix "." -}}
+{{- end -}}
+
+{{- if $lines -}}
+  {{- $parts := split $lines "-" -}}
+  {{- $from := index $parts 0 | int -}}
+  {{- $to := index $parts 1 | int -}}
+  {{- $linenostart = $from -}}
+  {{- $rangeFrom = $from -}}
+  {{- $allLines := split $content "\n" -}}
+  {{- $selected := seq $from $to -}}
+  {{- $result := slice -}}
+  {{- range $i := $selected -}}
+    {{- $idx := sub $i 1 -}}
+    {{- if lt $idx (len $allLines) -}}
+      {{- $result = $result | append (index $allLines $idx) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $content = delimit $result "\n" -}}
+{{- end -}}
+
+{{- $opts := slice -}}
+{{- if $linenos -}}
+  {{- $opts = $opts | append (printf "linenos=%s" $linenos) -}}
+{{- end -}}
+{{- if $lines -}}
+  {{- $opts = $opts | append (printf "linenostart=%d" $linenostart) -}}
+{{- end -}}
+{{- with $hl -}}
+  {{- /* When a line range is active, adjust hl values to be relative to the displayed block.
+         Hugo's highlight function hl_lines is always 1-based relative to the displayed code. */ -}}
+  {{- if gt $rangeFrom 0 -}}
+    {{- $adjusted := slice -}}
+    {{- $parts := split $hl " " -}}
+    {{- range $part := $parts -}}
+      {{- if in $part "-" -}}
+        {{- $rangeParts := split $part "-" -}}
+        {{- $rFrom := sub (index $rangeParts 0 | int) (sub $rangeFrom 1) -}}
+        {{- $rTo := sub (index $rangeParts 1 | int) (sub $rangeFrom 1) -}}
+        {{- $adjusted = $adjusted | append (printf "%d-%d" $rFrom $rTo) -}}
+      {{- else -}}
+        {{- $adjusted = $adjusted | append (printf "%d" (sub ($part | int) (sub $rangeFrom 1))) -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $opts = $opts | append (printf "hl_lines=%s" (delimit $adjusted " ")) -}}
+  {{- else -}}
+    {{- $opts = $opts | append (printf "hl_lines=%s" $hl) -}}
+  {{- end -}}
+{{- end -}}
+{{- $optStr := delimit $opts "," -}}
+
+{{- highlight $content $lang $optStr -}}

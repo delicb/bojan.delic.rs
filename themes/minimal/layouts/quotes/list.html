@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p>{{ . }}</p>{{ end }}
+</section>
+
+<section class="page-content">
+  {{ $quotes := .Site.Data.quotes }}
+  {{ range $quotes }}
+  <div class="quote-item">
+    <p class="quote-text">{{ .text }}</p>
+    <p class="quote-author">{{ .author }}{{ with .source }}, <em>{{ . }}</em>{{ end }}</p>
+  </div>
+  {{ end }}
+</section>
+{{ end }}

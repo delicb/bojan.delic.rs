@@ -1,0 +1,186 @@
+/* ==========================================================================
+   Sections: quotes, resume, projects
+   ========================================================================== */
+
+/* ---------- Quotes ---------- */
+.quote-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.quote-item:last-child {
+  border-bottom: none;
+}
+
+.quote-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.quote-text::before {
+  content: "\201C";
+  color: var(--color-accent);
+  font-size: 1.5em;
+}
+
+.quote-text::after {
+  content: "\201D";
+  color: var(--color-accent);
+  font-size: 1.5em;
+}
+
+.quote-author {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.quote-author::before {
+  content: "— ";
+}
+
+/* ---------- Resume ---------- */
+.resume-section {
+  margin-bottom: 2.5rem;
+}
+
+.resume-section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.resume-entry {
+  margin-bottom: 1.5rem;
+}
+
+.resume-entry h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.resume-entry .meta {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.resume-entry p,
+.resume-entry ul {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.resume-entry ul {
+  margin-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.resume-entry li {
+  margin-bottom: 0.3rem;
+}
+
+/* ---------- Projects ---------- */
+/* --- Featured projects (large cards) --- */
+.project-grid-featured {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.project-card-featured {
+  padding: 1.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-card-bg);
+}
+
+.project-card-featured h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-card-featured h3 a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.project-card-featured h3 a:hover {
+  color: var(--color-accent);
+}
+
+.project-card-featured p {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.project-card-featured .project-tech {
+  margin-top: 1rem;
+}
+
+/* --- Other projects (compact list) --- */
+.project-section-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1rem;
+  color: var(--color-text-secondary);
+}
+
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-list-item {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-list-item:last-child {
+  border-bottom: none;
+}
+
+.project-list-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.project-list-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.project-list-name:hover {
+  color: var(--color-accent);
+}
+
+.project-list-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.25rem;
+}
+
+/* --- Shared tech tags --- */
+.project-tech {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.project-tech span {
+  font-size: 0.75rem;
+  background: var(--color-tag-bg);
+  color: var(--color-tag-text);
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+}

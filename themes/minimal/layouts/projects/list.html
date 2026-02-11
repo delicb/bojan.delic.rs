@@ -1,0 +1,46 @@
+{{ define "main" }}
+<section class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p>{{ . }}</p>{{ end }}
+</section>
+
+<section class="page-content">
+  {{ $featured := where .Site.Data.projects "featured" true }}
+  {{ $rest := where .Site.Data.projects "featured" "ne" true }}
+
+  {{ if $featured }}
+  <div class="project-grid-featured">
+    {{ range $featured }}
+    <div class="project-card project-card-featured">
+      <h3><a href="{{ .url }}">{{ .name }}</a></h3>
+      <p>{{ .description }}</p>
+      {{ with .tech }}
+      <div class="project-tech">
+        {{ range . }}<span>{{ . }}</span>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{ if $rest }}
+  <h2 class="project-section-heading">Other Projects</h2>
+  <ul class="project-list">
+    {{ range $rest }}
+    <li class="project-list-item">
+      <div class="project-list-header">
+        <a href="{{ .url }}" class="project-list-name">{{ .name }}</a>
+        {{ with .tech }}
+        <div class="project-tech">
+          {{ range . }}<span>{{ . }}</span>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+      <p class="project-list-desc">{{ .description }}</p>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</section>
+{{ end }}

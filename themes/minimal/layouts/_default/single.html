@@ -1,0 +1,30 @@
+{{ define "main" }}
+<article class="single">
+  {{ $cover := .Resources.GetMatch "cover.*" }}
+  {{ with $cover }}
+  <div class="article-cover">
+    <img src="{{ .RelPermalink }}" alt="Cover image">
+  </div>
+  {{ end }}
+
+  <header class="article-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Date }}<time class="article-date">{{ .Format "January 2, 2006" }}</time>{{ end }}
+    <span class="article-reading-time">{{ .ReadingTime }} min read</span>
+    {{ with .Params.tags }}
+    <div class="article-tags">
+      {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+    </div>
+    {{ end }}
+  </header>
+
+  <div class="article-content">
+    {{ .Content }}
+  </div>
+
+  <nav class="article-nav">
+    {{ with .PrevInSection }}<a href="{{ .RelPermalink }}" class="nav-prev">&larr; {{ .Title }}</a>{{ end }}
+    {{ with .NextInSection }}<a href="{{ .RelPermalink }}" class="nav-next">{{ .Title }} &rarr;</a>{{ end }}
+  </nav>
+</article>
+{{ end }}

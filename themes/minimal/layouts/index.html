@@ -1,0 +1,40 @@
+{{ define "main" }}
+<section class="hero">
+  <h1>{{ .Site.Title }}</h1>
+  <p class="tagline">{{ .Site.Params.tagline }}</p>
+
+  <div class="social-links">
+    <a href="{{ .Site.Params.github }}" title="GitHub"><i class="fa-brands fa-github"></i> GitHub</a>
+    <a href="{{ .Site.Params.linkedin }}" title="LinkedIn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    <a href="{{ .Site.Params.twitter }}" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i> Twitter</a>
+    <a href="mailto:{{ .Site.Params.email }}" title="Email"><i class="fa-solid fa-envelope"></i> Email</a>
+  </div>
+</section>
+
+<section class="home-sections">
+  <div class="home-grid">
+    <a href="/blog/" class="home-card">
+      <h2>Blog</h2>
+      <p>Thoughts on programming, technology, and other things.</p>
+    </a>
+    <a href="/projects/" class="home-card">
+      <h2>Projects</h2>
+      <p>Open source projects and side work.</p>
+    </a>
+    <a href="/resume/" class="home-card">
+      <h2>Resume</h2>
+      <p>Professional experience and skills.</p>
+    </a>
+    <a href="/quotes/" class="home-card">
+      <h2>Quotes</h2>
+      <p>A collection of quotes I find inspiring or thought-provoking.</p>
+    </a>
+  </div>
+</section>
+
+{{ with .Content }}
+<section class="home-content">
+  {{ . }}
+</section>
+{{ end }}
+{{ end }}

@@ -1,0 +1,39 @@
+baseURL = 'https://bojan.delic.rs/'
+languageCode = 'en-us'
+title = 'Bojan Delić'
+theme = 'minimal'
+
+[params]
+  tagline = 'Problem solver, computer programmer, IT enthusiast, geek'
+  description = 'Personal website of Bojan Delić'
+  email = 'bojan@delic.in.rs'
+  github = 'https://github.com/delicb'
+  linkedin = 'https://www.linkedin.com/in/bojandelic/'
+  twitter = 'https://x.com/dercibald'
+  twitterHandle = '@dercibald'
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+    lineNumbersInTable = true
+    anchorLineNos = true
+    codeFences = true
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[permalinks]
+  [permalinks.page]
+    blog = '/blog/:year/:month/:slug/'
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ['HTML', 'RSS']
+  section = ['HTML', 'RSS']
+
+[sitemap]
+  changeFreq = 'weekly'
+  filename = 'sitemap.xml'

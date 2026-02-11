@@ -1,0 +1,54 @@
+{{ define "main" }}
+<section class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p>{{ . }}</p>{{ end }}
+</section>
+
+<section class="page-content">
+  {{ $resume := .Site.Data.resume }}
+
+  {{ with $resume.summary }}
+  <div class="resume-section">
+    <h2>Summary</h2>
+    <p>{{ . }}</p>
+  </div>
+  {{ end }}
+
+  <div class="resume-section">
+    <h2>Experience</h2>
+    {{ range $resume.experience }}
+    <div class="resume-entry">
+      <h3>{{ .title }} — {{ .company }}</h3>
+      <p class="meta">{{ .location }} · {{ .period }}</p>
+      {{ with .description }}<p>{{ . }}</p>{{ end }}
+      {{ with .highlights }}
+      <ul>
+        {{ range . }}<li>{{ . }}</li>{{ end }}
+      </ul>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div class="resume-section">
+    <h2>Education</h2>
+    {{ range $resume.education }}
+    <div class="resume-entry">
+      <h3>{{ .degree }}</h3>
+      <p class="meta">{{ .school }} · {{ .period }}</p>
+      {{ with .description }}<p>{{ . }}</p>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div class="resume-section">
+    <h2>Skills</h2>
+    {{ range $resume.skills }}
+    <div class="resume-entry">
+      <h3>{{ .category }}</h3>
+      <p>{{ .items }}</p>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

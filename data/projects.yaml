@@ -1,0 +1,39 @@
+- name: "ligno"
+  url: "https://github.com/delicb/ligno"
+  description: "Async structured logging library for golang."
+  tech: ["Go"]
+  featured: true
+- name: "gwc"
+  url: "https://github.com/delicb/gwc"
+  description: " Go Web Client - middlewares are not only for servers any more - use them for clients as well."
+  tech: ["Go", "HTTP"]
+  featured: true
+- name: "cliware"
+  url: "https://github.com/delicb/cliware"
+  description: "Middlewares for HTTP clients."
+  tech: ["Go", "HTTP"]
+  featured: true
+- name: "slogbuffer"
+  url: "https://github.com/delicb/slogbuffer"
+  description: "Buffering structured log handler for #golang"
+  tech: ["Go", "Logging"]
+  featured: true
+- name: "dzip"
+  url: "https://github.com/delicb/dzip"
+  description: "Simple deterministic zip creation utility"
+  tech: ["Go"]
+
+- name: "Germ"
+  url: "https://github.com/delicb/germ"
+  description: "College project for visual requirements gathering. A Java Swing application."
+  tech: ["Java", "Swing"]
+
+- name: "ExGerm"
+  url: "https://github.com/delicb/exgerm"
+  description: "College project for managing graphs, plugin based using OSGi framework (Eclipse Equinox implementation)"
+  tech: ["Java", "Swing", "OSGi", "Eclipse Equinox"]
+
+- name: "Somic"
+  url: "https://github.com/delicb/somic"
+  description: "Placeholder description for the Somic project. A utility for working with system configurations."
+  tech: ["Java", "Neural network"]
