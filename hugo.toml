@@ -11,8 +11,7 @@ theme = 'minimal'
   linkedin = 'https://www.linkedin.com/in/bojandelic/'
   twitter = 'https://x.com/dercibald'
   twitterHandle = '@dercibald'
-  turnstileSiteKey = '0x4AAAAAACbCN_Yiit6Tonql'
-  # turnstileSiteKey = '1x00000000000000000000AA' # Test key for local development
+  turnstileSiteKey = '1x00000000000000000000AA' # Turnstile test key (always passes); overridden in CI
 
 [markup]
   [markup.highlight]
