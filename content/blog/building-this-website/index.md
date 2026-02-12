@@ -2,7 +2,7 @@
 title: "Building This Website"
 date: 2026-02-12
 description: "Rebuilding my personal site from scratch with Hugo and a custom theme, using Pi coding agent to do the heavy lifting."
-tags: ["hugo", "web", "meta", "ai"]
+tags: ["hugo", "web", "meta", "ai", "pi", "agent"]
 draft: false
 ---
 
