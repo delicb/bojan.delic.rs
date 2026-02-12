@@ -3,6 +3,7 @@
   <h1>{{ .Title }}</h1>
   <p class="contact-intro">Have a question, want to collaborate, or just want to say hello? Send me a message and I'll get back to you.</p>
 
+  <!--email_off-->
   <form id="contact-form" class="contact-form" method="POST" action="/api/contact">
     <div class="form-group">
       <label for="name">Name</label>
@@ -35,6 +36,7 @@
   <div id="form-error" class="form-message form-message-error" hidden>
     <p>Something went wrong. Please try again, or email me directly at <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>.</p>
   </div>
+  <!--email_on-->
 </section>
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
