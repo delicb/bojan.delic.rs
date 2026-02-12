@@ -1,5 +1,4 @@
 interface Env {
-  TURNSTILE_SECRET_KEY: string;
   RESEND_API_KEY: string;
   CONTACT_EMAIL: string;
 }
@@ -9,28 +8,7 @@ export async function onRequestPost(
 ): Promise<Response> {
   const { request, env } = context;
 
-  // Verify Turnstile FIRST, from a cloned request, before anything else.
-  const clonedFormData = await request.clone().formData();
-  const turnstileToken = clonedFormData.get("cf-turnstile-response")?.toString() || "";
-
-  if (!turnstileToken) {
-    return errorResponse(400, "Turnstile verification missing.");
-  }
-
-  const verifyData = new FormData();
-  verifyData.set("secret", env.TURNSTILE_SECRET_KEY);
-  verifyData.set("response", turnstileToken);
-  const turnstileResult = await fetch(
-    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-    { method: "POST", body: verifyData }
-  );
-  const turnstile = await turnstileResult.json() as { success: boolean; "error-codes"?: string[] };
-  console.log("Turnstile result:", JSON.stringify(turnstile));
-  if (!turnstile.success) {
-    return errorResponse(403, "Turnstile verification failed.");
-  }
-
-  // Now parse the actual form data.
+  // Turnstile verification is handled by _middleware.ts.
   const formData = await request.formData();
   const name = (formData.get("name") as string || "").trim();
   const email = (formData.get("email") as string || "").trim();
@@ -47,6 +25,7 @@ export async function onRequestPost(
   if (!name || !email || !message) {
     return errorResponse(400, "All fields are required.");
   }
+
 
   // Send email via Resend
   const emailResult = await fetch("https://api.resend.com/emails", {
