@@ -36,6 +36,7 @@ export async function onRequestPost(
   }
 
   // Verify Turnstile token server-side
+  console.log("Turnstile token length:", turnstileToken.length);
   console.log("Verifying Turnstile token...");
   const turnstileResult = await fetch(
     "https://challenges.cloudflare.com/turnstile/v0/siteverify",

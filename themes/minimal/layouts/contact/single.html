@@ -51,10 +51,22 @@
     successEl.hidden = true;
     errorEl.hidden = true;
 
+    // Ensure Turnstile token is present
+    const token = form.querySelector('[name="cf-turnstile-response"]');
+    if (!token || !token.value) {
+      errorEl.hidden = false;
+      errorEl.querySelector('p').textContent = 'Please wait for the verification to complete and try again.';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+      return;
+    }
+
     try {
+      const fd = new FormData(form);
+      console.log('Turnstile token length:', (fd.get('cf-turnstile-response') || '').length);
       const res = await fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
+        body: fd,
       });
 
       if (res.ok) {
