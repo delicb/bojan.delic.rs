@@ -38,7 +38,9 @@ export async function onRequestPost(
   // Verify Turnstile token server-side
   console.log("Turnstile token length:", turnstileToken.length);
   console.log("Verifying Turnstile token...");
-  console.log("Secret key starts with:", env.TURNSTILE_SECRET_KEY?.substring(0, 6));
+  console.log("Secret key (first 20):", env.TURNSTILE_SECRET_KEY?.substring(0, 20));
+  console.log("Secret key length:", env.TURNSTILE_SECRET_KEY?.length);
+  console.log("Token (first 50):", turnstileToken.substring(0, 50));
   const turnstileResult = await fetch(
     "https://challenges.cloudflare.com/turnstile/v0/siteverify",
     {
