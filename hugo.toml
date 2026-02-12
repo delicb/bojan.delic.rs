@@ -39,3 +39,8 @@ theme = 'minimal'
 [sitemap]
   changeFreq = 'weekly'
   filename = 'sitemap.xml'
+
+[minify]
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepComments = true
