@@ -1,6 +1,6 @@
 <footer class="site-footer">
   <div class="container">
     <p>&copy; {{ now.Year }} {{ .Site.Title }}. Built with <a href="https://gohugo.io">Hugo</a>.</p>
-    <p class="footer-rss"><a href="/blog/index.xml" title="RSS Feed"><i class="fas fa-rss"></i> RSS</a></p>
+    <p class="footer-rss"><a href="/blog/index.xml" title="RSS Feed">{{ partial "icon.html" (dict "name" "rss") }} RSS</a></p>
   </div>
 </footer>

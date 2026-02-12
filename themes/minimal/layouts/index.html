@@ -4,10 +4,10 @@
   <p class="tagline">{{ .Site.Params.tagline }}</p>
 
   <div class="social-links">
-    <a href="{{ .Site.Params.github }}" title="GitHub"><i class="fa-brands fa-github"></i> GitHub</a>
-    <a href="{{ .Site.Params.linkedin }}" title="LinkedIn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-    <a href="{{ .Site.Params.twitter }}" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i> Twitter</a>
-    <a href="mailto:{{ .Site.Params.email }}" title="Email"><i class="fa-solid fa-envelope"></i> Email</a>
+    <a href="{{ .Site.Params.github }}" title="GitHub">{{ partial "icon.html" (dict "name" "github") }} GitHub</a>
+    <a href="{{ .Site.Params.linkedin }}" title="LinkedIn">{{ partial "icon.html" (dict "name" "linkedin") }} LinkedIn</a>
+    <a href="{{ .Site.Params.twitter }}" title="X (Twitter)">{{ partial "icon.html" (dict "name" "x-twitter") }} X (Twitter)</a>
+    <a href="mailto:{{ .Site.Params.email }}" title="Email">{{ partial "icon.html" (dict "name" "envelope") }} Email</a>
   </div>
 </section>
 

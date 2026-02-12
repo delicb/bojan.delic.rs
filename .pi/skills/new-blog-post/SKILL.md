@@ -72,4 +72,4 @@ Tell the user:
 - That the post is marked as `draft: true` (won't appear in production builds, visible with `hugo server --buildDrafts`)
 - Remind them to fill in `description` and `tags`
 - They can optionally add a cover image by placing a `cover.jpg` (or `.png`, `.svg`, `.webp`) in the post's directory — the template picks it up automatically
-- If the Hugo dev server is running, they can preview immediately at `http://localhost:1313/blog/<slug>/`
+- If the Hugo dev server is running, they can preview immediately at `http://localhost:1313/blog/<year>/<month>/<slug>/`

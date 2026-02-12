@@ -56,9 +56,22 @@ Projects, resume, and quotes are driven by YAML data files, not individual conte
   - `sections.css` — quotes, resume, projects (featured cards + list)
   - `responsive.css` — mobile breakpoints, print styles
   - `syntax.css` — chroma syntax highlighting (light/dark), line numbers, line highlighting
+- `assets/icons/` — inline SVG icons (sourced from Font Awesome Free 6.x). No external icon library is loaded; icons are inlined at build time via the `icon.html` partial.
+- `layouts/partials/icon.html` — partial for inlining SVG icons. Usage: `{{ partial "icon.html" (dict "name" "github") }}`. The `name` maps to a file in `assets/icons/<name>.svg`.
 - `layouts/shortcodes/include.html` — shortcode for including code from page bundle files.
 - `layouts/partials/` — head (with SEO meta), header, footer, theme toggle, JSON-LD.
 - `layouts/404.html` — custom 404 page.
+
+### Icons
+
+Icons are self-hosted SVGs in `themes/minimal/assets/icons/`, inlined into HTML at build time. No external icon library or CDN is used.
+
+**Current icons**: `github.svg`, `linkedin.svg`, `x-twitter.svg`, `envelope.svg`, `rss.svg`
+
+**To add a new icon**:
+1. Download the SVG from the Font Awesome Free repository: `https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/<style>/<name>.svg` (where `<style>` is `brands`, `solid`, or `regular`)
+2. Save it to `themes/minimal/assets/icons/<name>.svg`
+3. Use in templates: `{{ partial "icon.html" (dict "name" "<name>") }}`
 
 ### Static Files (`static/`)
 - Favicons in all standard sizes (generated from owner photo)
@@ -74,7 +87,7 @@ Projects, resume, and quotes are driven by YAML data files, not individual conte
 - **JSON-LD** — `Person` schema on homepage, `BlogPosting` schema on articles
 - **Canonical URLs** — `<link rel="canonical">` on every page
 - **Sitemap** — auto-generated at `/sitemap.xml`
-- **Font preconnect** — for cdnjs CDN (Font Awesome)
+- **No external icon CDN** — icons are self-hosted inline SVGs (see Icons section above)
 
 ## Design Principles
 

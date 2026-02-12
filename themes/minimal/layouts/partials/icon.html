@@ -1,0 +1,4 @@
+{{- $icon := resources.Get (printf "icons/%s.svg" .name) -}}
+{{- if $icon -}}
+<span class="icon-inline" aria-hidden="true">{{ $icon.Content | safeHTML }}</span>
+{{- end -}}
