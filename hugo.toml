@@ -12,7 +12,7 @@ theme = 'minimal'
   twitter = 'https://x.com/dercibald'
   twitterHandle = '@dercibald'
 #iturnstileSiteKey = '1x00000000000000000000AA' # Test key for local development
-  turnstileSiteKey = '0x4AAAAAACbA0RaQcWoSqA6E'
+  turnstileSiteKey = '0x4AAAAAACbCN_Yiit6Tonql'
 
 [markup]
   [markup.highlight]
