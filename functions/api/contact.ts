@@ -1,4 +1,5 @@
 interface Env {
+  TURNSTILE_SECRET_KEY: string;
   RESEND_API_KEY: string;
   CONTACT_EMAIL: string;
 }
@@ -12,6 +13,8 @@ export async function onRequestPost(
   const name = (formData.get("name") as string || "").trim();
   const email = (formData.get("email") as string || "").trim();
   const message = (formData.get("message") as string || "").trim();
+  const turnstileToken = formData.get("cf-turnstile-response") as string || "";
+
   // Honeypot: hidden field that real users never see. Bots fill it in.
   // Return 200 so the bot thinks it worked.
   if (formData.get("website")) {
@@ -24,8 +27,22 @@ export async function onRequestPost(
     return errorResponse(400, "All fields are required.");
   }
 
-  // Turnstile verification is handled by the middleware (_middleware.ts).
-  // If we reach this point, the token was already verified.
+  if (!turnstileToken) {
+    return errorResponse(400, "Turnstile verification missing.");
+  }
+
+  // Verify Turnstile token server-side using FormData (multipart/form-data).
+  const verifyData = new FormData();
+  verifyData.set("secret", env.TURNSTILE_SECRET_KEY);
+  verifyData.set("response", turnstileToken);
+  const turnstileResult = await fetch(
+    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    { method: "POST", body: verifyData }
+  );
+  const turnstile = await turnstileResult.json() as { success: boolean };
+  if (!turnstile.success) {
+    return errorResponse(403, "Turnstile verification failed.");
+  }
 
   // Send email via Resend
   const emailResult = await fetch("https://api.resend.com/emails", {

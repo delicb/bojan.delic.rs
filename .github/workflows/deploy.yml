@@ -22,9 +22,6 @@ jobs:
           hugo-version: '0.155.3'
           extended: true
 
-      - name: Install dependencies
-        run: npm ci
-
       - name: Build
         run: hugo --minify
 
