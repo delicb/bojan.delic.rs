@@ -1,9 +1,9 @@
 ---
 title: "Building This Website"
-date: 2026-02-11
+date: 2026-02-12
 description: "Rebuilding my personal site from scratch with Hugo and a custom theme, using Pi coding agent to do the heavy lifting."
 tags: ["hugo", "web", "meta", "ai"]
-draft: true
+draft: false
 ---
 
 My previous personal website was a Hugo site with a stock theme that I set up once and never really touched again. It worked, but it felt like it belonged to someone else. I wanted to rebuild it from scratch with a custom theme and proper modern web practices. Also, riding on AI hype, instead of writing all the code and config files myself, I'd use [Pi](https://github.com/mariozechner/pi-coding-agent), an AI coding agent for the terminal, and see how far I could get by describing what I want and steering the implementation.
