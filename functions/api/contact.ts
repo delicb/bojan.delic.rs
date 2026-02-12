@@ -49,7 +49,6 @@ export async function onRequestPost(
       body: JSON.stringify({
         secret: env.TURNSTILE_SECRET_KEY,
         response: turnstileToken,
-        remoteip: request.headers.get("CF-Connecting-IP") || "",
       }),
     }
   );
