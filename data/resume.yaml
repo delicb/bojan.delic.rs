@@ -7,75 +7,104 @@ summary: >
   systems from monoliths to microservices.
 
 experience:
-  - title: "Principal Engineer"
-    company: "Orgnostic (acquired by CultureAmp, 2024)"
+  - company: "Orgnostic (acquired by CultureAmp, 2024)"
     location: "Belgrade, Serbia"
-    period: "Oct 2021 – Present"
     description: >
       Orgnostic is a people analytics platform providing insights from HRIS, ATS, PTO,
       PMS and surveying data.
-    highlights:
-      - "Built self-service customer onboarding platform reducing setup time from days to hours, and created declarative data integration framework that reduced new source integration from weeks to days, directly increasing customer acquisition capacity."
-      - "Designed unified authentication system post-acquisition, enabling SSO across CultureAmp and Orgnostic platforms for seamless user experience."
-      - "Established CI/CD pipeline on GitHub Actions with automated testing and K8S and AWS deployments."
+    roles:
+      - title: "Principal Engineer"
+        period: "Oct 2021 – Present"
+        highlights:
+          - "Built self-service customer onboarding platform reducing setup time from days to hours, and created declarative data integration framework that reduced new source integration from weeks to days, directly increasing customer acquisition capacity."
+          - "Designed unified authentication system post-acquisition, enabling SSO across CultureAmp and Orgnostic platforms for seamless user experience."
+          - "Established CI/CD pipeline on GitHub Actions with automated testing and K8S and AWS deployments."
 
-  - title: "Software Architect"
-    company: "Everseen"
+  - company: "Everseen"
     location: "Belgrade, Serbia"
-    period: "Mar 2021 – Oct 2021"
     description: >
       Everseen is a computer vision company using neural networks for object detection
       and classification in retail.
-    highlights:
-      - "Designed event-based platform handling 2,000+ events/second with configuration-driven rules engine for on-premise retail installations."
-      - "Delivered neural network training platform by defining MVP scope and establishing testing strategy for internal users."
+    roles:
+      - title: "Software Architect"
+        period: "Mar 2021 – Oct 2021"
+        highlights:
+          - "Designed event-based platform handling 2,000+ events/second with configuration-driven rules engine for on-premise retail installations."
+          - "Delivered neural network training platform by defining MVP scope and establishing testing strategy for internal users."
 
-  - title: "Software Architect"
-    company: "Seven Bridges"
+  - company: "Seven Bridges"
     location: "Belgrade, Serbia"
-    period: "Jun 2020 – Mar 2021"
     description: >
       Seven Bridges provides cloud-based platforms for biomedical data management,
       computing and analytics.
-    highlights:
-      - "Led 15-person team delivering novel platform architecture for federal biomedical research tender, achieving highest technical evaluation score among 5 competitors."
+    roles:
+      - title: "Software Architect"
+        period: "Jun 2020 – Mar 2021"
+        highlights:
+          - "Led 15-person team delivering novel platform architecture for federal biomedical research tender, achieving highest technical evaluation score among 5 competitors."
 
-  - title: "Director of Engineering"
-    company: "Seven Bridges"
-    location: "Belgrade, Serbia"
-    period: "Nov 2018 – Jun 2020"
-    highlights:
-      - "Restructured 100+ person engineering organization from 7 to 15 teams organized in 6 departments, resulting in higher job satisfaction rates and ~50% more precise delivery planning."
-      - "Increased talent pool for hiring engineers by leading expansion into a new location."
-      - "Designed and implemented a process for proposing and adopting technical improvements, inspired by the PEP process, that encouraged idea sharing, open discussion and standardization."
-      - "Ensured reproducible builds, consistent unit test executions, and lowered DevOps team maintenance time by implementing GitLab as a git hosting and CI solution. Developed a Go CLI tool that streamlined CI integration with internal services."
+      - title: "Director of Engineering"
+        period: "Nov 2018 – Jun 2020"
+        highlights:
+          - "Restructured 100+ person engineering organization from 7 to 15 teams organized in 6 departments, resulting in higher job satisfaction rates and ~50% more precise delivery planning."
+          - "Increased talent pool for hiring engineers by leading expansion into a new location."
+          - "Designed and implemented a process for proposing and adopting technical improvements, inspired by the PEP process, that encouraged idea sharing, open discussion and standardization."
+          - "Ensured reproducible builds, consistent unit test executions, and lowered DevOps team maintenance time by implementing GitLab as a git hosting and CI solution. Developed a Go CLI tool that streamlined CI integration with internal services."
 
-  - title: "Principal Engineer"
-    company: "Seven Bridges"
-    location: "Belgrade, Serbia"
-    period: "Feb 2017 – Nov 2018"
-    highlights:
-      - "Decreased number of production incidents by half within six months by introducing regular critical retrospectives and addressing detected problems."
-      - "Decreased time-to-deploy wait time from up-to-two-months to only hours by detecting bottlenecks and technical problems."
-      - "Prevented hosting cost increase by addressing performance bottlenecks and redesigning critical parts of the system. Led the introduction and standardization of Go stack."
-      - "Proactively designed the Single-Sign-On system (SAML 2.0 and OIDC) based on requirement analysis, reducing custom per-customer development to zero."
+      - title: "Principal Engineer"
+        period: "Feb 2017 – Nov 2018"
+        highlights:
+          - "Decreased number of production incidents by half within six months by introducing regular critical retrospectives and addressing detected problems."
+          - "Decreased time-to-deploy wait time from up-to-two-months to only hours by detecting bottlenecks and technical problems."
+          - "Prevented hosting cost increase by addressing performance bottlenecks and redesigning critical parts of the system. Led the introduction and standardization of Go stack."
+          - "Proactively designed the Single-Sign-On system (SAML 2.0 and OIDC) based on requirement analysis, reducing custom per-customer development to zero."
 
-  - title: "Engineering Team Lead"
-    company: "Seven Bridges"
-    location: "Belgrade, Serbia"
-    period: "Dec 2015 – Feb 2017"
-    highlights:
-      - "Grew team capacity by 50% through hiring and cross-functional knowledge sharing, improving response time to internal and external requests."
-      - "Mentored two engineers from IC through Team Lead to Senior Management, defining career paths and development plans."
+      - title: "Engineering Team Lead"
+        period: "Dec 2015 – Feb 2017"
+        highlights:
+          - "Grew team capacity by 50% through hiring and cross-functional knowledge sharing, improving response time to internal and external requests."
+          - "Mentored two engineers from IC through Team Lead to Senior Management, defining career paths and development plans."
+
+      - title: "Software Engineer"
+        period: "Nov 2014 – Dec 2015"
+        highlights:
+          - "Enabled horizontal scalability of critical system parts by extracting microservices from a monolithic component, including a role-based permission service used system-wide."
+          - "Improved developer productivity and system stability by designing an internal Python framework for writing microservices with backward compatibility."
+
+  - company: "Schneider Electric DMS NS"
+    location: "Novi Sad, Serbia"
+    description: >
+      Advanced Distribution Management System as part of Smart GRID solutions
+      enabling power vendors to monitor, manage, and control electrical networks.
+      The company changed names from DMS Group to Telvent DMS to Schneider Electric DMS NS.
+    roles:
+      - title: "Software Engineer"
+        period: "Apr 2013 – Nov 2014"
+        highlights:
+          - "Increased reliability and decreased execution time by designing a framework for automated GUI tests with a custom Domain Specific Language."
+          - "Improved automated GUI test reliability by implementing centralized test result gathering, automatic analysis, and reporting to pinpoint fragile tests."
+
+      - title: "Software Engineer Intern"
+        period: "Apr 2009 – Apr 2013"
+        highlights:
+          - "Developed a series of Django-based internal web applications for tracking, monitoring, and reporting on CI systems, software releases, service packs, and patches."
 
 education:
   - degree: "Master in Electrical and Computer Engineering"
     school: "Faculty of Technical Sciences, University of Novi Sad"
     period: "2013"
+    coursework: "Rapid Software Development Methodology, Software System Protection and Recovery, Software Configuration Management, Neural Networks"
 
   - degree: "Bachelor with Honors in Electrical and Computer Engineering"
     school: "Faculty of Technical Sciences, University of Novi Sad"
     period: "2012"
+    coursework: "Object Programming, Computer Architecture, Net-Centric Computing 1 and 2, Compilers, Software Design, Software Project Management, XML and Web Services"
+
+community: >
+  Open-sourced several Go projects (e.g. async structured logger, middleware-based
+  HTTP client) and contributed to various open-source projects, all visible on
+  GitHub (https://github.com/delicb). Actively involved in local Linux User Group
+  activities during college.
 
 skills:
   - category: "Languages"

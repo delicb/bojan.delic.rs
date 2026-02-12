@@ -15,16 +15,36 @@
   {{ end }}
 
   <div class="resume-section">
+    <h2>Skills</h2>
+    <dl class="resume-skills">
+      {{ range $resume.skills }}
+      <dt>{{ .category }}</dt>
+      <dd>{{ .items }}</dd>
+      {{ end }}
+    </dl>
+  </div>
+
+  <div class="resume-section">
     <h2>Experience</h2>
     {{ range $resume.experience }}
-    <div class="resume-entry">
-      <h3>{{ .title }} — {{ .company }}</h3>
-      <p class="meta">{{ .location }} · {{ .period }}</p>
-      {{ with .description }}<p>{{ . }}</p>{{ end }}
-      {{ with .highlights }}
-      <ul>
-        {{ range . }}<li>{{ . }}</li>{{ end }}
-      </ul>
+    <div class="resume-company">
+      <div class="resume-company-header">
+        <h3>{{ .company }}</h3>
+        <span class="meta">{{ .location }}</span>
+      </div>
+      {{ with .description }}<p class="resume-company-desc">{{ . }}</p>{{ end }}
+      {{ range .roles }}
+      <div class="resume-role">
+        <div class="resume-role-header">
+          <h4>{{ .title }}</h4>
+          <span class="meta">{{ .period }}</span>
+        </div>
+        {{ with .highlights }}
+        <ul>
+          {{ range . }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
+      </div>
       {{ end }}
     </div>
     {{ end }}
@@ -37,18 +57,17 @@
       <h3>{{ .degree }}</h3>
       <p class="meta">{{ .school }} · {{ .period }}</p>
       {{ with .description }}<p>{{ . }}</p>{{ end }}
+      {{ with .coursework }}<p><strong>Relevant coursework:</strong> {{ . }}</p>{{ end }}
     </div>
     {{ end }}
   </div>
 
+  {{ with $resume.community }}
   <div class="resume-section">
-    <h2>Skills</h2>
-    {{ range $resume.skills }}
-    <div class="resume-entry">
-      <h3>{{ .category }}</h3>
-      <p>{{ .items }}</p>
-    </div>
-    {{ end }}
+    <h2>Community &amp; Open Source</h2>
+    <p>{{ . }}</p>
   </div>
+  {{ end }}
+
 </section>
 {{ end }}

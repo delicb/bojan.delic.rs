@@ -263,3 +263,31 @@
   color: var(--color-link);
   text-decoration: none;
 }
+
+.footer-rss {
+  margin-top: 0.5rem;
+}
+
+.footer-rss a {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  transition: color 0.2s;
+}
+
+.footer-rss a:hover {
+  color: var(--color-accent);
+}
+
+/* ---------- RSS Link (page header) ---------- */
+.rss-link {
+  font-size: 0.55em;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  vertical-align: middle;
+  margin-left: 0.3rem;
+  transition: color 0.2s;
+}
+
+.rss-link:hover {
+  color: var(--color-accent);
+}

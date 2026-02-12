@@ -54,6 +54,97 @@
   border-bottom: 2px solid var(--color-accent);
 }
 
+/* --- Company grouping --- */
+.resume-company {
+  margin-bottom: 2rem;
+}
+
+.resume-company-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.resume-company-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.resume-company-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* --- Individual roles within a company --- */
+.resume-role {
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-border);
+  margin-bottom: 1.25rem;
+}
+
+.resume-role:last-child {
+  margin-bottom: 0;
+}
+
+.resume-role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.resume-role-header h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.resume-role .meta,
+.resume-company-header .meta {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.resume-role ul {
+  margin-left: 1.25rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.resume-role li {
+  margin-bottom: 0.3rem;
+}
+
+/* --- Skills (compact definition list) --- */
+.resume-skills {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+  margin: 0;
+}
+
+.resume-skills dt {
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.resume-skills dd {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+/* --- Education, community (non-grouped entries) --- */
 .resume-entry {
   margin-bottom: 1.5rem;
 }

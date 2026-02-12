@@ -1,6 +1,6 @@
 {{ define "main" }}
 <section class="page-header">
-  <h1>{{ .Title }}</h1>
+  <h1>{{ .Title }}{{ with .OutputFormats.Get "rss" }} <a href="{{ .Permalink }}" class="rss-link" title="RSS Feed"><i class="fas fa-rss"></i></a>{{ end }}</h1>
   {{ with .Description }}<p>{{ . }}</p>{{ end }}
 </section>
 

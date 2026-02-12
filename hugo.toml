@@ -4,7 +4,7 @@ title = 'Bojan Delić'
 theme = 'minimal'
 
 [params]
-  tagline = 'Problem solver, computer programmer, IT enthusiast, geek'
+  tagline = 'Problem solver, software engineer, IT enthusiast, geek'
   description = 'Personal website of Bojan Delić'
   email = 'bojan@delic.in.rs'
   github = 'https://github.com/delicb'
