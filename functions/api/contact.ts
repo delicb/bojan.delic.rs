@@ -38,12 +38,13 @@ export async function onRequestPost(
   // Verify Turnstile token server-side
   console.log("Turnstile token length:", turnstileToken.length);
   console.log("Verifying Turnstile token...");
+  console.log("Secret key starts with:", env.TURNSTILE_SECRET_KEY?.substring(0, 6));
   const turnstileResult = await fetch(
     "https://challenges.cloudflare.com/turnstile/v0/siteverify",
     {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         secret: env.TURNSTILE_SECRET_KEY,
         response: turnstileToken,
         remoteip: request.headers.get("CF-Connecting-IP") || "",
