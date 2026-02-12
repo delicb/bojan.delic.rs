@@ -39,7 +39,8 @@ export async function onRequestPost(
     "https://challenges.cloudflare.com/turnstile/v0/siteverify",
     { method: "POST", body: verifyData }
   );
-  const turnstile = await turnstileResult.json() as { success: boolean };
+  const turnstile = await turnstileResult.json() as { success: boolean; "error-codes"?: string[] };
+  console.log("Turnstile result:", JSON.stringify(turnstile));
   if (!turnstile.success) {
     return errorResponse(403, "Turnstile verification failed.");
   }
