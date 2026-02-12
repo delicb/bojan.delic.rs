@@ -3,7 +3,7 @@
   {{ $cover := .Resources.GetMatch "cover.*" }}
   {{ with $cover }}
   <div class="article-cover">
-    <img src="{{ .RelPermalink }}" alt="Cover image">
+    <img src="{{ .RelPermalink }}" alt="Cover image" width="{{ .Width }}" height="{{ .Height }}">
   </div>
   {{ end }}
 
