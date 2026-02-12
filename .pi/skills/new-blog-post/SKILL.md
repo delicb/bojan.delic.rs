@@ -56,6 +56,15 @@ draft: true
 
 Use today's date. Leave `description` and `tags` empty for the author to fill in.
 
+## Writing Style Rules
+
+When writing or editing blog post content, follow these rules:
+
+- **No em-dashes or en-dashes.** Use commas, periods, or restructure the sentence instead.
+- **Avoid colons mid-sentence as list introductions.** Don't write "The result was: X, Y, Z." Rewrite as flowing prose or separate sentences.
+- **Vary sentence length.** Mix short punchy sentences with longer explanatory ones. Don't fall into a rhythm where every sentence is the same length.
+- **Sound human, not like LLM-generated text.** Avoid formulaic phrasing, excessive hedging, or overly polished corporate tone.
+
 ## Step 4: Confirm
 
 Tell the user:

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Sections: quotes, resume, projects
+   Sections: quotes, resume, projects, contact
    ========================================================================== */
 
 /* ---------- Quotes ---------- */
@@ -183,4 +183,106 @@
   color: var(--color-tag-text);
   padding: 0.1rem 0.5rem;
   border-radius: 3px;
+}
+
+/* ---------- Contact ---------- */
+.contact-page h1 {
+  margin-bottom: 0.5rem;
+}
+
+.contact-intro {
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+.contact-form {
+  max-width: 520px;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--color-text);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: border-color 0.15s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-submit {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-accent);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.form-submit:hover {
+  background: var(--color-accent-hover);
+}
+
+.form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-message {
+  max-width: 520px;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+}
+
+.form-message-success {
+  background: var(--color-tag-bg);
+  color: var(--color-accent);
+}
+
+.form-message-error {
+  background: #fdf0f0;
+  color: #b33;
+}
+
+[data-theme="dark"] .form-message-error,
+:root:not([data-theme="light"]) .form-message-error {
+  background: #2a1a1a;
+  color: #e66;
+}
+
+.form-message a {
+  color: inherit;
+  text-decoration: underline;
 }
