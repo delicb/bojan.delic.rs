@@ -39,16 +39,19 @@ export async function onRequestPost(
   console.log("Turnstile token length:", turnstileToken.length);
   console.log("Verifying Turnstile token...");
   console.log("Full token:", turnstileToken);
-  console.log("Secret key:", env.TURNSTILE_SECRET_KEY);
+  const secretToUse = "1x0000000000000000000000000000000AA";
+  console.log("Secret being sent:", secretToUse);
+  const verifyBody = JSON.stringify({
+    secret: secretToUse,
+    response: turnstileToken,
+  });
+  console.log("Verify request body:", verifyBody.substring(0, 100));
   const turnstileResult = await fetch(
     "https://challenges.cloudflare.com/turnstile/v0/siteverify",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        secret: "1x0000000000000000000000000000000AA",
-        response: turnstileToken,
-      }),
+      body: verifyBody,
     }
   );
 
