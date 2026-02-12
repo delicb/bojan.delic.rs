@@ -1,5 +1,4 @@
 interface Env {
-  TURNSTILE_SECRET_KEY: string;
   RESEND_API_KEY: string;
   CONTACT_EMAIL: string;
 }
@@ -13,8 +12,6 @@ export async function onRequestPost(
   const name = (formData.get("name") as string || "").trim();
   const email = (formData.get("email") as string || "").trim();
   const message = (formData.get("message") as string || "").trim();
-  const turnstileToken = formData.get("cf-turnstile-response") as string || "";
-
   // Honeypot: hidden field that real users never see. Bots fill it in.
   // Return 200 so the bot thinks it worked.
   if (formData.get("website")) {
@@ -27,18 +24,8 @@ export async function onRequestPost(
     return errorResponse(400, "All fields are required.");
   }
 
-  if (!turnstileToken) {
-    return errorResponse(400, "Turnstile verification missing.");
-  }
-
-  // TODO: Server-side Turnstile verification disabled temporarily.
-  // The siteverify API returns invalid-input-secret/invalid-input-response
-  // when called from inside a Pages Function, even with test keys.
-  // Client-side Turnstile widget + honeypot still active.
-  //
-  // Revisit: try using Cloudflare's Turnstile Pages Plugin or a
-  // different verification approach from within Pages Functions.
-  console.log("Turnstile token present:", turnstileToken.length > 0);
+  // Turnstile verification is handled by the middleware (_middleware.ts).
+  // If we reach this point, the token was already verified.
 
   // Send email via Resend
   const emailResult = await fetch("https://api.resend.com/emails", {

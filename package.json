@@ -1,0 +1,24 @@
+{
+  "name": "bojan.delic.rs",
+  "version": "1.0.0",
+  "description": "Personal website. Built with [Hugo](https://gohugo.io/), deployed to [Cloudflare Pages](https://pages.cloudflare.com/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delicb/bojan.delic.rs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/delicb/bojan.delic.rs/issues"
+  },
+  "homepage": "https://github.com/delicb/bojan.delic.rs#readme",
+  "dependencies": {
+    "@cloudflare/pages-plugin-turnstile": "^1.0.2"
+  }
+}
