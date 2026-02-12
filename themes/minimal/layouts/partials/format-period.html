@@ -1,0 +1,6 @@
+{{- /*
+    Format a role period from start_date and end_date.
+    Expects: dict "start" (time.Time or date string) "end" (time.Time, date string, or "present")
+    Returns: "Oct 2021 – Present" or "Mar 2021 – Oct 2021"
+*/ -}}
+{{- (time.AsTime .start).Format "Jan 2006" }} – {{ if eq (printf "%v" .end) "present" }}Present{{ else }}{{ (time.AsTime .end).Format "Jan 2006" }}{{ end -}}

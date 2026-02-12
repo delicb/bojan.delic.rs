@@ -1,0 +1,22 @@
+{{- /*
+    Calculate tenure duration between two dates.
+    Expects: dict "start" (time.Time or date string) "end" (time.Time, date string, or "present")
+    Returns: string like "3 yrs 4 mos" or "8 mos"
+*/ -}}
+{{- $start := time.AsTime .start -}}
+{{- $end := now -}}
+{{- if ne (printf "%v" .end) "present" -}}
+  {{- $end = time.AsTime .end -}}
+{{- end -}}
+
+{{- $totalMonths := add (mul (sub $end.Year $start.Year) 12) (sub (int $end.Month) (int $start.Month)) -}}
+{{- $years := div $totalMonths 12 -}}
+{{- $mos := mod $totalMonths 12 -}}
+
+{{- if and (gt $years 0) (gt $mos 0) -}}
+  {{- $years }} yr{{ if gt $years 1 }}s{{ end }} {{ $mos }} mo{{ if gt $mos 1 }}s{{ end -}}
+{{- else if gt $years 0 -}}
+  {{- $years }} yr{{ if gt $years 1 }}s{{ end -}}
+{{- else -}}
+  {{- $mos }} mo{{ if gt $mos 1 }}s{{ end -}}
+{{- end -}}

@@ -14,7 +14,8 @@ experience:
       PMS and surveying data.
     roles:
       - title: "Principal Engineer"
-        period: "Oct 2021 – Present"
+        start_date: 2021-10-01
+        end_date: present
         highlights:
           - "Built self-service customer onboarding platform reducing setup time from days to hours, and created declarative data integration framework that reduced new source integration from weeks to days, directly increasing customer acquisition capacity."
           - "Designed unified authentication system post-acquisition, enabling SSO across CultureAmp and Orgnostic platforms for seamless user experience."
@@ -27,7 +28,8 @@ experience:
       and classification in retail.
     roles:
       - title: "Software Architect"
-        period: "Mar 2021 – Oct 2021"
+        start_date: 2021-03-01
+        end_date: 2021-10-01
         highlights:
           - "Designed event-based platform handling 2,000+ events/second with configuration-driven rules engine for on-premise retail installations."
           - "Delivered neural network training platform by defining MVP scope and establishing testing strategy for internal users."
@@ -39,12 +41,14 @@ experience:
       computing and analytics.
     roles:
       - title: "Software Architect"
-        period: "Jun 2020 – Mar 2021"
+        start_date: 2020-06-01
+        end_date: 2021-03-01
         highlights:
           - "Led 15-person team delivering novel platform architecture for federal biomedical research tender, achieving highest technical evaluation score among 5 competitors."
 
       - title: "Director of Engineering"
-        period: "Nov 2018 – Jun 2020"
+        start_date: 2018-11-01
+        end_date: 2020-06-01
         highlights:
           - "Restructured 100+ person engineering organization from 7 to 15 teams organized in 6 departments, resulting in higher job satisfaction rates and ~50% more precise delivery planning."
           - "Increased talent pool for hiring engineers by leading expansion into a new location."
@@ -52,7 +56,8 @@ experience:
           - "Ensured reproducible builds, consistent unit test executions, and lowered DevOps team maintenance time by implementing GitLab as a git hosting and CI solution. Developed a Go CLI tool that streamlined CI integration with internal services."
 
       - title: "Principal Engineer"
-        period: "Feb 2017 – Nov 2018"
+        start_date: 2017-02-01
+        end_date: 2018-11-01
         highlights:
           - "Decreased number of production incidents by half within six months by introducing regular critical retrospectives and addressing detected problems."
           - "Decreased time-to-deploy wait time from up-to-two-months to only hours by detecting bottlenecks and technical problems."
@@ -60,13 +65,15 @@ experience:
           - "Proactively designed the Single-Sign-On system (SAML 2.0 and OIDC) based on requirement analysis, reducing custom per-customer development to zero."
 
       - title: "Engineering Team Lead"
-        period: "Dec 2015 – Feb 2017"
+        start_date: 2015-12-01
+        end_date: 2017-02-01
         highlights:
           - "Grew team capacity by 50% through hiring and cross-functional knowledge sharing, improving response time to internal and external requests."
           - "Mentored two engineers from IC through Team Lead to Senior Management, defining career paths and development plans."
 
       - title: "Software Engineer"
-        period: "Nov 2014 – Dec 2015"
+        start_date: 2014-11-01
+        end_date: 2015-12-01
         highlights:
           - "Enabled horizontal scalability of critical system parts by extracting microservices from a monolithic component, including a role-based permission service used system-wide."
           - "Improved developer productivity and system stability by designing an internal Python framework for writing microservices with backward compatibility."
@@ -79,13 +86,15 @@ experience:
       The company changed names from DMS Group to Telvent DMS to Schneider Electric DMS NS.
     roles:
       - title: "Software Engineer"
-        period: "Apr 2013 – Nov 2014"
+        start_date: 2013-04-01
+        end_date: 2014-11-01
         highlights:
           - "Increased reliability and decreased execution time by designing a framework for automated GUI tests with a custom Domain Specific Language."
           - "Improved automated GUI test reliability by implementing centralized test result gathering, automatic analysis, and reporting to pinpoint fragile tests."
 
       - title: "Software Engineer Intern"
-        period: "Apr 2009 – Apr 2013"
+        start_date: 2009-04-01
+        end_date: 2013-04-01
         highlights:
           - "Developed a series of Django-based internal web applications for tracking, monitoring, and reporting on CI systems, software releases, service packs, and patches."
 

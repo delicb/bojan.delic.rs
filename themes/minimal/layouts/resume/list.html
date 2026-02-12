@@ -30,14 +30,17 @@
     <div class="resume-company">
       <div class="resume-company-header">
         <h3>{{ .company }}</h3>
-        <span class="meta">{{ .location }}</span>
+        {{- $roles := .roles -}}
+        {{- $first := index $roles 0 -}}
+        {{- $last := index $roles (sub (len $roles) 1) -}}
+        <span class="meta">{{ .location }} · {{ partial "tenure.html" (dict "start" $last.start_date "end" $first.end_date) }}</span>
       </div>
       {{ with .description }}<p class="resume-company-desc">{{ . }}</p>{{ end }}
       {{ range .roles }}
       <div class="resume-role">
         <div class="resume-role-header">
           <h4>{{ .title }}</h4>
-          <span class="meta">{{ .period }}</span>
+          <span class="meta">{{ partial "format-period.html" (dict "start" .start_date "end" .end_date) }}</span>
         </div>
         {{ with .highlights }}
         <ul>
