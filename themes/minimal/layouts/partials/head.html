@@ -64,6 +64,7 @@
 {{ $syntax := resources.Get "css/syntax.css" }}
 {{ $style := slice $base $layout $article $sections $responsive $syntax | resources.Concat "css/style.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+{{- partial "accent-color.html" . -}}
 <script>
   // Apply saved theme immediately to prevent flash
   (function() {

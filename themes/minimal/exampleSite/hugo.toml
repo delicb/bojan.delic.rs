@@ -8,6 +8,7 @@ theme = 'minimal'
   description = 'Personal website of Jane Doe'
   email = 'jane@example.com'
   twitterHandle = '@janedoe'
+  accentColor = 'blue'
 
 [[params.socialLinks]]
   name = "GitHub"

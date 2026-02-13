@@ -226,6 +226,19 @@ Parameters:
 
 ## Customization
 
+### Accent Color
+
+Set `accentColor` in your site params to change the theme's primary color. Green is the default.
+
+```toml
+[params]
+  accentColor = "blue"
+```
+
+Available colors: `green` (default), `blue`, `indigo`, `teal`, `red`, `orange`, `purple`, `rose`.
+
+The chosen color applies to links, accents, tags, and the top border — in both light and dark modes.
+
 ### CSS Custom Properties
 
 The theme uses CSS custom properties for colors, fonts, and spacing. Override them in your own CSS file or by placing a `assets/css/custom.css` in your site.

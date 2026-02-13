@@ -1,0 +1,68 @@
+{{- /*
+  Accent color override partial.
+  Reads site.Params.accentColor (default: "green") and emits CSS custom property
+  overrides for the chosen color palette. Green is the CSS default so no output
+  is emitted when the color is "green" or unset.
+
+  Supported colors: green, blue, indigo, teal, red, orange, purple, rose
+*/ -}}
+
+{{- $color := site.Params.accentColor | default "green" -}}
+
+{{- /* Each palette: accent, accent-hover, link, link-hover, tag-bg, tag-text (light)
+       then accent, accent-hover, link, link-hover, tag-bg, tag-text (dark) */ -}}
+{{- $palettes := dict
+  "blue"   (dict
+    "accent" "#2563eb" "accentHover" "#1d4ed8" "link" "#2563eb" "linkHover" "#1d4ed8" "tagBg" "#e0ecfc" "tagText" "#2563eb"
+    "darkAccent" "#60a5fa" "darkAccentHover" "#93bbfd" "darkLink" "#60a5fa" "darkLinkHover" "#93bbfd" "darkTagBg" "#1e2d4a" "darkTagText" "#93bbfd")
+  "indigo" (dict
+    "accent" "#4f46e5" "accentHover" "#4338ca" "link" "#4f46e5" "linkHover" "#4338ca" "tagBg" "#e6e4fc" "tagText" "#4f46e5"
+    "darkAccent" "#818cf8" "darkAccentHover" "#a5b4fc" "darkLink" "#818cf8" "darkLinkHover" "#a5b4fc" "darkTagBg" "#252347" "darkTagText" "#a5b4fc")
+  "teal"   (dict
+    "accent" "#0d9488" "accentHover" "#0f766e" "link" "#0d9488" "linkHover" "#0f766e" "tagBg" "#ddf5f2" "tagText" "#0d9488"
+    "darkAccent" "#2dd4bf" "darkAccentHover" "#5eead4" "darkLink" "#2dd4bf" "darkLinkHover" "#5eead4" "darkTagBg" "#132e2b" "darkTagText" "#5eead4")
+  "red"    (dict
+    "accent" "#dc2626" "accentHover" "#b91c1c" "link" "#dc2626" "linkHover" "#b91c1c" "tagBg" "#fce4e4" "tagText" "#dc2626"
+    "darkAccent" "#f87171" "darkAccentHover" "#fca5a5" "darkLink" "#f87171" "darkLinkHover" "#fca5a5" "darkTagBg" "#3b1c1c" "darkTagText" "#fca5a5")
+  "orange" (dict
+    "accent" "#ea580c" "accentHover" "#c2410c" "link" "#ea580c" "linkHover" "#c2410c" "tagBg" "#fce8d8" "tagText" "#ea580c"
+    "darkAccent" "#fb923c" "darkAccentHover" "#fdba74" "darkLink" "#fb923c" "darkLinkHover" "#fdba74" "darkTagBg" "#3b2510" "darkTagText" "#fdba74")
+  "purple" (dict
+    "accent" "#7c3aed" "accentHover" "#6d28d9" "link" "#7c3aed" "linkHover" "#6d28d9" "tagBg" "#ece4fc" "tagText" "#7c3aed"
+    "darkAccent" "#a78bfa" "darkAccentHover" "#c4b5fd" "darkLink" "#a78bfa" "darkLinkHover" "#c4b5fd" "darkTagBg" "#2a1d47" "darkTagText" "#c4b5fd")
+  "rose"   (dict
+    "accent" "#e11d48" "accentHover" "#be123c" "link" "#e11d48" "linkHover" "#be123c" "tagBg" "#fce4ec" "tagText" "#e11d48"
+    "darkAccent" "#fb7185" "darkAccentHover" "#fda4af" "darkLink" "#fb7185" "darkLinkHover" "#fda4af" "darkTagBg" "#3b1424" "darkTagText" "#fda4af")
+-}}
+
+{{- $p := index $palettes $color -}}
+{{- if $p -}}
+<style>
+:root {
+  --color-accent: {{ $p.accent }};
+  --color-accent-hover: {{ $p.accentHover }};
+  --color-link: {{ $p.link }};
+  --color-link-hover: {{ $p.linkHover }};
+  --color-tag-bg: {{ $p.tagBg }};
+  --color-tag-text: {{ $p.tagText }};
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-accent: {{ $p.darkAccent }};
+    --color-accent-hover: {{ $p.darkAccentHover }};
+    --color-link: {{ $p.darkLink }};
+    --color-link-hover: {{ $p.darkLinkHover }};
+    --color-tag-bg: {{ $p.darkTagBg }};
+    --color-tag-text: {{ $p.darkTagText }};
+  }
+}
+:root[data-theme="dark"] {
+  --color-accent: {{ $p.darkAccent }};
+  --color-accent-hover: {{ $p.darkAccentHover }};
+  --color-link: {{ $p.darkLink }};
+  --color-link-hover: {{ $p.darkLinkHover }};
+  --color-tag-bg: {{ $p.darkTagBg }};
+  --color-tag-text: {{ $p.darkTagText }};
+}
+</style>
+{{- end -}}
