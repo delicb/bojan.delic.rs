@@ -4,8 +4,7 @@
 
 /* ---------- Article Cover ---------- */
 .article-cover {
-  margin: 0 calc(-1 * var(--content-padding, 0px));
-  margin-bottom: 0;
+  margin: 0;
   border-radius: var(--radius);
   overflow: hidden;
 }
@@ -38,16 +37,7 @@
   animation-delay: 0.1s;
 }
 
-.article-date {
-  font-family: var(--font-heading);
-  display: inline;
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  margin-top: 0.5rem;
-  animation: fadeIn 0.4s ease both;
-  animation-delay: 0.25s;
-}
-
+.article-date,
 .article-reading-time {
   font-family: var(--font-heading);
   display: inline;

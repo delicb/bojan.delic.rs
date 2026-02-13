@@ -1,4 +1,4 @@
 ---
 title: "Resume"
-description: ""
+description: "Professional experience, skills, and education of Bojan Delić"
 ---

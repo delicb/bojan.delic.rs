@@ -19,7 +19,7 @@ Personal website for **Bojan Delić**, hosted at https://bojan.delic.rs/
 - GitHub: https://github.com/delicb
 - LinkedIn: https://www.linkedin.com/in/bojandelic/
 - Twitter/X: https://x.com/dercibald
-- Email: bojan@delic.rs
+- Email: bojan@delic.in.rs
 
 ## Site Structure
 

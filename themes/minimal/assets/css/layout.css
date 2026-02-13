@@ -149,16 +149,7 @@
   border-color: var(--color-accent);
   border-left-color: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .home-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-}
-[data-theme="dark"] .home-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-hover);
 }
 
 .home-card h2 {
@@ -190,11 +181,6 @@
 .page-header p {
   color: var(--color-text-secondary);
   margin-top: 0.5rem;
-}
-
-/* ---------- Post List ---------- */
-.post-list {
-  list-style: none;
 }
 
 /* ---------- 404 ---------- */
@@ -290,6 +276,10 @@
 }
 
 /* ---------- Post List ---------- */
+.post-list {
+  list-style: none;
+}
+
 .post-item {
   padding: 1rem 0;
   border-bottom: 1px solid var(--color-border);
@@ -483,7 +473,7 @@
   transform: translateY(8px);
   transition: opacity 0.3s, visibility 0.3s, transform 0.3s, color 0.2s, border-color 0.2s, background-color 0.3s;
   z-index: 50;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-subtle);
 }
 
 .back-to-top.visible {
@@ -495,15 +485,6 @@
 .back-to-top:hover {
   color: var(--color-accent);
   border-color: var(--color-accent);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .back-to-top {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  }
-}
-[data-theme="dark"] .back-to-top {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* ---------- RSS Link (page header) ---------- */

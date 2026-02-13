@@ -49,6 +49,8 @@
   --color-card-hover: #f7f7f8;
   --color-tag-bg: #e8f0ec;
   --color-tag-text: #2d6a4f;
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.08);
 
   --max-width: 720px;
   --spacing: 1.5rem;
@@ -73,6 +75,8 @@
     --color-card-hover: #25252d;
     --color-tag-bg: #1e3a2a;
     --color-tag-text: #74c69d;
+    --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 }
 /* Manual: user toggled dark mode */
@@ -91,6 +95,8 @@
   --color-card-hover: #25252d;
   --color-tag-bg: #1e3a2a;
   --color-tag-text: #74c69d;
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* ---------- Reset ---------- */
