@@ -9,6 +9,7 @@ theme = 'minimal'
   email = 'bojan@delic.in.rs'
   twitterHandle = '@dercibald'
   turnstileSiteKey = '1x00000000000000000000AA' # Turnstile test key (always passes); overridden in CI
+  syntaxTheme = 'catppuccin'
 
 [[params.socialLinks]]
   name = "GitHub"

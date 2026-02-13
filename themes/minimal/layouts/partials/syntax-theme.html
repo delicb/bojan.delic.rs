@@ -1,0 +1,237 @@
+{{- /*
+  Syntax theme override partial.
+  Reads site.Params.syntaxTheme (default: "github") and emits CSS custom property
+  overrides for the chosen syntax colour palette. "github" is the CSS default
+  (github light + dracula dark) so no output is emitted when unset.
+
+  Supported themes: github, catppuccin, nord, solarized
+*/ -}}
+
+{{- $theme := site.Params.syntaxTheme | default "github" -}}
+
+{{- /* ---------- Catppuccin: Latte (light) + Mocha (dark) ---------- */ -}}
+{{- $catppuccinLight := dict
+  "bg" "#eff1f5" "fg" "#4c4f69" "hl" "#bcc0cc"
+  "errFg" "#d20f39" "errBg" "transparent"
+  "keyword" "#8839ef"
+  "nameAttr" "#df8e1d" "nameClass" "#df8e1d" "nameConst" "#fe640b"
+  "nameDecorator" "#1e66f5" "nameEntity" "#1e66f5"
+  "nameLabelFg" "#179299"
+  "nameNamespace" "#4c4f69" "nameOther" "#4c4f69"
+  "nameTag" "#8839ef"
+  "nameBuiltin" "#d20f39" "nameBuiltinPseudo" "#8c8fa1"
+  "nameVariable" "#4c4f69" "nameFunction" "#1e66f5"
+  "string" "#40a02b" "stringSymbol" "#40a02b"
+  "number" "#fe640b" "operator" "#179299" "punctuation" "#5c5f77"
+  "comment" "#8c8fa1"
+  "genericDeletedFg" "#d20f39" "genericDeletedBg" "#eff1f5"
+  "genericEmph" "#4c4f69"
+  "genericInsertedFg" "#40a02b" "genericInsertedBg" "#eff1f5"
+  "genericOutput" "#6c6f85" "whitespace" "#eff1f5"
+  "kdStyle" "normal" "nlStyle" "normal" "nbStyle" "normal" "bpStyle" "normal" "nvStyle" "normal"
+  "nlLabelWeight" "normal" "genericHeadingWeight" "bold" "genericInsertedWeight" "normal"
+  "genericSubheadingWeight" "bold" "genericEmphDecoration" "none"
+-}}
+{{- $catppuccinDark := dict
+  "bg" "#1e1e2e" "fg" "#cdd6f4" "hl" "#45475a"
+  "errFg" "#f38ba8" "errBg" "transparent"
+  "keyword" "#cba6f7"
+  "nameAttr" "#f9e2af" "nameClass" "#f9e2af" "nameConst" "#fab387"
+  "nameDecorator" "#89b4fa" "nameEntity" "#89b4fa"
+  "nameLabelFg" "#94e2d5"
+  "nameNamespace" "#cdd6f4" "nameOther" "#cdd6f4"
+  "nameTag" "#cba6f7"
+  "nameBuiltin" "#f38ba8" "nameBuiltinPseudo" "#cdd6f4"
+  "nameVariable" "#cdd6f4" "nameFunction" "#89b4fa"
+  "string" "#a6e3a1" "stringSymbol" "#a6e3a1"
+  "number" "#fab387" "operator" "#94e2d5" "punctuation" "#bac2de"
+  "comment" "#7f849c"
+  "genericDeletedFg" "#f38ba8" "genericDeletedBg" "transparent"
+  "genericEmph" "#cdd6f4"
+  "genericInsertedFg" "#a6e3a1" "genericInsertedBg" "transparent"
+  "genericOutput" "#a6adc8" "whitespace" "#cdd6f4"
+  "kdStyle" "normal" "nlStyle" "normal" "nbStyle" "normal" "bpStyle" "normal" "nvStyle" "normal"
+  "nlLabelWeight" "normal" "genericHeadingWeight" "bold" "genericInsertedWeight" "normal"
+  "genericSubheadingWeight" "bold" "genericEmphDecoration" "none"
+-}}
+
+{{- /* ---------- Nord: Nord Light + Nord Dark ---------- */ -}}
+{{- $nordLight := dict
+  "bg" "#eceff4" "fg" "#2e3440" "hl" "#d8dee9"
+  "errFg" "#bf616a" "errBg" "transparent"
+  "keyword" "#5e81ac"
+  "nameAttr" "#8fbcbb" "nameClass" "#8fbcbb" "nameConst" "#5e81ac"
+  "nameDecorator" "#d08770" "nameEntity" "#d08770"
+  "nameLabelFg" "#81a1c1"
+  "nameNamespace" "#2e3440" "nameOther" "#2e3440"
+  "nameTag" "#81a1c1"
+  "nameBuiltin" "#81a1c1" "nameBuiltinPseudo" "#4c566a"
+  "nameVariable" "#2e3440" "nameFunction" "#88c0d0"
+  "string" "#a3be8c" "stringSymbol" "#a3be8c"
+  "number" "#b48ead" "operator" "#81a1c1" "punctuation" "#3b4252"
+  "comment" "#9199a4"
+  "genericDeletedFg" "#bf616a" "genericDeletedBg" "#eceff4"
+  "genericEmph" "#2e3440"
+  "genericInsertedFg" "#a3be8c" "genericInsertedBg" "#eceff4"
+  "genericOutput" "#4c566a" "whitespace" "#eceff4"
+  "kdStyle" "normal" "nlStyle" "normal" "nbStyle" "normal" "bpStyle" "normal" "nvStyle" "normal"
+  "nlLabelWeight" "normal" "genericHeadingWeight" "bold" "genericInsertedWeight" "normal"
+  "genericSubheadingWeight" "bold" "genericEmphDecoration" "none"
+-}}
+{{- $nordDark := dict
+  "bg" "#2e3440" "fg" "#d8dee9" "hl" "#3b4252"
+  "errFg" "#bf616a" "errBg" "transparent"
+  "keyword" "#81a1c1"
+  "nameAttr" "#8fbcbb" "nameClass" "#8fbcbb" "nameConst" "#5e81ac"
+  "nameDecorator" "#d08770" "nameEntity" "#d08770"
+  "nameLabelFg" "#88c0d0"
+  "nameNamespace" "#d8dee9" "nameOther" "#d8dee9"
+  "nameTag" "#81a1c1"
+  "nameBuiltin" "#81a1c1" "nameBuiltinPseudo" "#d8dee9"
+  "nameVariable" "#d8dee9" "nameFunction" "#88c0d0"
+  "string" "#a3be8c" "stringSymbol" "#a3be8c"
+  "number" "#b48ead" "operator" "#81a1c1" "punctuation" "#e5e9f0"
+  "comment" "#616e88"
+  "genericDeletedFg" "#bf616a" "genericDeletedBg" "transparent"
+  "genericEmph" "#d8dee9"
+  "genericInsertedFg" "#a3be8c" "genericInsertedBg" "transparent"
+  "genericOutput" "#4c566a" "whitespace" "#d8dee9"
+  "kdStyle" "normal" "nlStyle" "normal" "nbStyle" "normal" "bpStyle" "normal" "nvStyle" "normal"
+  "nlLabelWeight" "normal" "genericHeadingWeight" "bold" "genericInsertedWeight" "normal"
+  "genericSubheadingWeight" "bold" "genericEmphDecoration" "none"
+-}}
+
+{{- /* ---------- Solarized: Light + Dark ---------- */ -}}
+{{- $solarizedLight := dict
+  "bg" "#fdf6e3" "fg" "#657b83" "hl" "#eee8d5"
+  "errFg" "#dc322f" "errBg" "transparent"
+  "keyword" "#859900"
+  "nameAttr" "#b58900" "nameClass" "#b58900" "nameConst" "#cb4b16"
+  "nameDecorator" "#268bd2" "nameEntity" "#6c71c4"
+  "nameLabelFg" "#657b83"
+  "nameNamespace" "#657b83" "nameOther" "#657b83"
+  "nameTag" "#268bd2"
+  "nameBuiltin" "#268bd2" "nameBuiltinPseudo" "#93a1a1"
+  "nameVariable" "#268bd2" "nameFunction" "#268bd2"
+  "string" "#2aa198" "stringSymbol" "#2aa198"
+  "number" "#d33682" "operator" "#859900" "punctuation" "#586e75"
+  "comment" "#93a1a1"
+  "genericDeletedFg" "#dc322f" "genericDeletedBg" "#fdf6e3"
+  "genericEmph" "#657b83"
+  "genericInsertedFg" "#859900" "genericInsertedBg" "#fdf6e3"
+  "genericOutput" "#586e75" "whitespace" "#fdf6e3"
+  "kdStyle" "normal" "nlStyle" "normal" "nbStyle" "normal" "bpStyle" "normal" "nvStyle" "normal"
+  "nlLabelWeight" "normal" "genericHeadingWeight" "bold" "genericInsertedWeight" "normal"
+  "genericSubheadingWeight" "bold" "genericEmphDecoration" "none"
+-}}
+{{- $solarizedDark := dict
+  "bg" "#002b36" "fg" "#839496" "hl" "#073642"
+  "errFg" "#dc322f" "errBg" "transparent"
+  "keyword" "#859900"
+  "nameAttr" "#b58900" "nameClass" "#b58900" "nameConst" "#cb4b16"
+  "nameDecorator" "#268bd2" "nameEntity" "#6c71c4"
+  "nameLabelFg" "#839496"
+  "nameNamespace" "#839496" "nameOther" "#839496"
+  "nameTag" "#268bd2"
+  "nameBuiltin" "#268bd2" "nameBuiltinPseudo" "#839496"
+  "nameVariable" "#268bd2" "nameFunction" "#268bd2"
+  "string" "#2aa198" "stringSymbol" "#2aa198"
+  "number" "#d33682" "operator" "#859900" "punctuation" "#93a1a1"
+  "comment" "#586e75"
+  "genericDeletedFg" "#dc322f" "genericDeletedBg" "transparent"
+  "genericEmph" "#839496"
+  "genericInsertedFg" "#859900" "genericInsertedBg" "transparent"
+  "genericOutput" "#586e75" "whitespace" "#839496"
+  "kdStyle" "normal" "nlStyle" "normal" "nbStyle" "normal" "bpStyle" "normal" "nvStyle" "normal"
+  "nlLabelWeight" "normal" "genericHeadingWeight" "bold" "genericInsertedWeight" "normal"
+  "genericSubheadingWeight" "bold" "genericEmphDecoration" "none"
+-}}
+
+{{- /* ---------- Theme registry ---------- */ -}}
+{{- $themes := dict
+  "catppuccin" (dict "light" $catppuccinLight "dark" $catppuccinDark)
+  "nord"       (dict "light" $nordLight       "dark" $nordDark)
+  "solarized"  (dict "light" $solarizedLight  "dark" $solarizedDark)
+-}}
+
+{{- $t := index $themes $theme -}}
+{{- if $t -}}
+  {{- $light := $t.light -}}
+  {{- $dark := $t.dark -}}
+<style>
+:root {
+  --syn-bg:{{ $light.bg }};--syn-fg:{{ $light.fg }};--syn-hl:{{ $light.hl }};
+  --syn-err-fg:{{ $light.errFg }};--syn-err-bg:{{ $light.errBg }};
+  --syn-keyword:{{ $light.keyword }};
+  --syn-name-attr:{{ $light.nameAttr }};--syn-name-class:{{ $light.nameClass }};--syn-name-const:{{ $light.nameConst }};
+  --syn-name-decorator:{{ $light.nameDecorator }};--syn-name-entity:{{ $light.nameEntity }};
+  --syn-name-label-fg:{{ $light.nameLabelFg }};
+  --syn-name-namespace:{{ $light.nameNamespace }};--syn-name-other:{{ $light.nameOther }};
+  --syn-name-tag:{{ $light.nameTag }};
+  --syn-name-builtin:{{ $light.nameBuiltin }};--syn-name-builtin-pseudo:{{ $light.nameBuiltinPseudo }};
+  --syn-name-variable:{{ $light.nameVariable }};--syn-name-function:{{ $light.nameFunction }};
+  --syn-string:{{ $light.string }};--syn-string-symbol:{{ $light.stringSymbol }};
+  --syn-number:{{ $light.number }};--syn-operator:{{ $light.operator }};--syn-punctuation:{{ $light.punctuation }};
+  --syn-comment:{{ $light.comment }};
+  --syn-generic-deleted-fg:{{ $light.genericDeletedFg }};--syn-generic-deleted-bg:{{ $light.genericDeletedBg }};
+  --syn-generic-emph:{{ $light.genericEmph }};
+  --syn-generic-inserted-fg:{{ $light.genericInsertedFg }};--syn-generic-inserted-bg:{{ $light.genericInsertedBg }};
+  --syn-generic-output:{{ $light.genericOutput }};--syn-whitespace:{{ $light.whitespace }};
+  --syn-kd-style:{{ $light.kdStyle }};--syn-nl-style:{{ $light.nlStyle }};--syn-nb-style:{{ $light.nbStyle }};
+  --syn-bp-style:{{ $light.bpStyle }};--syn-nv-style:{{ $light.nvStyle }};
+  --syn-nl-label-weight:{{ $light.nlLabelWeight }};--syn-generic-heading-weight:{{ $light.genericHeadingWeight }};
+  --syn-generic-inserted-weight:{{ $light.genericInsertedWeight }};--syn-generic-subheading-weight:{{ $light.genericSubheadingWeight }};
+  --syn-generic-emph-decoration:{{ $light.genericEmphDecoration }};
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+  --syn-bg:{{ $dark.bg }};--syn-fg:{{ $dark.fg }};--syn-hl:{{ $dark.hl }};
+  --syn-err-fg:{{ $dark.errFg }};--syn-err-bg:{{ $dark.errBg }};
+  --syn-keyword:{{ $dark.keyword }};
+  --syn-name-attr:{{ $dark.nameAttr }};--syn-name-class:{{ $dark.nameClass }};--syn-name-const:{{ $dark.nameConst }};
+  --syn-name-decorator:{{ $dark.nameDecorator }};--syn-name-entity:{{ $dark.nameEntity }};
+  --syn-name-label-fg:{{ $dark.nameLabelFg }};
+  --syn-name-namespace:{{ $dark.nameNamespace }};--syn-name-other:{{ $dark.nameOther }};
+  --syn-name-tag:{{ $dark.nameTag }};
+  --syn-name-builtin:{{ $dark.nameBuiltin }};--syn-name-builtin-pseudo:{{ $dark.nameBuiltinPseudo }};
+  --syn-name-variable:{{ $dark.nameVariable }};--syn-name-function:{{ $dark.nameFunction }};
+  --syn-string:{{ $dark.string }};--syn-string-symbol:{{ $dark.stringSymbol }};
+  --syn-number:{{ $dark.number }};--syn-operator:{{ $dark.operator }};--syn-punctuation:{{ $dark.punctuation }};
+  --syn-comment:{{ $dark.comment }};
+  --syn-generic-deleted-fg:{{ $dark.genericDeletedFg }};--syn-generic-deleted-bg:{{ $dark.genericDeletedBg }};
+  --syn-generic-emph:{{ $dark.genericEmph }};
+  --syn-generic-inserted-fg:{{ $dark.genericInsertedFg }};--syn-generic-inserted-bg:{{ $dark.genericInsertedBg }};
+  --syn-generic-output:{{ $dark.genericOutput }};--syn-whitespace:{{ $dark.whitespace }};
+  --syn-kd-style:{{ $dark.kdStyle }};--syn-nl-style:{{ $dark.nlStyle }};--syn-nb-style:{{ $dark.nbStyle }};
+  --syn-bp-style:{{ $dark.bpStyle }};--syn-nv-style:{{ $dark.nvStyle }};
+  --syn-nl-label-weight:{{ $dark.nlLabelWeight }};--syn-generic-heading-weight:{{ $dark.genericHeadingWeight }};
+  --syn-generic-inserted-weight:{{ $dark.genericInsertedWeight }};--syn-generic-subheading-weight:{{ $dark.genericSubheadingWeight }};
+  --syn-generic-emph-decoration:{{ $dark.genericEmphDecoration }};
+  }
+}
+:root[data-theme="dark"]{
+  --syn-bg:{{ $dark.bg }};--syn-fg:{{ $dark.fg }};--syn-hl:{{ $dark.hl }};
+  --syn-err-fg:{{ $dark.errFg }};--syn-err-bg:{{ $dark.errBg }};
+  --syn-keyword:{{ $dark.keyword }};
+  --syn-name-attr:{{ $dark.nameAttr }};--syn-name-class:{{ $dark.nameClass }};--syn-name-const:{{ $dark.nameConst }};
+  --syn-name-decorator:{{ $dark.nameDecorator }};--syn-name-entity:{{ $dark.nameEntity }};
+  --syn-name-label-fg:{{ $dark.nameLabelFg }};
+  --syn-name-namespace:{{ $dark.nameNamespace }};--syn-name-other:{{ $dark.nameOther }};
+  --syn-name-tag:{{ $dark.nameTag }};
+  --syn-name-builtin:{{ $dark.nameBuiltin }};--syn-name-builtin-pseudo:{{ $dark.nameBuiltinPseudo }};
+  --syn-name-variable:{{ $dark.nameVariable }};--syn-name-function:{{ $dark.nameFunction }};
+  --syn-string:{{ $dark.string }};--syn-string-symbol:{{ $dark.stringSymbol }};
+  --syn-number:{{ $dark.number }};--syn-operator:{{ $dark.operator }};--syn-punctuation:{{ $dark.punctuation }};
+  --syn-comment:{{ $dark.comment }};
+  --syn-generic-deleted-fg:{{ $dark.genericDeletedFg }};--syn-generic-deleted-bg:{{ $dark.genericDeletedBg }};
+  --syn-generic-emph:{{ $dark.genericEmph }};
+  --syn-generic-inserted-fg:{{ $dark.genericInsertedFg }};--syn-generic-inserted-bg:{{ $dark.genericInsertedBg }};
+  --syn-generic-output:{{ $dark.genericOutput }};--syn-whitespace:{{ $dark.whitespace }};
+  --syn-kd-style:{{ $dark.kdStyle }};--syn-nl-style:{{ $dark.nlStyle }};--syn-nb-style:{{ $dark.nbStyle }};
+  --syn-bp-style:{{ $dark.bpStyle }};--syn-nv-style:{{ $dark.nvStyle }};
+  --syn-nl-label-weight:{{ $dark.nlLabelWeight }};--syn-generic-heading-weight:{{ $dark.genericHeadingWeight }};
+  --syn-generic-inserted-weight:{{ $dark.genericInsertedWeight }};--syn-generic-subheading-weight:{{ $dark.genericSubheadingWeight }};
+  --syn-generic-emph-decoration:{{ $dark.genericEmphDecoration }};
+}
+</style>
+{{- end -}}
