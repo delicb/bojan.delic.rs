@@ -7,6 +7,7 @@ A clean, minimal Hugo theme for personal websites. Supports a blog, resume, proj
 
 ## Features
 
+- **8 accent color palettes** — green (default), blue, indigo, teal, red, orange, purple, rose — one line of config
 - **Light / dark mode** — follows OS preference, with a manual toggle that persists via `localStorage`
 - **Responsive design** — mobile-first, looks great on all screen sizes
 - **Responsive images** — automatic WebP generation with `<picture>` srcsets (requires Hugo Extended)
