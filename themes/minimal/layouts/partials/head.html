@@ -33,7 +33,8 @@
 {{- end }}
 {{ $ogImage := "" -}}
 {{ with .Resources.GetMatch "cover.*" -}}
-  {{ $ogImage = .Permalink -}}
+  {{ $processed := .Process "fill 1200x630 center jpg q85" -}}
+  {{ $ogImage = $processed.Permalink -}}
 {{ else -}}
   {{ $ogImage = (printf "%sog-default.jpg" $.Site.BaseURL) -}}
 {{ end -}}

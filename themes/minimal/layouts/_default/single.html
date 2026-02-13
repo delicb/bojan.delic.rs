@@ -3,7 +3,7 @@
   {{ $cover := .Resources.GetMatch "cover.*" }}
   {{ with $cover }}
   <div class="article-cover">
-    <img src="{{ .RelPermalink }}" alt="Cover image" width="{{ .Width }}" height="{{ .Height }}">
+    {{ partial "responsive-image.html" (dict "image" . "alt" "Cover image" "loading" "eager" "fetchpriority" "high") }}
   </div>
   {{ end }}
 

@@ -1,0 +1,44 @@
+{{/* Responsive image partial — generates <picture> with WebP and original fallback.
+     Requires Hugo extended for WebP encoding.
+
+     Parameters (via dict):
+       image         (required) — Hugo image resource
+       alt           (optional) — alt text, default ""
+       loading       (optional) — "lazy" (default) or "eager"
+       fetchpriority (optional) — "high", "low", or "auto"
+       sizes         (optional) — sizes attribute, default "(max-width: 600px) 480px, (max-width: 1000px) 800px, 1200px"
+*/}}
+{{- $img := .image -}}
+{{- $alt := .alt | default "" -}}
+{{- $loading := .loading | default "lazy" -}}
+{{- $fetchpriority := .fetchpriority | default "" -}}
+{{- $sizes := .sizes | default "(max-width: 600px) 480px, (max-width: 1000px) 800px, 1200px" -}}
+
+{{- $widths := slice 480 800 1200 -}}
+
+{{/* Generate WebP srcset */}}
+{{- $webpSrcset := slice -}}
+{{- range $w := $widths -}}
+  {{- $resized := $img.Process (printf "resize %dx webp q80" $w) -}}
+  {{- $webpSrcset = $webpSrcset | append (printf "%s %dw" $resized.RelPermalink $w) -}}
+{{- end -}}
+
+{{/* Fallback: original format resized to largest width */}}
+{{- $fallback := $img.Process "resize 1200x" -}}
+
+<picture>
+  <source
+    srcset="{{ delimit $webpSrcset ", " }}"
+    sizes="{{ $sizes }}"
+    type="image/webp">
+  <img
+    src="{{ $fallback.RelPermalink }}"
+    alt="{{ $alt }}"
+    width="{{ $fallback.Width }}"
+    height="{{ $fallback.Height }}"
+    loading="{{ $loading }}"
+    decoding="async"
+    {{- with $fetchpriority }}
+    fetchpriority="{{ . }}"
+    {{- end }}>
+</picture>

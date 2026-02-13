@@ -33,8 +33,9 @@
     "name": "{{ .Site.Title }}"
   }
   {{- $cover := .Resources.GetMatch "cover.*" -}}
-  {{- with $cover }},
-  "image": "{{ .Permalink }}"
+  {{- with $cover -}}
+    {{- $processed := .Process "fill 1200x630 center jpg q85" -}},
+  "image": "{{ $processed.Permalink }}"
   {{- end }}
   {{- with .Params.tags }},
   "keywords": "{{ delimit . ", " }}"

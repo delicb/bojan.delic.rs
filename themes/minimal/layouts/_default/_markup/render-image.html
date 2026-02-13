@@ -1,0 +1,8 @@
+{{- $img := .Page.Resources.GetMatch .Destination -}}
+{{- if $img -}}
+  {{/* Page resource — process through responsive pipeline */}}
+  {{ partial "responsive-image.html" (dict "image" $img "alt" (.Text | default "") "loading" "lazy") }}
+{{- else -}}
+  {{/* External URL or not a page resource — render plain img */}}
+  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }}>
+{{- end -}}

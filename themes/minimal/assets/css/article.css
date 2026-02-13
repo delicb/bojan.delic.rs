@@ -10,6 +10,10 @@
   overflow: hidden;
 }
 
+.article-cover picture {
+  display: contents;
+}
+
 .article-cover img {
   display: block;
   width: 100%;
@@ -118,6 +122,10 @@
   font-style: italic;
   background: var(--color-bg-secondary);
   border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.article-content picture {
+  display: contents;
 }
 
 .article-content img {
