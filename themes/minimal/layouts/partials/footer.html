@@ -1,6 +1,7 @@
 <footer class="site-footer">
   <div class="container">
-    {{ with (where .Site.RegularPages "Section" "blog" | first 1) }}
+    {{- $blogSection := .Site.Params.blogSection | default "blog" -}}
+    {{ with (where .Site.RegularPages "Section" $blogSection | first 1) }}
     {{ range . }}
     <div class="footer-latest">
       <span class="footer-latest-label">Latest post</span>
@@ -8,13 +9,21 @@
     </div>
     {{ end }}
     {{ end }}
+    {{ if or .Site.Params.socialLinks .Site.Params.email }}
     <div class="footer-social">
-      <a href="{{ .Site.Params.github }}" title="GitHub">{{ partial "icon.html" (dict "name" "github") }}</a>
-      <a href="{{ .Site.Params.linkedin }}" title="LinkedIn">{{ partial "icon.html" (dict "name" "linkedin") }}</a>
-      <a href="{{ .Site.Params.twitter }}" title="X (Twitter)">{{ partial "icon.html" (dict "name" "x-twitter") }}</a>
-      <a href="mailto:{{ .Site.Params.email }}" title="Email">{{ partial "icon.html" (dict "name" "envelope") }}</a>
-      <a href="/blog/index.xml" title="RSS Feed">{{ partial "icon.html" (dict "name" "rss") }}</a>
+      {{ range .Site.Params.socialLinks }}
+      <a href="{{ .url }}" title="{{ .name }}">{{ partial "icon.html" (dict "name" .icon) }}</a>
+      {{ end }}
+      {{ with .Site.Params.email }}
+      <a href="mailto:{{ . }}" title="Email">{{ partial "icon.html" (dict "name" "envelope") }}</a>
+      {{ end }}
+      {{ with $.Site.GetPage (printf "/%s" ($blogSection)) }}
+        {{ with .OutputFormats.Get "rss" }}
+      <a href="{{ .Permalink }}" title="RSS Feed">{{ partial "icon.html" (dict "name" "rss") }}</a>
+        {{ end }}
+      {{ end }}
     </div>
+    {{ end }}
     <p>&copy; {{ now.Year }} {{ .Site.Title }}. Built with <a href="https://gohugo.io">Hugo</a>.</p>
   </div>
 </footer>

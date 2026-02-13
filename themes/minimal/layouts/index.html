@@ -4,42 +4,29 @@
   <h1>{{ .Site.Title }}</h1>
   <p class="tagline">{{ .Site.Params.tagline }}</p>
 
+  {{ with .Site.Params.socialLinks }}
   <div class="social-links">
-    <a href="{{ .Site.Params.github }}" class="social-pill" title="GitHub">
-      {{ partial "icon.html" (dict "name" "github") }} <span>GitHub</span>
+    {{ range . }}
+    <a href="{{ .url }}" class="social-pill" title="{{ .name }}">
+      {{ partial "icon.html" (dict "name" .icon) }} <span>{{ .name }}</span>
     </a>
-    <a href="{{ .Site.Params.linkedin }}" class="social-pill" title="LinkedIn">
-      {{ partial "icon.html" (dict "name" "linkedin") }} <span>LinkedIn</span>
-    </a>
-    <a href="{{ .Site.Params.twitter }}" class="social-pill" title="X (Twitter)">
-      {{ partial "icon.html" (dict "name" "x-twitter") }} <span>X</span>
-    </a>
-    <a href="/contact/" class="social-pill" title="Contact">
-      {{ partial "icon.html" (dict "name" "envelope") }} <span>Contact</span>
-    </a>
+    {{ end }}
   </div>
+  {{ end }}
 </section>
 
+{{ with .Site.Params.homeCards }}
 <section class="home-sections scroll-reveal">
   <div class="home-grid">
-    <a href="/blog/" class="home-card">
-      <h2>Blog</h2>
-      <p>Thoughts on programming, technology, and other things.</p>
+    {{ range . }}
+    <a href="{{ .url }}" class="home-card">
+      <h2>{{ .title }}</h2>
+      <p>{{ .description }}</p>
     </a>
-    <a href="/projects/" class="home-card">
-      <h2>Projects</h2>
-      <p>Open source projects and side work.</p>
-    </a>
-    <a href="/resume/" class="home-card">
-      <h2>Resume</h2>
-      <p>Professional experience and skills.</p>
-    </a>
-    <a href="/quotes/" class="home-card">
-      <h2>Quotes</h2>
-      <p>A collection of quotes I find inspiring or thought-provoking.</p>
-    </a>
+    {{ end }}
   </div>
 </section>
+{{ end }}
 
 {{ with .Content }}
 <section class="home-content">

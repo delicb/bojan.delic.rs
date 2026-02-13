@@ -2,15 +2,21 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
+  "@type": "{{ .Site.Params.jsonLdType | default "Person" }}",
   "name": "{{ .Site.Title }}",
   "url": "{{ .Site.BaseURL }}",
-  "description": "{{ .Site.Params.description }}",
-  "sameAs": [
-    {{ with .Site.Params.github }}"{{ . }}"{{ end }}
-    {{ with .Site.Params.linkedin }},"{{ . }}"{{ end }}
-    {{ with .Site.Params.twitter }},"{{ . }}"{{ end }}
-  ]
+  "description": "{{ .Site.Params.description }}"
+  {{- with .Site.Params.socialLinks -}}
+    {{- $urls := slice -}}
+    {{- range . -}}
+      {{- if strings.HasPrefix .url "http" -}}
+        {{- $urls = $urls | append .url -}}
+      {{- end -}}
+    {{- end -}}
+    {{- with $urls }},
+  "sameAs": [{{ range $i, $url := . }}{{ if $i }},{{ end }}"{{ $url }}"{{ end }}]
+    {{- end -}}
+  {{- end -}}
 }
 </script>
 {{- else if .IsPage -}}

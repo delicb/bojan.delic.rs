@@ -84,7 +84,7 @@ Icons are self-hosted SVGs in `themes/minimal/assets/icons/`, inlined into HTML 
 ## SEO / Meta
 
 - **Open Graph + Twitter Cards** — on every page, with post-specific metadata for articles
-- **JSON-LD** — `Person` schema on homepage, `BlogPosting` schema on articles
+- **JSON-LD** — configurable `@type` on homepage (defaults to `Person`, set via `params.jsonLdType`), `BlogPosting` schema on articles. `sameAs` is auto-populated from `params.socialLinks` (absolute URLs only).
 - **Canonical URLs** — `<link rel="canonical">` on every page
 - **Sitemap** — auto-generated at `/sitemap.xml`
 - **No external icon CDN** — icons are self-hosted inline SVGs (see Icons section above)
@@ -96,6 +96,40 @@ Icons are self-hosted SVGs in `themes/minimal/assets/icons/`, inlined into HTML 
 - **CSS-only iteration** — design can be changed by tweaking CSS custom properties only
 - **Data-driven sections** — projects, resume, quotes sourced from YAML, not hardcoded in templates
 - **Minimal JavaScript** — only used where CSS can't do the job (e.g. theme toggle with localStorage). No frameworks or build tools.
+- **Theme portability** — the theme at `themes/minimal/` must remain decoupled from site-specific content (see Theme / Site Separation below).
+
+## Theme / Site Separation
+
+The theme (`themes/minimal/`) is **portable** — it must work in any Hugo site, not just this one. All site-specific content lives in the site root (`hugo.toml`, `layouts/`, `static/`, `content/`, `data/`). **Do not add site-specific content to the theme.**
+
+### Rules
+
+1. **No hardcoded URLs or text in theme templates.** Navigation links, social profiles, homepage cards, and section names must come from `hugo.toml` params or Hugo menus — never baked into theme templates.
+2. **No hosting-specific code in the theme.** Cloudflare Pages functions, Turnstile integration, platform-specific headers, etc. belong in site-level layouts (`layouts/`) or `static/`. Example: the contact form layout lives at `layouts/contact/single.html` (site level), not in the theme.
+3. **Theme templates must guard against missing config.** Use `{{ with }}` or `{{ if }}` around all param-driven sections so the theme renders gracefully when a param is absent (empty nav, no social links, no cards — not broken markup or empty `href=""`).
+4. **Fonts ship with the theme.** Font files live in `themes/minimal/static/fonts/` so the theme is self-contained. The site's `static/fonts/` can override them (Hugo static file merging, site takes precedence).
+5. **Icons ship with the theme.** SVG icons live in `themes/minimal/assets/icons/` and are inlined at build time.
+
+### What lives where
+
+| Concern | Location | Mechanism |
+|---|---|---|
+| Navigation links | `hugo.toml` `[[menus.main]]` | Theme loops over `.Site.Menus.main` |
+| Social profiles | `hugo.toml` `[[params.socialLinks]]` | Theme loops over `.Site.Params.socialLinks` |
+| Homepage cards | `hugo.toml` `[[params.homeCards]]` | Theme loops over `.Site.Params.homeCards` |
+| Contact form layout | `layouts/contact/single.html` (site root) | Hugo layout override — site level wins |
+| Cloudflare headers | `static/_headers` | Site-level static file |
+| Blog section name | `hugo.toml` `params.blogSection` (default: `"blog"`) | Used in footer for latest post + RSS |
+| JSON-LD `@type` | `hugo.toml` `params.jsonLdType` (default: `"Person"`) | Configurable schema type on homepage |
+| Email (for mailto) | `hugo.toml` `params.email` | Separate from `socialLinks`; used in footer |
+| Twitter handle | `hugo.toml` `params.twitterHandle` | Used for `<meta name="twitter:site">` |
+
+### Adding new site-specific features
+
+When adding a feature that references this specific site (a specific service, API endpoint, external account, etc.):
+1. **Put the layout in `layouts/`** at the site root if it's a full page template.
+2. **Put configurable values in `hugo.toml`** under `[params]` and read them with `.Site.Params.*` in templates.
+3. **If the feature is generic** (useful to any site using this theme), it can go in the theme — but must be param-driven and gracefully degrade when unconfigured.
 
 ## Reference Files
 

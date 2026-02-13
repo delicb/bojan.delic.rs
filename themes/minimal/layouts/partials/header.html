@@ -2,11 +2,9 @@
   <div class="container">
     <a href="/" class="site-title">{{ .Site.Title }}</a>
     <nav class="site-nav">
-      <a href="/blog/"{{ if hasPrefix .RelPermalink "/blog/" }} class="active"{{ end }}>Blog</a>
-      <a href="/resume/"{{ if hasPrefix .RelPermalink "/resume/" }} class="active"{{ end }}>Resume</a>
-      <a href="/projects/"{{ if hasPrefix .RelPermalink "/projects/" }} class="active"{{ end }}>Projects</a>
-      <a href="/quotes/"{{ if hasPrefix .RelPermalink "/quotes/" }} class="active"{{ end }}>Quotes</a>
-      <a href="/contact/"{{ if hasPrefix .RelPermalink "/contact/" }} class="active"{{ end }}>Contact</a>
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}"{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) (hasPrefix $.RelPermalink .URL) }} class="active"{{ end }}>{{ .Name }}</a>
+      {{ end }}
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
         <span class="icon-sun">☀️</span>
         <span class="icon-moon">🌙</span>
