@@ -65,5 +65,12 @@
   (function() {
     var t = localStorage.getItem('theme');
     if (t) document.documentElement.setAttribute('data-theme', t);
+    // Suppress transitions during initial paint, then enable
+    document.documentElement.classList.add('no-transition');
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        document.documentElement.classList.remove('no-transition');
+      });
+    });
   })();
 </script>

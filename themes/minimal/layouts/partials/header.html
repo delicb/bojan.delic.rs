@@ -1,12 +1,12 @@
 <header class="site-header">
   <div class="container">
-    <a href="{{ .Site.BaseURL }}" class="site-title">{{ .Site.Title }}</a>
+    <a href="/" class="site-title">{{ .Site.Title }}</a>
     <nav class="site-nav">
-      <a href="/blog/">Blog</a>
-      <a href="/resume/">Resume</a>
-      <a href="/projects/">Projects</a>
-      <a href="/quotes/">Quotes</a>
-      <a href="/contact/">Contact</a>
+      <a href="/blog/"{{ if hasPrefix .RelPermalink "/blog/" }} class="active"{{ end }}>Blog</a>
+      <a href="/resume/"{{ if hasPrefix .RelPermalink "/resume/" }} class="active"{{ end }}>Resume</a>
+      <a href="/projects/"{{ if hasPrefix .RelPermalink "/projects/" }} class="active"{{ end }}>Projects</a>
+      <a href="/quotes/"{{ if hasPrefix .RelPermalink "/quotes/" }} class="active"{{ end }}>Quotes</a>
+      <a href="/contact/"{{ if hasPrefix .RelPermalink "/contact/" }} class="active"{{ end }}>Contact</a>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
         <span class="icon-sun">☀️</span>
         <span class="icon-moon">🌙</span>
