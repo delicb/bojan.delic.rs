@@ -1,0 +1,14 @@
+{{ define "main" }}
+<section class="contact-page">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}{{ . }}{{ else }}
+  <p class="contact-intro">Want to get in touch? Send me an email and I'll get back to you.</p>
+  {{ end }}
+
+  {{ with .Site.Params.email }}
+  <p class="contact-email">
+    <a href="mailto:{{ . }}" class="form-submit">{{ partial "icon.html" (dict "name" "envelope") }} {{ . }}</a>
+  </p>
+  {{ end }}
+</section>
+{{ end }}

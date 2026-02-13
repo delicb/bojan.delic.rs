@@ -1,0 +1,28 @@
+# Default configuration for the Minimal theme.
+# These values are merged with the site's hugo.toml; site config takes precedence.
+
+[params]
+  # blogSection is used by the footer to find the latest post and RSS link.
+  blogSection = "blog"
+  # jsonLdType controls the JSON-LD @type on the homepage ("Person", "Organization", etc.).
+  jsonLdType = "Person"
+
+[markup]
+  [markup.highlight]
+    # The theme uses CSS classes for syntax highlighting (see assets/css/syntax.css).
+    # Hugo >= 0.155 uses CSS classes by default. For older versions, set noClasses = false.
+    lineNos = false
+    lineNumbersInTable = true
+    anchorLineNos = true
+    codeFences = true
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      # Required for inline HTML in markdown content.
+      unsafe = true
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ['HTML', 'RSS']
+  section = ['HTML', 'RSS']

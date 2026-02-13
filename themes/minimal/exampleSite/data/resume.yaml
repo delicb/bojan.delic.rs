@@ -1,0 +1,31 @@
+summary: >
+  Software engineer with 10 years of experience building web applications
+  and distributed systems.
+
+skills:
+  - category: "Languages"
+    items: "Go, Python, JavaScript, TypeScript"
+  - category: "Infrastructure"
+    items: "Docker, Kubernetes, AWS, Terraform"
+
+experience:
+  - company: "Acme Corp"
+    location: "Remote"
+    description: "A leading SaaS platform."
+    roles:
+      - title: "Senior Engineer"
+        start_date: 2022-03-01
+        end_date: present
+        highlights:
+          - "Led migration to microservices architecture"
+          - "Reduced CI/CD pipeline time by 60%"
+      - title: "Software Engineer"
+        start_date: 2019-06-01
+        end_date: 2022-02-28
+        highlights:
+          - "Built the real-time notification system"
+
+education:
+  - degree: "B.Sc. Computer Science"
+    school: "State University"
+    period: "2009 – 2013"

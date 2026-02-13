@@ -35,14 +35,18 @@
 .chroma .lntd:first-child pre {
   margin: 0;
   border: none;
-  padding-right: 0;
+  padding: 1rem 0 1rem 0.75rem;
 }
 .chroma .lntd:last-child pre {
   margin: 0;
   border: none;
-  padding-left: 0.75rem;
+  padding: 1rem 1rem 1rem 0.75rem;
 }
-/* When using table line numbers, the outer pre handles the chrome */
+/* When using table line numbers, the outer pre handles the chrome.
+   Reset its padding so the table cells control spacing instead. */
+.highlight:has(.lntable) pre {
+  padding: 0;
+}
 .highlight .lntable {
   display: table;
   width: 100%;

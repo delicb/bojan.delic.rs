@@ -1,3 +1,13 @@
 name = "Minimal"
 license = "MIT"
-description = "A minimal personal website theme"
+licenselink = "https://github.com/delicb/hugo-theme-minimal/blob/main/LICENSE"
+description = "A clean, minimal Hugo theme for personal websites with blog, resume, projects, and quotes sections."
+homepage = "https://github.com/delicb/hugo-theme-minimal"
+demosite = "https://bojan.delic.rs/"
+min_version = "0.128.0"
+tags = ["blog", "personal", "minimal", "responsive", "dark mode", "portfolio", "resume"]
+features = ["light/dark mode", "responsive images", "syntax highlighting", "SEO", "Open Graph", "JSON-LD", "RSS", "contact form"]
+
+[author]
+  name = "Bojan Delić"
+  homepage = "https://bojan.delic.rs/"

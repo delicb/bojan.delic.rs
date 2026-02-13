@@ -1,0 +1,10 @@
+- name: "My Library"
+  url: "https://github.com/janedoe/my-library"
+  description: "A useful library that does interesting things."
+  tech: ["Go"]
+  featured: true
+
+- name: "Side Project"
+  url: "https://github.com/janedoe/side-project"
+  description: "A weekend hack that turned into something useful."
+  tech: ["Python", "Flask"]

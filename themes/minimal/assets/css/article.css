@@ -205,6 +205,37 @@
   margin: 2.5rem 0;
 }
 
+/* Definition lists */
+.article-content dl {
+  margin: 1.5rem 0;
+}
+
+.article-content dt {
+  font-weight: 600;
+  margin-top: 1rem;
+  color: var(--color-heading);
+}
+
+.article-content dt:first-child {
+  margin-top: 0;
+}
+
+.article-content dd {
+  margin: 0.25rem 0 0 1.25rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--color-accent);
+  color: var(--color-text-muted, var(--color-text));
+}
+
+/* Abbreviations */
+.article-content abbr[title] {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 0.2em;
+  cursor: help;
+}
+
 /* ---------- Article Nav ---------- */
 .article-nav {
   display: flex;
