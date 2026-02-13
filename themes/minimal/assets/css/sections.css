@@ -3,9 +3,18 @@
    ========================================================================== */
 
 /* ---------- Quotes ---------- */
+.quotes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
 .quote-item {
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius);
+  background: var(--color-card-bg);
   animation: fadeInUp 0.4s ease both;
 }
 
@@ -15,33 +24,18 @@
 .quote-item:nth-child(4) { animation-delay: 0.2s; }
 .quote-item:nth-child(5) { animation-delay: 0.25s; }
 
-.quote-item:last-child {
-  border-bottom: none;
-}
-
 .quote-text {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-style: italic;
   line-height: 1.7;
   color: var(--color-text);
 }
 
-.quote-text::before {
-  content: "\201C";
-  color: var(--color-accent);
-  font-size: 1.5em;
-}
-
-.quote-text::after {
-  content: "\201D";
-  color: var(--color-accent);
-  font-size: 1.5em;
-}
-
 .quote-author {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
   color: var(--color-text-secondary);
+  text-align: right;
 }
 
 .quote-author::before {
@@ -201,10 +195,13 @@
 }
 
 .project-card-featured {
+  display: block;
   padding: 1.75rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   background: var(--color-card-bg);
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s ease, box-shadow 0.2s ease;
   animation: fadeInUp 0.4s ease both;
 }
 
@@ -212,19 +209,27 @@
 .project-card-featured:nth-child(2) { animation-delay: 0.1s; }
 .project-card-featured:nth-child(3) { animation-delay: 0.15s; }
 
+.project-card-featured:hover {
+  background: var(--color-card-hover);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .project-card-featured:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+[data-theme="dark"] .project-card-featured:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 .project-card-featured h3 {
   font-family: var(--font-heading);
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-}
-
-.project-card-featured h3 a {
   color: var(--color-text);
-  text-decoration: none;
-}
-
-.project-card-featured h3 a:hover {
-  color: var(--color-accent);
 }
 
 .project-card-featured p {

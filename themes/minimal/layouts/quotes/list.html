@@ -5,12 +5,14 @@
 </section>
 
 <section class="page-content">
-  {{ $quotes := .Site.Data.quotes }}
-  {{ range $quotes }}
-  <div class="quote-item">
-    <p class="quote-text">{{ .text }}</p>
-    <p class="quote-author">{{ .author }}{{ with .source }}, <em>{{ . }}</em>{{ end }}</p>
+  <div class="quotes-list">
+    {{ $quotes := .Site.Data.quotes }}
+    {{ range $quotes }}
+    <div class="quote-item">
+      <p class="quote-text">{{ .text }}</p>
+      <p class="quote-author">{{ .author }}{{ with .source }}, <em>{{ . }}</em>{{ end }}</p>
+    </div>
+    {{ end }}
   </div>
-  {{ end }}
 </section>
 {{ end }}
