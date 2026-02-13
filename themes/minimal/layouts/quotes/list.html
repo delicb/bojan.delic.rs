@@ -8,7 +8,7 @@
   <div class="quotes-list">
     {{ $quotes := .Site.Data.quotes }}
     {{ range $quotes }}
-    <div class="quote-item">
+    <div class="quote-item scroll-reveal">
       <p class="quote-text">{{ .text }}</p>
       <p class="quote-author">{{ .author }}{{ with .source }}, <em>{{ . }}</em>{{ end }}</p>
     </div>

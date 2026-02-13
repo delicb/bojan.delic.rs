@@ -73,6 +73,11 @@
   .footer-social {
     gap: 1rem;
   }
+
+  .back-to-top {
+    bottom: 1rem;
+    right: 1rem;
+  }
 }
 
 /* ---------- Reduced Motion ---------- */
@@ -228,13 +233,21 @@
   /* Hide Phase 3 decorative elements in print */
   .hero-accent,
   .footer-social,
-  .site-footer::before {
+  .footer-latest,
+  .site-footer::before,
+  .back-to-top {
     display: none !important;
   }
 
   .glitch-text::before,
   .glitch-text::after {
     display: none !important;
+  }
+
+  /* Show scroll-reveal elements in print */
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   /* Avoid widows/orphans */

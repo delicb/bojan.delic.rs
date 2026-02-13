@@ -9,6 +9,49 @@
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
+    {{ partial "icon.html" (dict "name" "arrow-up") }}
+  </button>
   {{ partial "theme-toggle.html" . }}
+  <script>
+  (function() {
+    // Back to top
+    var btn = document.getElementById('back-to-top');
+    if (btn) {
+      var shown = false;
+      function toggle() {
+        var shouldShow = window.scrollY > 400;
+        if (shouldShow !== shown) {
+          shown = shouldShow;
+          btn.classList.toggle('visible', shown);
+        }
+      }
+      window.addEventListener('scroll', toggle, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Scroll-triggered reveal animations
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+        observer.observe(el);
+      });
+    } else {
+      // Fallback: show everything
+      document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+        el.classList.add('revealed');
+      });
+    }
+  })();
+  </script>
 </body>
 </html>

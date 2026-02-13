@@ -50,10 +50,9 @@
 {{/* JSON-LD structured data */}}
 {{ partial "json-ld.html" . }}
 
-{{/* Fonts */}}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+{{/* Fonts — self-hosted, Latin-only subset, font-display: optional */}}
+<link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/lexend-latin.woff2" as="font" type="font/woff2" crossorigin>
 
 {{/* Styles */}}
 
