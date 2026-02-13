@@ -8,6 +8,7 @@ A clean, minimal Hugo theme for personal websites. Supports a blog, resume, proj
 ## Features
 
 - **8 accent color palettes** — green (default), blue, indigo, teal, red, orange, purple, rose — one line of config
+- **4 syntax highlighting themes** — github (default), catppuccin, nord, solarized — each with tuned light/dark variants
 - **Light / dark mode** — follows OS preference, with a manual toggle that persists via `localStorage`
 - **Responsive design** — mobile-first, looks great on all screen sizes
 - **Responsive images** — automatic WebP generation with `<picture>` srcsets (requires Hugo Extended)
@@ -239,6 +240,24 @@ Set `accentColor` in your site params to change the theme's primary color. Green
 Available colors: `green` (default), `blue`, `indigo`, `teal`, `red`, `orange`, `purple`, `rose`.
 
 The chosen color applies to links, accents, tags, and the top border — in both light and dark modes.
+
+### Syntax Highlighting Theme
+
+Set `syntaxTheme` to change the code block color scheme. Each theme includes matched light and dark variants that switch automatically with the site's mode.
+
+```toml
+[params]
+  syntaxTheme = "catppuccin"
+```
+
+Available themes:
+
+| Name | Light variant | Dark variant |
+|------|--------------|-------------|
+| `github` | GitHub Light | Dracula (default) |
+| `catppuccin` | Catppuccin Latte | Catppuccin Mocha |
+| `nord` | Nord Light | Nord |
+| `solarized` | Solarized Light | Solarized Dark |
 
 ### CSS Custom Properties
 
