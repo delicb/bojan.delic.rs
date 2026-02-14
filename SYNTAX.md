@@ -92,6 +92,32 @@ func main() {
 ```
 ````
 
+### Title / Filename Bar
+
+Add a `title` attribute to display a filename or label above the code block:
+
+````markdown
+```yaml {title="docker-compose.yml"}
+services:
+  web:
+    image: nginx
+```
+````
+
+This renders a title bar above the code block showing the filename. The title replaces the language label in the top-left corner.
+
+Works with all other attributes:
+
+````markdown
+```go {title="main.go" linenos=table,hl_lines=[3]}
+package main
+
+func main() {}
+```
+````
+
+> **Note**: The `include` shortcode automatically uses the filename as the title — no extra parameter needed.
+
 ### Hugo `highlight` Shortcode
 
 For more control, use the built-in shortcode directly:
@@ -110,6 +136,7 @@ Note: the shortcode uses space-separated `hl_lines` values (not arrays), and doe
 
 | Attribute      | Values          | Default | Description                          |
 |----------------|-----------------|---------|--------------------------------------|
+| `title`        | string          | —       | Filename or label shown above the block |
 | `linenos`      | `table`, `inline`, `true`, `false` | `false` | Show line numbers. Prefer `table`.  |
 | `hl_lines`     | `[1,"3-5",8]`  | —       | Lines or ranges to highlight         |
 | `linenostart`  | integer         | `1`     | First line number                    |

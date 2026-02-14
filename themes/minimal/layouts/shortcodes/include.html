@@ -75,4 +75,11 @@
 {{- end -}}
 {{- $optStr := delimit $opts "," -}}
 
-{{- highlight $content $lang $optStr -}}
+<div class="code-block-wrapper"{{ with $lang }} data-lang="{{ . }}"{{ end }} data-titled>
+  <div class="code-title">{{ $file }}</div>
+  <button class="copy-btn" aria-label="Copy code" title="Copy code">
+    <span class="copy-icon">{{ (resources.Get "icons/copy.svg").Content | safeHTML }}</span>
+    <span class="check-icon">{{ (resources.Get "icons/check.svg").Content | safeHTML }}</span>
+  </button>
+  {{- highlight $content $lang $optStr -}}
+</div>

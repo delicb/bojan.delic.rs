@@ -1,0 +1,14 @@
+{{- $highlighted := transform.HighlightCodeBlock . -}}
+{{- $title := "" -}}
+{{- with .Attributes.title }}{{ $title = . }}{{ end -}}
+<div class="code-block-wrapper"{{ with .Type }} data-lang="{{ . }}"{{ end }}{{ if $title }} data-titled{{ end }}>
+  {{- with $title }}
+  <div class="code-title">{{ . }}</div>
+  {{- end }}
+  <button class="copy-btn" aria-label="Copy code" title="Copy code">
+    <span class="copy-icon">{{ (resources.Get "icons/copy.svg").Content | safeHTML }}</span>
+    <span class="check-icon">{{ (resources.Get "icons/check.svg").Content | safeHTML }}</span>
+  </button>
+  {{ $highlighted.Wrapped }}
+</div>
+{{- /* */ -}}

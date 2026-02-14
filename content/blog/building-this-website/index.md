@@ -24,7 +24,7 @@ Design tokens live as CSS custom properties in `base.css`. The entire color sche
 
 Rather than creating individual content pages for projects, resume, and quotes, these sections are driven by YAML files in `data/`. The projects page reads from `data/projects.yaml`:
 
-```yaml
+```yaml {title="data/projects.yaml"}
 - name: ligno
   url: https://github.com/delicb/ligno
   description: Logging library for Go

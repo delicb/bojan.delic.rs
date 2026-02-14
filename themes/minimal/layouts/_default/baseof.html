@@ -9,6 +9,7 @@
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
+  <div id="copy-notify" class="sr-only" aria-live="polite"></div>
   <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
     {{ partial "icon.html" (dict "name" "arrow-up") }}
   </button>
@@ -30,6 +31,37 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
+
+    // Code block copy buttons
+    var copyNotify = document.getElementById('copy-notify');
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+
+      var wrapper = btn.closest('.code-block-wrapper');
+      if (!wrapper) return;
+
+      var codeEl = wrapper.querySelector('.lntd:last-child code') ||
+                   wrapper.querySelector('pre code');
+      if (!codeEl) return;
+
+      var text = codeEl.textContent;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+          btn.classList.add('copied');
+          if (copyNotify) {
+            copyNotify.textContent = 'Copied to clipboard';
+          }
+          setTimeout(function() {
+            btn.classList.remove('copied');
+            if (copyNotify) {
+              copyNotify.textContent = '';
+            }
+          }, 2000);
+        });
+      }
+    });
 
     // Scroll-triggered reveal animations
     if ('IntersectionObserver' in window) {
