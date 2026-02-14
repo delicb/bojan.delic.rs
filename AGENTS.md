@@ -12,15 +12,6 @@ Personal website for **Bojan Delić**, hosted at https://bojan.delic.rs/
 - **Build command**: `hugo` (output in `public/`)
 - **Dev server**: `hugo server --buildDrafts`
 
-## Owner Info
-
-- Name: Bojan Delić
-- Tagline: "Problem solver, computer programmer, IT enthusiast, geek"
-- GitHub: https://github.com/delicb
-- LinkedIn: https://www.linkedin.com/in/bojandelic/
-- Twitter/X: https://x.com/dercibald
-- Email: bojan@delic.in.rs
-
 ## Site Structure
 
 ### Content (`content/`)
