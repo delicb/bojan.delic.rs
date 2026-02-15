@@ -236,6 +236,31 @@ server:
 | -------------------------- | ------------------------------------------ |
 | 🟢 All systems operational | No incidents reported in the last 90 days. |
 
+## Alerts
+
+GitHub-style alerts (also called admonitions or callouts) are supported using the standard
+`> [!TYPE]` syntax.
+
+> [!NOTE] Useful information that users should know, even when skimming content.
+
+> [!TIP] Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT] Key information users need to know to achieve their goal.
+
+> [!WARNING] Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION] Advises about risks or negative outcomes of certain actions.
+
+Alerts can also contain **rich content** like code, lists, and links:
+
+> [!TIP] To install Hugo on macOS, run:
+>
+> ```bash
+> brew install hugo
+> ```
+>
+> See the [Hugo docs](https://gohugo.io/installation/) for other platforms.
+
 ## Horizontal Rule
 
 Content above the line.

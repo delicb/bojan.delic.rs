@@ -1,0 +1,30 @@
+{{ if eq .Type "alert" }}
+  {{- template "alert" . -}}
+{{ else }}
+  <blockquote>
+    {{ .Text }}
+  </blockquote>
+{{ end }}
+
+{{ define "alert" }}
+{{- $icons := dict
+  "note"      "circle-info"
+  "tip"       "lightbulb"
+  "important" "circle-exclamation"
+  "warning"   "triangle-exclamation"
+  "caution"   "fire-flame-curved"
+-}}
+<div class="alert alert-{{ .AlertType }}" role="note">
+  <p class="alert-heading">
+    {{- partial "icon.html" (dict "name" (index $icons .AlertType)) -}}
+    {{- with .AlertTitle }}
+      {{ . }}
+    {{- else }}
+      {{ title .AlertType }}
+    {{- end -}}
+  </p>
+  <div class="alert-content">
+    {{ .Text }}
+  </div>
+</div>
+{{ end }}

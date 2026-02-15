@@ -128,6 +128,42 @@
   border-radius: 0 var(--radius) var(--radius) 0;
 }
 
+/* Alerts (admonitions) */
+.article-content .alert {
+  --alert-color: var(--color-accent);
+  border-left: 3px solid var(--alert-color);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--color-bg-secondary);
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.article-content .alert-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--alert-color);
+  margin-bottom: 0.25rem;
+}
+
+.article-content .alert-heading svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.article-content .alert-content > :first-child { margin-top: 0; }
+.article-content .alert-content > :last-child { margin-bottom: 0; }
+
+.article-content .alert-note      { --alert-color: #4493f8; }
+.article-content .alert-tip       { --alert-color: #3fb950; }
+.article-content .alert-important { --alert-color: #ab7df8; }
+.article-content .alert-warning   { --alert-color: #d29922; }
+.article-content .alert-caution   { --alert-color: #f85149; }
+
 .article-content picture {
   display: contents;
 }
