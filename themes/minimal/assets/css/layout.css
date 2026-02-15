@@ -18,7 +18,7 @@
   font-family: var(--font-heading);
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--color-heading);
   text-decoration: none;
 }
 
@@ -155,7 +155,7 @@
 .home-card h2 {
   font-family: var(--font-heading);
   font-size: 1.15rem;
-  color: var(--color-text);
+  color: var(--color-heading);
   margin-bottom: 0.3rem;
 }
 
@@ -312,7 +312,7 @@
 .post-title {
   font-weight: 600;
   font-size: 1.05rem;
-  color: var(--color-text);
+  color: var(--color-heading);
   transition: color 0.2s;
 }
 

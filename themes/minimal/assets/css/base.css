@@ -48,6 +48,7 @@
   --color-card-bg: #ffffff;
   --color-card-hover: #f7f7f8;
   --color-tag-bg: #e8f0ec;
+  --color-heading: #000000;
   --color-tag-text: #2d6a4f;
   --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -78,6 +79,7 @@
     --color-card-bg: #1e1e24;
     --color-card-hover: #25252d;
     --color-tag-bg: #1e3a2a;
+    --color-heading: #ffffff;
     --color-tag-text: #74c69d;
     --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
     --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -102,6 +104,7 @@
   --color-card-bg: #1e1e24;
   --color-card-hover: #25252d;
   --color-tag-bg: #1e3a2a;
+  --color-heading: #ffffff;
   --color-tag-text: #74c69d;
   --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
   --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -138,6 +141,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  color: var(--color-heading);
+  letter-spacing: -0.02em;
 }
 
 /* ---------- Layout ---------- */
