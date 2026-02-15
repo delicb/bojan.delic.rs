@@ -1,11 +1,11 @@
 ---
 title: "Preparing for the Interview"
-date: 2026-02-15
+date: 2026-02-16
 description:
   "How I approached interview preparation after a layoff, from deciding what I wanted to brushing up
   on system design and learning TypeScript."
 tags: ["career", "interviews"]
-draft: true
+draft: false
 ---
 
 I got laid off recently. The product line was shut down, which is one of those things that just
