@@ -42,8 +42,15 @@ deserunt mollit anim id est laborum.
 - `Inline code` using `` `backticks` ``
 - [A hyperlink](https://gohugo.io) using `[text](url)`
 - A footnote reference[^1] using `[^1]`
+- ==Highlighted text== using `==double equals==` (requires Goldmark `mark` extension)
+- ++Inserted text++ using `++double plus++` (requires Goldmark `insert` extension)
+- H~2~O — subscript using `~tildes~` (requires Goldmark `subscript` extension)
+- x^2^ — superscript using `^carets^` (requires Goldmark `superscript` extension)
 
 [^1]: This is the footnote content. It appears at the bottom of the page.
+
+[^2]:
+    Footnotes are numbered automatically and rendered in a styled section at the bottom of the post.
 
 ## Blockquotes
 
@@ -291,6 +298,64 @@ Theme : A collection of templates, styles, and assets that define the look of a 
 The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the
 <abbr title="World Wide Web Consortium">W3C</abbr>. Hover over the abbreviations to see their full
 forms.
+
+## Keyboard Shortcuts
+
+Keyboard keys are styled with raw `<kbd>` HTML tags (requires `unsafe = true`):
+
+Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text. On macOS, use <kbd>⌘</kbd> + <kbd>C</kbd>
+instead.
+
+Common shortcuts: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> opens the command palette. Press
+<kbd>Esc</kbd> to close it.
+
+## Collapsible Sections
+
+Use raw `<details>` / `<summary>` HTML for collapsible content:
+
+<details>
+<summary>Click to expand this section</summary>
+
+This content is hidden by default and revealed when the user clicks the summary. You can put **any
+Markdown** inside:
+
+- Lists
+- `Code`
+- [Links](https://gohugo.io)
+
+</details>
+
+<details>
+<summary>Another collapsible section</summary>
+
+Collapsible sections are useful for FAQs, spoiler content, or supplementary details that would
+otherwise make the page too long.
+
+</details>
+
+## Heading Anchors
+
+Every heading on this page has a clickable `#` anchor link that appears on hover. Try hovering over
+any heading — you'll see a subtle `#` symbol. Click it to get a direct link to that section.
+
+This feature enables deep-linking to specific sections of a post. The anchor is automatically
+generated from the heading text.
+
+## External Links
+
+Links to external sites automatically open in a new tab and display a small arrow icon:
+
+- [Hugo documentation](https://gohugo.io/documentation/) — external link with icon
+- [GitHub](https://github.com) — another external link
+- [Blog](/blog/) — internal link, no icon or new tab
+
+This behaviour is automatic — you don't need any special syntax. The theme detects whether a link
+points to an external domain and adds `target="_blank"` and a visual indicator.
+
+## Footnotes
+
+This theme styles footnotes[^2] with a clean separator and back-references. Footnote references
+appear as superscript numbers that link to the footnote section at the bottom of the page.
 
 ## Embedded HTML
 

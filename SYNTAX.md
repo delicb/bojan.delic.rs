@@ -223,6 +223,95 @@ GitHub-style alerts using the standard `> [!TYPE]` blockquote syntax. Five types
 Each type renders with a colour-coded left border and icon. Regular blockquotes (`>` without an
 alert designator) are unaffected.
 
+---
+
+## Highlighted Text
+
+Wrap text in double equals signs to highlight it (requires `mark` Goldmark extension):
+
+```markdown
+This is ==highlighted text== in a sentence.
+```
+
+Renders as a `<mark>` element with a coloured background that adapts to light/dark mode.
+
+---
+
+## Inserted Text
+
+Wrap text in double plus signs to mark it as inserted (requires `insert` Goldmark extension):
+
+```markdown
+This is ++inserted text++ in a sentence.
+```
+
+Renders as an `<ins>` element with an accent-coloured underline.
+
+---
+
+## Subscript and Superscript
+
+Use tildes for subscript and carets for superscript (requires `subscript` and `superscript` Goldmark
+extensions):
+
+```markdown
+Water: H~2~O Equation: x^2^ + y^2^ = z^2^
+```
+
+---
+
+## Keyboard Keys
+
+Use raw `<kbd>` HTML tags to style keyboard shortcuts (requires `unsafe = true` in Goldmark config):
+
+```markdown
+Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.
+```
+
+Renders with a keycap appearance (border, shadow, monospace font) in both light and dark modes.
+
+---
+
+## Collapsible Sections
+
+Use raw `<details>` / `<summary>` HTML for collapsible content:
+
+```markdown
+<details>
+<summary>Click to expand</summary>
+
+Content here — supports **full Markdown**.
+
+</details>
+```
+
+Renders with styled borders, background, and an accent-coloured disclosure triangle. The summary
+gets a bottom border when the section is open.
+
+---
+
+## Heading Anchors
+
+All headings (h2–h6) in blog posts automatically get a clickable `#` anchor link that appears on
+hover. This enables deep-linking to specific sections.
+
+No special syntax needed — it's automatic via the theme's heading render hook.
+
+---
+
+## External Links
+
+Links to external domains automatically:
+
+- Open in a new tab (`target="_blank"`)
+- Display a small arrow icon after the link text
+
+No special syntax needed — the theme's link render hook detects external URLs by comparing the link
+hostname against the site's `baseURL`. Internal links (relative URLs, same-hostname absolute URLs,
+`mailto:`, etc.) are unaffected.
+
+---
+
 ### Rich content
 
 Alerts support full Markdown inside — paragraphs, code blocks, lists, links, etc.:

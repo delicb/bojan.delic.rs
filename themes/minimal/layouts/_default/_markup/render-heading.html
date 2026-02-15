@@ -1,0 +1,12 @@
+<h{{ .Level }} id="{{ .Anchor }}"
+  {{- range $k, $v := .Attributes }}
+    {{- if ne $k "id" }}
+      {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+    {{- end }}
+  {{- end -}}
+>
+  {{- .Text -}}
+  {{- with .Anchor -}}
+    <a href="#{{ . }}" class="heading-anchor" aria-label="Link to this section">#</a>
+  {{- end -}}
+</h{{ .Level }}>

@@ -1,0 +1,17 @@
+{{- $isExternal := hasPrefix .Destination "http" -}}
+{{- if $isExternal -}}
+  {{- $siteHost := urls.Parse .Page.Site.BaseURL -}}
+  {{- $linkHost := urls.Parse .Destination -}}
+  {{- if eq $linkHost.Host $siteHost.Host -}}
+    {{- $isExternal = false -}}
+  {{- end -}}
+{{- end -}}
+<a href="{{ .Destination | safeURL }}"
+  {{- with .Title }} title="{{ . }}"{{ end }}
+  {{- if $isExternal }} target="_blank" rel="noopener"{{ end -}}
+>
+  {{- .Text -}}
+</a>
+{{- if $isExternal -}}
+  <span class="external-link-icon" aria-hidden="true">{{ partial "icon.html" (dict "name" "arrow-up-right-from-square") }}</span>
+{{- end -}}

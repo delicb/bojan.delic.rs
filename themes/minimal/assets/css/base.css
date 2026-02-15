@@ -51,6 +51,10 @@
   --color-tag-text: #2d6a4f;
   --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --color-mark-bg: #fff3b0;
+  --color-mark-text: inherit;
+  --color-kbd-bg: #f0f0f4;
+  --color-kbd-border: #c8c8d0;
 
   --max-width: 720px;
   --spacing: 1.5rem;
@@ -77,6 +81,10 @@
     --color-tag-text: #74c69d;
     --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
     --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --color-mark-bg: #5c4b00;
+    --color-mark-text: #f5e6b8;
+    --color-kbd-bg: #2a2a32;
+    --color-kbd-border: #4a4a55;
   }
 }
 /* Manual: user toggled dark mode */
@@ -97,6 +105,10 @@
   --color-tag-text: #74c69d;
   --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
   --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --color-mark-bg: #5c4b00;
+  --color-mark-text: #f5e6b8;
+  --color-kbd-bg: #2a2a32;
+  --color-kbd-border: #4a4a55;
 }
 
 /* ---------- Reset ---------- */

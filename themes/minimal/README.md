@@ -1,17 +1,22 @@
 # Minimal — A Hugo Theme
 
-A clean, minimal Hugo theme for personal websites. Supports a blog, resume, projects, quotes, and contact page — all driven by simple configuration and YAML data files.
+A clean, minimal Hugo theme for personal websites. Supports a blog, resume, projects, quotes, and
+contact page — all driven by simple configuration and YAML data files.
 
 ![Hugo](https://img.shields.io/badge/Hugo-%3E%3D0.128-ff4088?logo=hugo)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 ## Features
 
-- **8 accent color palettes** — green (default), blue, indigo, teal, red, orange, purple, rose — one line of config
-- **4 syntax highlighting themes** — github (default), catppuccin, nord, solarized — each with tuned light/dark variants
-- **Light / dark mode** — follows OS preference, with a manual toggle that persists via `localStorage`
+- **8 accent color palettes** — green (default), blue, indigo, teal, red, orange, purple, rose — one
+  line of config
+- **4 syntax highlighting themes** — github (default), catppuccin, nord, solarized — each with tuned
+  light/dark variants
+- **Light / dark mode** — follows OS preference, with a manual toggle that persists via
+  `localStorage`
 - **Responsive design** — mobile-first, looks great on all screen sizes
-- **Responsive images** — automatic WebP generation with `<picture>` srcsets (requires Hugo Extended)
+- **Responsive images** — automatic WebP generation with `<picture>` srcsets (requires Hugo
+  Extended)
 - **Blog** with cover images, reading time, pagination, and RSS
 - **Resume** section driven by `data/resume.yaml`
 - **Projects** section driven by `data/projects.yaml` with featured cards
@@ -19,6 +24,8 @@ A clean, minimal Hugo theme for personal websites. Supports a blog, resume, proj
 - **Contact form** with Cloudflare Turnstile anti-bot protection
 - **SEO** — Open Graph, Twitter Cards, JSON-LD, canonical URLs, sitemap
 - **Syntax highlighting** — Chroma-based with line numbers, line highlighting, and light/dark styles
+- **Rich Markdown** — styled footnotes, task lists, `<mark>`, `<ins>`, `<sub>`/`<sup>`, `<kbd>`,
+  `<details>`/`<summary>`, heading anchors, and external link indicators
 - **Self-hosted fonts & icons** — no external CDN dependencies
 - **Minimal JavaScript** — only used for theme toggle, back-to-top, and scroll reveal
 - **Print styles** included
@@ -78,7 +85,8 @@ theme = 'minimal'
 
 ### Required Markup Settings
 
-Hugo does not merge `[markup]` config from themes, so you **must** add this to your site's `hugo.toml`. The theme's syntax highlighting CSS depends on it:
+Hugo does not merge `[markup]` config from themes, so you **must** add this to your site's
+`hugo.toml`. The theme's syntax highlighting CSS depends on it:
 
 ```toml
 [markup]
@@ -90,6 +98,24 @@ Hugo does not merge `[markup]` config from themes, so you **must** add this to y
     [markup.goldmark.renderer]
       unsafe = true
 ```
+
+### Optional: Goldmark Extras
+
+To enable `==highlight==`, `++insert++`, `~subscript~`, and `^superscript^` syntax, add:
+
+```toml
+    [markup.goldmark.extensions.extras.mark]
+      enable = true
+    [markup.goldmark.extensions.extras.insert]
+      enable = true
+    [markup.goldmark.extensions.extras.subscript]
+      enable = true
+    [markup.goldmark.extensions.extras.superscript]
+      enable = true
+```
+
+Without these, the syntax renders as literal text — no breakage, just no styling. The CSS is always
+included in the theme.
 
 ### Social Links
 
@@ -105,7 +131,8 @@ Hugo does not merge `[markup]` config from themes, so you **must** add this to y
   icon = "linkedin"
 ```
 
-Available icons: `github`, `linkedin`, `x-twitter`, `envelope`, `rss`, `arrow-up`. To add more, place an SVG file in `assets/icons/` and reference it by filename (without `.svg`).
+Available icons: `github`, `linkedin`, `x-twitter`, `envelope`, `rss`, `arrow-up`. To add more,
+place an SVG file in `assets/icons/` and reference it by filename (without `.svg`).
 
 ### Home Page Cards
 
@@ -147,7 +174,8 @@ content/
 
 ### Blog Posts
 
-Blog posts use **page bundles** — each post is a folder with an `index.md` file. Place images and other assets in the same folder.
+Blog posts use **page bundles** — each post is a folder with an `index.md` file. Place images and
+other assets in the same folder.
 
 Front matter:
 
@@ -172,7 +200,7 @@ Add a `cover.jpg` (or `cover.png`, `cover.webp`) to the post folder to display a
   url: "https://github.com/..."
   description: "What it does."
   tech: ["Go", "Docker"]
-  featured: true  # Shows as a prominent card
+  featured: true # Shows as a prominent card
 ```
 
 #### `data/resume.yaml`
@@ -205,7 +233,7 @@ education:
 ```yaml
 - text: "Simplicity is the ultimate sophistication."
   author: "Leonardo da Vinci"
-  source: ""  # Optional
+  source: "" # Optional
 ```
 
 ## Shortcodes
@@ -220,6 +248,7 @@ Render code from a file in the page bundle with syntax highlighting:
 ```
 
 Parameters:
+
 - `file` — filename in the page bundle (required)
 - `lang` — language override (auto-detected from extension)
 - `lines` — line range to display, e.g. `"5-12"`
@@ -243,7 +272,8 @@ The chosen color applies to links, accents, tags, and the top border — in both
 
 ### Syntax Highlighting Theme
 
-Set `syntaxTheme` to change the code block color scheme. Each theme includes matched light and dark variants that switch automatically with the site's mode.
+Set `syntaxTheme` to change the code block color scheme. Each theme includes matched light and dark
+variants that switch automatically with the site's mode.
 
 ```toml
 [params]
@@ -252,23 +282,26 @@ Set `syntaxTheme` to change the code block color scheme. Each theme includes mat
 
 Available themes:
 
-| Name | Light variant | Dark variant |
-|------|--------------|-------------|
-| `github` | GitHub Light | Dracula (default) |
-| `catppuccin` | Catppuccin Latte | Catppuccin Mocha |
-| `nord` | Nord Light | Nord |
-| `solarized` | Solarized Light | Solarized Dark |
+| Name         | Light variant    | Dark variant      |
+| ------------ | ---------------- | ----------------- |
+| `github`     | GitHub Light     | Dracula (default) |
+| `catppuccin` | Catppuccin Latte | Catppuccin Mocha  |
+| `nord`       | Nord Light       | Nord              |
+| `solarized`  | Solarized Light  | Solarized Dark    |
 
 ### CSS Custom Properties
 
-The theme uses CSS custom properties for colors, fonts, and spacing. Override them in your own CSS file or by placing a `assets/css/custom.css` in your site.
+The theme uses CSS custom properties for colors, fonts, and spacing. Override them in your own CSS
+file or by placing a `assets/css/custom.css` in your site.
 
 Key properties are defined in `assets/css/base.css` under `:root` and `[data-theme="dark"]`.
 
 ### Adding Icons
 
-1. Download an SVG from [Font Awesome Free](https://github.com/FortAwesome/Font-Awesome/tree/6.x/svgs)
-2. Save it to `assets/icons/<name>.svg` (in your site, not the theme — Hugo's asset pipeline merges both)
+1. Download an SVG from
+   [Font Awesome Free](https://github.com/FortAwesome/Font-Awesome/tree/6.x/svgs)
+2. Save it to `assets/icons/<name>.svg` (in your site, not the theme — Hugo's asset pipeline merges
+   both)
 3. Use in templates: `{{ partial "icon.html" (dict "name" "<name>") }}`
 
 ## Theme Defaults
