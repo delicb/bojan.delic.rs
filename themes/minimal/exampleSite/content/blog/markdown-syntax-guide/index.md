@@ -1,11 +1,14 @@
 ---
 title: "Markdown Syntax Guide"
 date: 2025-01-10
-description: "A showcase of all the Markdown and Hugo elements supported by this theme — headings, text formatting, lists, code blocks, tables, images, and more."
+description:
+  "A showcase of all the Markdown and Hugo elements supported by this theme — headings, text
+  formatting, lists, code blocks, tables, images, and more."
 tags: ["markdown", "syntax", "demo"]
 ---
 
-This post demonstrates all the Markdown and Hugo-specific elements styled by the Minimal theme. Use it as a reference when writing content.
+This post demonstrates all the Markdown and Hugo-specific elements styled by the Minimal theme. Use
+it as a reference when writing content.
 
 ## Headings
 
@@ -21,15 +24,20 @@ The headings above and below are `h2` elements. The title of each post is an `h1
 
 ## Paragraphs
 
-Xerum, currentium in venbn reprehen deam, currentium eam que voleli diede veleli id, currentium of nobitatur sedita voles est voeli bla aspeli sandaede ligede voleritam, currentium endit, currentium of omit lam. Sendicate voluptates to exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Xerum, currentium in venbn reprehen deam, currentium eam que voleli diede veleli id, currentium of
+nobitatur sedita voles est voeli bla aspeli sandaede ligede voleritam, currentium endit, currentium
+of omit lam. Sendicate voluptates to exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat.
 
-A second paragraph. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+A second paragraph. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+deserunt mollit anim id est laborum.
 
 ## Text Formatting
 
 - **Bold text** using `**double asterisks**`
-- *Italic text* using `*single asterisks*`
-- ***Bold and italic*** using `***triple asterisks***`
+- _Italic text_ using `*single asterisks*`
+- **_Bold and italic_** using `***triple asterisks***`
 - ~~Strikethrough~~ using `~~tildes~~`
 - `Inline code` using `` `backticks` ``
 - [A hyperlink](https://gohugo.io) using `[text](url)`
@@ -39,7 +47,8 @@ A second paragraph. Duis aute irure dolor in reprehenderit in voluptate velit es
 
 ## Blockquotes
 
-> This is a blockquote. It can span multiple lines and is commonly used for pull quotes or citations.
+> This is a blockquote. It can span multiple lines and is commonly used for pull quotes or
+> citations.
 >
 > — Someone wise
 
@@ -80,7 +89,8 @@ Nested blockquotes:
 
 ### Inline Code
 
-Use the `fmt.Println()` function. Set the variable `maxRetries` to `3`. The config file is at `/etc/app/config.yaml`.
+Use the `fmt.Println()` function. Set the variable `maxRetries` to `3`. The config file is at
+`/etc/app/config.yaml`.
 
 ### Code Block
 
@@ -168,21 +178,63 @@ server:
 
 ## Tables
 
-| Feature         | Supported | Notes                      |
-| --------------- | :-------: | -------------------------- |
-| Light mode      |    ✅     | Default                    |
-| Dark mode       |    ✅     | Toggle or OS preference    |
-| Responsive      |    ✅     | Mobile-first               |
-| RSS             |    ✅     | Per-section feeds           |
-| Syntax highlighting |  ✅  | Chroma, 200+ languages     |
+| Feature             | Supported | Notes                   |
+| ------------------- | :-------: | ----------------------- |
+| Light mode          |    ✅     | Default                 |
+| Dark mode           |    ✅     | Toggle or OS preference |
+| Responsive          |    ✅     | Mobile-first            |
+| RSS                 |    ✅     | Per-section feeds       |
+| Syntax highlighting |    ✅     | Chroma, 200+ languages  |
 
 ### Right-Aligned Numbers
 
 | Language   | Stars | Year |
 | ---------- | ----: | ---: |
-| Go         | 124k  | 2009 |
-| Rust       | 98k   | 2010 |
-| TypeScript | 101k  | 2012 |
+| Go         |  124k | 2009 |
+| Rust       |   98k | 2010 |
+| TypeScript |  101k | 2012 |
+
+### Wide Table (Horizontal Overflow)
+
+| Endpoint         | Method | Auth         | Request Body      | Response | Status        | Cache | Rate Limit | Description                            |
+| ---------------- | ------ | ------------ | ----------------- | -------- | ------------- | ----- | ---------- | -------------------------------------- |
+| `/api/users`     | GET    | Bearer token | —                 | `User[]` | 200           | 5 min | 100/min    | List all users with pagination support |
+| `/api/users/:id` | GET    | Bearer token | —                 | `User`   | 200, 404      | 5 min | 100/min    | Fetch a single user by ID              |
+| `/api/users`     | POST   | Bearer token | `{ name, email }` | `User`   | 201, 422      | —     | 20/min     | Create a new user account              |
+| `/api/users/:id` | PUT    | Bearer token | `{ name, email }` | `User`   | 200, 404, 422 | —     | 20/min     | Update an existing user                |
+| `/api/users/:id` | DELETE | Admin only   | —                 | —        | 204, 403, 404 | —     | 10/min     | Permanently delete a user              |
+
+### Minimal Two-Column Table
+
+| Key      | Value                 |
+| -------- | --------------------- |
+| Version  | 2.4.1                 |
+| License  | MIT                   |
+| Platform | Linux, macOS, Windows |
+
+### Mixed Alignment
+
+| Left-aligned |      Centred      | Right-aligned |
+| :----------- | :---------------: | ------------: |
+| Cell 1       |      Cell 2       |        Cell 3 |
+| Short        | Long content here |     1,234,567 |
+| Another row  |        ✅         |        $99.99 |
+
+### Table with Inline Formatting
+
+| Feature       | Syntax                      | Output                    |
+| ------------- | --------------------------- | ------------------------- |
+| Bold          | `**text**`                  | **text**                  |
+| Italic        | `*text*`                    | _text_                    |
+| Code          | `` `code` ``                | `code`                    |
+| Link          | `[Hugo](https://gohugo.io)` | [Hugo](https://gohugo.io) |
+| Strikethrough | `~~nope~~`                  | ~~nope~~                  |
+
+### Single-Row Table
+
+| Status                     | Message                                    |
+| -------------------------- | ------------------------------------------ |
+| 🟢 All systems operational | No incidents reported in the last 90 days. |
 
 ## Horizontal Rule
 
@@ -194,7 +246,8 @@ Content below the line.
 
 ## Images
 
-Here's a placeholder to show how images render. In a real post, place images in the page bundle folder alongside `index.md`:
+Here's a placeholder to show how images render. In a real post, place images in the page bundle
+folder alongside `index.md`:
 
 ![A sample image](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop "Code on a screen")
 
@@ -202,18 +255,17 @@ Here's a placeholder to show how images render. In a real post, place images in 
 
 Hugo/Goldmark supports definition lists:
 
-Hugo
-: A fast static site generator written in Go.
+Hugo : A fast static site generator written in Go.
 
-Markdown
-: A lightweight markup language for creating formatted text.
+Markdown : A lightweight markup language for creating formatted text.
 
-Theme
-: A collection of templates, styles, and assets that define the look of a site.
+Theme : A collection of templates, styles, and assets that define the look of a site.
 
 ## Abbreviations
 
-The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>. Hover over the abbreviations to see their full forms.
+The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the
+<abbr title="World Wide Web Consortium">W3C</abbr>. Hover over the abbreviations to see their full
+forms.
 
 ## Embedded HTML
 
@@ -227,7 +279,10 @@ Hugo allows raw HTML in Markdown when `unsafe` mode is enabled:
 
 This section tests how the theme handles longer bodies of text with mixed elements.
 
-Building a personal website is one of those projects that's *never truly finished*. You tweak the colours, adjust the spacing, rewrite the bio, and before you know it you've spent more time on the site than on the content it's supposed to showcase. The trick is to **pick a design you're happy with and start writing**.
+Building a personal website is one of those projects that's _never truly finished_. You tweak the
+colours, adjust the spacing, rewrite the bio, and before you know it you've spent more time on the
+site than on the content it's supposed to showcase. The trick is to **pick a design you're happy
+with and start writing**.
 
 > The perfect is the enemy of the good.
 >

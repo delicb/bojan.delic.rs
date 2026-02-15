@@ -84,5 +84,23 @@
     }
   })();
   </script>
+  <script>
+  (function(){
+    function update(s){
+      var w = s.parentElement;
+      var canLeft = s.scrollLeft > 0;
+      var canRight = s.scrollLeft + s.clientWidth < s.scrollWidth - 1;
+      w.classList.toggle('can-scroll-left', canLeft);
+      w.classList.toggle('can-scroll-right', canRight);
+    }
+    document.querySelectorAll('.table-scroller').forEach(function(s){
+      update(s);
+      s.addEventListener('scroll', function(){ update(s); });
+    });
+    window.addEventListener('resize', function(){
+      document.querySelectorAll('.table-scroller').forEach(update);
+    });
+  })();
+  </script>
 </body>
 </html>
