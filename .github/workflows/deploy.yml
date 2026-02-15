@@ -3,6 +3,9 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches: [main]
+  schedule:
+    # Daily build to publish future-dated blog posts when their date arrives
+    - cron: '0 6 * * *'
   workflow_dispatch:
 
 jobs:
