@@ -6,7 +6,8 @@ Quick reference for syntax and features available when writing content (mostly b
 
 ## Cover Images
 
-Blog posts can optionally have a cover image displayed as a full-width banner above the title. To add one, place a file named `cover.*` in the post's page bundle directory:
+Blog posts can optionally have a cover image displayed as a full-width banner above the title. To
+add one, place a file named `cover.*` in the post's page bundle directory:
 
 ```
 content/blog/my-post/
@@ -16,9 +17,11 @@ content/blog/my-post/
 
 Supported formats: `.jpg`, `.png`, `.svg`, `.webp`
 
-The template finds the image via Hugo page resources (`cover.*` glob) — no front matter or markdown needed. Posts without a cover image render normally.
+The template finds the image via Hugo page resources (`cover.*` glob) — no front matter or markdown
+needed. Posts without a cover image render normally.
 
-Recommended dimensions: **1200×630px** (landscape). The image is displayed full-width and capped at 420px height with `object-fit: cover`.
+Recommended dimensions: **1200×630px** (landscape). The image is displayed full-width and capped at
+420px height with `object-fit: cover`.
 
 ---
 
@@ -36,7 +39,8 @@ fmt.Println("hello")
 
 ### Line Numbers
 
-Add `{linenos=table}` after the language to show line numbers. The `table` mode keeps numbers out of copy-paste selections.
+Add `{linenos=table}` after the language to show line numbers. The `table` mode keeps numbers out of
+copy-paste selections.
 
 ````markdown
 ```go {linenos=table}
@@ -104,7 +108,8 @@ services:
 ```
 ````
 
-This renders a title bar above the code block showing the filename. The title replaces the language label in the top-left corner.
+This renders a title bar above the code block showing the filename. The title replaces the language
+label in the top-left corner.
 
 Works with all other attributes:
 
@@ -116,7 +121,8 @@ func main() {}
 ```
 ````
 
-> **Note**: The `include` shortcode automatically uses the filename as the title — no extra parameter needed.
+> **Note**: The `include` shortcode automatically uses the filename as the title — no extra
+> parameter needed.
 
 ### Hugo `highlight` Shortcode
 
@@ -134,13 +140,13 @@ Note: the shortcode uses space-separated `hl_lines` values (not arrays), and doe
 
 ## Attribute Reference
 
-| Attribute      | Values          | Default | Description                          |
-|----------------|-----------------|---------|--------------------------------------|
-| `title`        | string          | —       | Filename or label shown above the block |
-| `linenos`      | `table`, `inline`, `true`, `false` | `false` | Show line numbers. Prefer `table`.  |
-| `hl_lines`     | `[1,"3-5",8]`  | —       | Lines or ranges to highlight         |
-| `linenostart`  | integer         | `1`     | First line number                    |
-| `anchorlinenos`| `true`, `false` | `true`  | Make line numbers clickable anchors  |
+| Attribute       | Values                             | Default | Description                             |
+| --------------- | ---------------------------------- | ------- | --------------------------------------- |
+| `title`         | string                             | —       | Filename or label shown above the block |
+| `linenos`       | `table`, `inline`, `true`, `false` | `false` | Show line numbers. Prefer `table`.      |
+| `hl_lines`      | `[1,"3-5",8]`                      | —       | Lines or ranges to highlight            |
+| `linenostart`   | integer                            | `1`     | First line number                       |
+| `anchorlinenos` | `true`, `false`                    | `true`  | Make line numbers clickable anchors     |
 
 Hugo highlight docs: https://gohugo.io/content-management/syntax-highlighting/
 
@@ -148,7 +154,8 @@ Hugo highlight docs: https://gohugo.io/content-management/syntax-highlighting/
 
 ## Including Code from Files
 
-Use the `include` shortcode to render code from a file in the post's page bundle. The language is auto-detected from the file extension.
+Use the `include` shortcode to render code from a file in the post's page bundle. The language is
+auto-detected from the file extension.
 
 ### Full file
 
@@ -172,7 +179,8 @@ Line numbers start at the correct original line number (11 in this example).
 
 ### With highlighted lines
 
-Use `hl` to highlight lines by their **original file line numbers** — they're automatically adjusted when combined with `lines`:
+Use `hl` to highlight lines by their **original file line numbers** — they're automatically adjusted
+when combined with `lines`:
 
 ```text
 {{< include file="setup.py" lines="11-27" linenos="table" hl="19-20" >}}
@@ -186,10 +194,63 @@ Multiple values and ranges use space separation:
 
 ### Include shortcode parameters
 
-| Parameter | Example          | Description                                       |
-|-----------|------------------|---------------------------------------------------|
-| `file`    | `"setup.py"`     | Filename in the page bundle (required)            |
-| `lang`    | `"python"`       | Language override (auto-detected from extension)   |
-| `lines`   | `"5-12"`         | Line range to extract                              |
-| `linenos` | `"table"`        | Show line numbers (`table` or `inline`)            |
-| `hl`      | `"7 9-10"`       | Lines to highlight (original file line numbers)    |
+| Parameter | Example      | Description                                      |
+| --------- | ------------ | ------------------------------------------------ |
+| `file`    | `"setup.py"` | Filename in the page bundle (required)           |
+| `lang`    | `"python"`   | Language override (auto-detected from extension) |
+| `lines`   | `"5-12"`     | Line range to extract                            |
+| `linenos` | `"table"`    | Show line numbers (`table` or `inline`)          |
+| `hl`      | `"7 9-10"`   | Lines to highlight (original file line numbers)  |
+
+---
+
+## Alerts (Admonitions)
+
+GitHub-style alerts using the standard `> [!TYPE]` blockquote syntax. Five types are supported:
+
+```markdown
+> [!NOTE] Useful information that users should know, even when skimming content.
+
+> [!TIP] Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT] Key information users need to know to achieve their goal.
+
+> [!WARNING] Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION] Advises about risks or negative outcomes of certain actions.
+```
+
+Each type renders with a colour-coded left border and icon. Regular blockquotes (`>` without an
+alert designator) are unaffected.
+
+### Rich content
+
+Alerts support full Markdown inside — paragraphs, code blocks, lists, links, etc.:
+
+````markdown
+> [!TIP] To install Hugo on macOS, run:
+>
+> ```bash
+> brew install hugo
+> ```
+>
+> See the [Hugo docs](https://gohugo.io/installation/) for other platforms.
+````
+
+### Custom title
+
+Override the default heading with the extended syntax (compatible with Obsidian):
+
+```markdown
+> [!WARNING] Do not run in production This script deletes all data in the database.
+```
+
+### Alert types
+
+| Type        | Colour | Use for                                |
+| ----------- | ------ | -------------------------------------- |
+| `NOTE`      | Blue   | General supplementary information      |
+| `TIP`       | Green  | Helpful advice, best practices         |
+| `IMPORTANT` | Purple | Key info users must not miss           |
+| `WARNING`   | Yellow | Potential issues, proceed with caution |
+| `CAUTION`   | Red    | Dangerous actions, risk of data loss   |
