@@ -9,13 +9,10 @@
     </div>
     {{ end }}
     {{ end }}
-    {{ if or .Site.Params.socialLinks .Site.Params.email }}
+    {{ if .Site.Params.socialLinks }}
     <div class="footer-social">
       {{ range .Site.Params.socialLinks }}
       <a href="{{ .url }}" title="{{ .name }}">{{ partial "icon.html" (dict "name" .icon) }}</a>
-      {{ end }}
-      {{ with .Site.Params.email }}
-      <a href="mailto:{{ . }}" title="Email">{{ partial "icon.html" (dict "name" "envelope") }}</a>
       {{ end }}
       {{ with $.Site.GetPage (printf "/%s" ($blogSection)) }}
         {{ with .OutputFormats.Get "rss" }}
