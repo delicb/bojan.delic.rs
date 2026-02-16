@@ -10,6 +10,8 @@ theme = 'minimal'
   twitterHandle = '@dercibald'
   turnstileSiteKey = '1x00000000000000000000AA' # Turnstile test key (always passes); overridden in CI
   syntaxTheme = 'catppuccin'
+  licenseName = 'CC BY 4.0'
+  licenseURL = 'https://creativecommons.org/licenses/by/4.0/'
 
 [[params.socialLinks]]
   name = "GitHub"
