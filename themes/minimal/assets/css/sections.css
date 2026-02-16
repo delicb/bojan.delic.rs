@@ -42,6 +42,19 @@
   content: "— ";
 }
 
+/* ---------- Page Content Links ---------- */
+.page-content a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.page-content a:hover {
+  color: var(--color-link-hover);
+}
+
 /* ---------- Resume ---------- */
 .resume-section {
   margin-bottom: 2.5rem;
@@ -315,7 +328,7 @@
 }
 
 .contact-form {
-  max-width: 520px;
+  max-width: 680px;
   animation: fadeInUp 0.4s ease both;
   animation-delay: 0.1s;
 }

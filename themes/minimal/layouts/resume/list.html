@@ -68,7 +68,7 @@
   {{ with $resume.community }}
   <div class="resume-section">
     <h2>Community &amp; Open Source</h2>
-    <p>{{ . }}</p>
+    <p>{{ $.RenderString (dict "display" "inline") . }}</p>
   </div>
   {{ end }}
 

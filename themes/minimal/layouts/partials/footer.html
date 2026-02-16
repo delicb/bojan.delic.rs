@@ -12,7 +12,7 @@
     {{ if .Site.Params.socialLinks }}
     <div class="footer-social">
       {{ range .Site.Params.socialLinks }}
-      <a href="{{ .url }}" title="{{ .name }}">{{ partial "icon.html" (dict "name" .icon) }}</a>
+      <a href="{{ .url }}" title="{{ .name }}"{{ if hasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ partial "icon.html" (dict "name" .icon) }}</a>
       {{ end }}
       {{ with $.Site.GetPage (printf "/%s" ($blogSection)) }}
         {{ with .OutputFormats.Get "rss" }}
@@ -21,6 +21,6 @@
       {{ end }}
     </div>
     {{ end }}
-    <p>&copy; {{ now.Year }} {{ .Site.Title }}.{{ with .Site.Params.licenseName }} Content licensed under <a href="{{ $.Site.Params.licenseURL }}">{{ . }}</a>.{{ end }} Built with <a href="https://gohugo.io">Hugo</a>.</p>
+    <p>&copy; {{ now.Year }} {{ .Site.Title }}.{{ with .Site.Params.licenseName }} Content licensed under <a href="{{ $.Site.Params.licenseURL }}" target="_blank" rel="noopener noreferrer">{{ . }}</a>.{{ end }} Built with <a href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a>.</p>
   </div>
 </footer>

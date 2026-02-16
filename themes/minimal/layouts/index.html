@@ -7,7 +7,7 @@
   {{ with .Site.Params.socialLinks }}
   <div class="social-links">
     {{ range . }}
-    <a href="{{ .url }}" class="social-pill" title="{{ .name }}">
+    <a href="{{ .url }}" class="social-pill" title="{{ .name }}"{{ if hasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>
       {{ partial "icon.html" (dict "name" .icon) }} <span>{{ .name }}</span>
     </a>
     {{ end }}

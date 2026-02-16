@@ -11,7 +11,7 @@
   {{ if $featured }}
   <div class="project-grid-featured">
     {{ range $featured }}
-    <a href="{{ .url }}" class="project-card project-card-featured">
+    <a href="{{ .url }}" class="project-card project-card-featured" target="_blank" rel="noopener noreferrer">
       <h3>{{ .name }}</h3>
       <p>{{ .description }}</p>
       {{ with .tech }}
@@ -30,7 +30,7 @@
     {{ range $rest }}
     <li class="project-list-item scroll-reveal">
       <div class="project-list-header">
-        <a href="{{ .url }}" class="project-list-name">{{ .name }}</a>
+        <a href="{{ .url }}" class="project-list-name" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
         {{ with .tech }}
         <div class="project-tech">
           {{ range . }}<span>{{ . }}</span>{{ end }}

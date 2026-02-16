@@ -23,7 +23,11 @@
   </div>
 
   <nav class="article-nav">
-    {{ with .PrevInSection }}<a href="{{ .RelPermalink }}" class="nav-prev">&larr; {{ .Title }}</a>{{ end }}
+    {{ if .PrevInSection }}
+      <a href="{{ .PrevInSection.RelPermalink }}" class="nav-prev">&larr; {{ .PrevInSection.Title }}</a>
+    {{ else }}
+      <a href="{{ .Parent.RelPermalink }}" class="nav-prev">&larr; Back to {{ .Parent.Title }}</a>
+    {{ end }}
     {{ with .NextInSection }}<a href="{{ .RelPermalink }}" class="nav-next">{{ .Title }} &rarr;</a>{{ end }}
   </nav>
 </article>
