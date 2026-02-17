@@ -1,5 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="{{ site.Params.themeColorLight | default "#ffffff" }}" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="{{ site.Params.themeColorDark | default "#16161a" }}" media="(prefers-color-scheme: dark)">
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <title>{{ if not .IsHome }}{{ .Title }} · {{ end }}{{ .Site.Title }}</title>
 
