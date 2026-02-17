@@ -19,7 +19,7 @@
   {{- end -}}
 }
 </script>
-{{- else if .IsPage -}}
+{{- else if and .IsPage (eq .Section (site.Params.blogSection | default "blog")) -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

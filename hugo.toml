@@ -2,6 +2,7 @@ baseURL = 'https://bojan.delic.rs/'
 languageCode = 'en-us'
 title = 'Bojan Delić'
 theme = 'minimal'
+enableGitInfo = true
 
 [params]
   tagline = 'Problem solver, software engineer, IT enthusiast, geek'
@@ -111,7 +112,6 @@ theme = 'minimal'
   section = ['HTML', 'RSS']
 
 [sitemap]
-  changeFreq = 'weekly'
   filename = 'sitemap.xml'
 
 
