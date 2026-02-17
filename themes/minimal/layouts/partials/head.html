@@ -3,6 +3,7 @@
 <meta name="theme-color" content="{{ site.Params.themeColorLight | default "#ffffff" }}" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="{{ site.Params.themeColorDark | default "#16161a" }}" media="(prefers-color-scheme: dark)">
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+{{ with .Params.robots }}<meta name="robots" content="{{ . }}">{{ else }}<meta name="robots" content="index, follow">{{ end }}
 <title>{{ if not .IsHome }}{{ .Title }} · {{ end }}{{ .Site.Title }}</title>
 
 {{/* Canonical URL */}}

@@ -3,7 +3,8 @@
   {{ $cover := .Resources.GetMatch "cover.*" }}
   {{ with $cover }}
   <div class="article-cover">
-    {{ partial "responsive-image.html" (dict "image" . "alt" "Cover image" "loading" "eager" "fetchpriority" "high") }}
+    {{ $coverAlt := $.Params.coverAlt | default (printf "Cover image for %s" $.Title) }}
+    {{ partial "responsive-image.html" (dict "image" . "alt" $coverAlt "loading" "eager" "fetchpriority" "high") }}
   </div>
   {{ end }}
 
