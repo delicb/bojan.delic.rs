@@ -3,7 +3,7 @@ date: 2026-02-17
 title: Theme Best Practices
 directory: /Users/del-boy/src/bojan.delic.rs
 project: bojan.delic.rs
-status: in-progress
+status: completed
 dependencies: []
 dependents: []
 ---
@@ -700,14 +700,14 @@ Key design decisions:
 Execute batches sequentially. Each batch is one commit. Run `hugo` after each batch to verify zero
 warnings/errors.
 
-- [ ] **Batch 1:** SRI, block attributes, min_version, noClasses cleanup
-- [ ] **Batch 2:** Move render hooks to `layouts/_markup/`
-- [ ] **Batch 3:** JSON-LD scoping, enableGitInfo, sitemap cleanup, og:locale
-- [ ] **Batch 4:** languageCode fix, theme-color meta
-- [ ] **Batch 5:** Cover alt text, robots meta, archetype alignment
-- [ ] **Batch 6:** Theme .gitignore, delete stale public/
-- [ ] **Batch 7:** JS extraction to asset pipeline
-- [ ] **Batch 8:** Custom RSS template
+- [x] **Batch 1:** SRI, block attributes, min_version, noClasses cleanup
+- [x] **Batch 2:** Move render hooks to `layouts/_markup/`
+- [x] **Batch 3:** JSON-LD scoping, enableGitInfo, sitemap cleanup, og:locale
+- [x] **Batch 4:** languageCode fix, theme-color meta
+- [x] **Batch 5:** Cover alt text, robots meta, archetype alignment
+- [x] **Batch 6:** Theme .gitignore, delete stale public/
+- [x] **Batch 7:** JS extraction to asset pipeline
+- [x] **Batch 8:** Custom RSS template
 
 ## Error Handling
 
@@ -804,4 +804,29 @@ After each batch:
 
 ## Implementation Progress
 
-_(To be filled in during implementation)_
+All 8 batches completed successfully with 8 commits:
+
+1. **Batch 1** (`d9f5ed7`): Added SRI integrity attribute on stylesheet link, enabled Goldmark
+   block/title attributes in all 3 config files, bumped `min_version` to 0.134.0, removed redundant
+   `noClasses = false`.
+2. **Batch 2** (`698b87c`): Moved 6 render hook files from `layouts/_default/_markup/` to
+   `layouts/_markup/`. Verified all render hooks still produce correct output.
+3. **Batch 3** (`a30a172`): Scoped `BlogPosting` JSON-LD to blog section only (contact page no
+   longer gets it), enabled `enableGitInfo`, removed `changeFreq` from sitemap config, made
+   `og:locale` dynamic from language config.
+4. **Batch 4** (`79a8d13`): Changed `languageCode` to `en` (BCP 47) in both site and exampleSite
+   configs, added two `theme-color` meta tags for light/dark with param-driven defaults.
+5. **Batch 5** (`3f33f0c`): Cover image alt text now uses post title (with `coverAlt` override),
+   added `robots` meta tag defaulting to `index, follow`, aligned site archetype with theme
+   archetype (added `description` and `tags` fields).
+6. **Batch 6** (`3156d1c`): Added `/public/` to theme `.gitignore`, confirmed stale build output
+   directory was already absent.
+7. **Batch 7** (`12a9ca5`): Extracted ~80 lines of inline JS (back-to-top, copy buttons,
+   scroll-reveal, table scroll indicators) into `assets/js/main.js`, loaded via Hugo Pipes with
+   minify, fingerprint, SRI, and `defer`. Theme detection/toggle scripts remain inline to prevent
+   FOUC.
+8. **Batch 8** (`bb60f0c`): Created custom RSS template with `content:encoded` for full HTML
+   content, plain-text `description` for summaries, and `enclosure` for cover images. Verified
+   descriptions are clean text without render hook artifacts.
+
+All builds passed with zero warnings/errors. `hugo --minify` production build verified successful.
