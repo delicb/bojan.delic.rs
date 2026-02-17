@@ -159,6 +159,12 @@
 
 .project-card-featured {
   padding: 1.75rem;
+  border-left: 3px solid transparent;
+  transition: background 0.2s, border-color 0.2s, border-left-color 0.2s, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card-featured:hover {
+  border-left-color: var(--color-accent);
 }
 
 .project-card-featured h3 {
