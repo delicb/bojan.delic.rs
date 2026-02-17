@@ -80,7 +80,6 @@ theme = 'minimal'
 
 [markup]
   [markup.highlight]
-    noClasses = false
     lineNos = false
     lineNumbersInTable = true
     anchorLineNos = true
@@ -96,6 +95,9 @@ theme = 'minimal'
       enable = true
     [markup.goldmark.extensions.extras.superscript]
       enable = true
+    [markup.goldmark.parser.attribute]
+      block = true
+      title = true
 
 [permalinks]
   [permalinks.page]

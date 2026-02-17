@@ -10,7 +10,7 @@
 [markup]
   [markup.highlight]
     # The theme uses CSS classes for syntax highlighting (see assets/css/syntax.css).
-    # Hugo >= 0.155 uses CSS classes by default. For older versions, set noClasses = false.
+    # Hugo >= 0.155 defaults to CSS classes, so noClasses is not needed.
     lineNos = false
     lineNumbersInTable = true
     anchorLineNos = true
@@ -19,6 +19,9 @@
     [markup.goldmark.renderer]
       # Required for inline HTML in markdown content.
       unsafe = true
+    [markup.goldmark.parser.attribute]
+      block = true
+      title = true
 
 [pagination]
   pagerSize = 10

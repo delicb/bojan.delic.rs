@@ -84,7 +84,6 @@ theme = 'minimal'
 # Hugo does not merge [markup] from theme config, so this must be in the site config.
 [markup]
   [markup.highlight]
-    noClasses = false
     codeFences = true
     lineNumbersInTable = true
   [markup.goldmark]
@@ -98,3 +97,6 @@ theme = 'minimal'
       enable = true
     [markup.goldmark.extensions.extras.superscript]
       enable = true
+    [markup.goldmark.parser.attribute]
+      block = true
+      title = true

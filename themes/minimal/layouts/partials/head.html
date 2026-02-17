@@ -66,7 +66,7 @@
 {{ $responsive := resources.Get "css/responsive.css" }}
 {{ $syntax := resources.Get "css/syntax.css" }}
 {{ $style := slice $base $layout $article $sections $responsive $syntax | resources.Concat "css/style.css" | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
 {{- partial "accent-color.html" . -}}
 {{- partial "syntax-theme.html" . -}}
 <script>
