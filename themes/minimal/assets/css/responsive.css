@@ -62,6 +62,7 @@
     gap: 0.2rem;
   }
 
+  .page-header h1,
   .article-header h1 {
     font-size: 1.5rem;
   }
@@ -102,7 +103,6 @@
     --color-text: #000000;
     --color-text-secondary: #333333;
     --color-border: #cccccc;
-    /* --color-accent is inherited from :root (keeps configured color in print) */
     --color-link: #000000;
     --color-code-bg: #f5f5f5;
     --color-card-bg: #ffffff;
@@ -156,7 +156,6 @@
 
   .resume-entry {
     margin-bottom: 1em;
-    /* Avoid breaking a role across pages */
     break-inside: avoid;
   }
 
@@ -196,7 +195,7 @@
     page-break-after: avoid;
   }
 
-  /* Links: show URL for external, plain text for internal */
+  /* Links: plain text for print */
   a {
     text-decoration: none !important;
     color: #000 !important;
@@ -230,7 +229,7 @@
     display: none;
   }
 
-  /* Hide Phase 3 decorative elements in print */
+  /* Hide decorative elements in print */
   .hero-accent,
   .footer-social,
   .footer-latest,

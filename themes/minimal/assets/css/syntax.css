@@ -103,7 +103,7 @@
   --syn-generic-inserted-fg: #116329; --syn-generic-inserted-bg: #dafbe1;
   --syn-generic-output: #1f2328;
   --syn-whitespace: #fff;
-  /* Dark-only tokens (defaults to light values, overridden in dark) */
+  /* Style tokens (defaults to light values, overridden in dark) */
   --syn-kd-style: normal;
   --syn-nl-style: normal;
   --syn-nb-style: normal;
@@ -116,52 +116,7 @@
   --syn-generic-emph-decoration: none;
 }
 
-/* Dark mode tokens (dracula) — auto */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --syn-bg: #282a36;
-    --syn-fg: #f8f8f2;
-    --syn-hl: #3d3f4a;
-    --syn-err-fg: #f8f8f2;   --syn-err-bg: transparent;
-    --syn-keyword: #ff79c6;
-    --syn-name-attr: #50fa7b;
-    --syn-name-class: #50fa7b;
-    --syn-name-const: #0550ae;
-    --syn-name-decorator: #0550ae;
-    --syn-name-entity: #6639ba;
-    --syn-name-label-fg: #8be9fd;
-    --syn-name-namespace: #f8f8f2;
-    --syn-name-other: #f8f8f2;
-    --syn-name-tag: #ff79c6;
-    --syn-name-builtin: #8be9fd;
-    --syn-name-builtin-pseudo: #f8f8f2;
-    --syn-name-variable: #8be9fd;
-    --syn-name-function: #50fa7b;
-    --syn-string: #f1fa8c;
-    --syn-string-symbol: #f1fa8c;
-    --syn-number: #bd93f9;
-    --syn-operator: #ff79c6;
-    --syn-punctuation: #f8f8f2;
-    --syn-comment: #6272a4;
-    --syn-generic-deleted-fg: #f55;  --syn-generic-deleted-bg: transparent;
-    --syn-generic-emph: inherit;
-    --syn-generic-inserted-fg: #50fa7b; --syn-generic-inserted-bg: transparent;
-    --syn-generic-output: #44475a;
-    --syn-whitespace: #f8f8f2;
-    --syn-kd-style: italic;
-    --syn-nl-style: italic;
-    --syn-nb-style: italic;
-    --syn-bp-style: italic;
-    --syn-nv-style: italic;
-    --syn-nl-label-weight: normal;
-    --syn-generic-heading-weight: bold;
-    --syn-generic-inserted-weight: bold;
-    --syn-generic-subheading-weight: bold;
-    --syn-generic-emph-decoration: underline;
-  }
-}
-
-/* Dark mode tokens (dracula) — manual toggle */
+/* Dark mode tokens (dracula) */
 :root[data-theme="dark"] {
   --syn-bg: #282a36;
   --syn-fg: #f8f8f2;

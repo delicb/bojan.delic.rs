@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Layout: header, footer, hero, home grid, page header, post list
+   Layout: header, footer, hero, home grid, post list
    ========================================================================== */
 
 /* ---------- Header ---------- */
@@ -19,7 +19,6 @@
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-heading);
-  text-decoration: none;
 }
 
 .site-title:hover {
@@ -35,8 +34,6 @@
   font-family: var(--font-heading);
   font-size: 0.9rem;
   color: var(--color-text-secondary);
-  text-decoration: none;
-  transition: color 0.2s;
 }
 
 .site-nav a:hover {
@@ -102,7 +99,6 @@
   font-family: var(--font-heading);
   font-weight: 500;
   color: var(--color-text-secondary);
-  text-decoration: none;
   padding: 0.4rem 0.9rem;
   border: 1px solid var(--color-border);
   border-radius: 999px;
@@ -127,33 +123,16 @@
 }
 
 .home-card {
-  display: block;
   padding: 1.5rem;
-  border: 1px solid var(--color-border);
   border-left: 3px solid transparent;
-  border-radius: var(--radius);
-  background: var(--color-card-bg);
-  text-decoration: none;
   transition: background 0.2s, border-color 0.2s, border-left-color 0.2s, transform 0.2s ease, box-shadow 0.2s ease;
-  /* Staggered page load animation */
-  animation: fadeInUp 0.4s ease both;
 }
 
-.home-card:nth-child(1) { animation-delay: 0.05s; }
-.home-card:nth-child(2) { animation-delay: 0.1s; }
-.home-card:nth-child(3) { animation-delay: 0.15s; }
-.home-card:nth-child(4) { animation-delay: 0.2s; }
-
 .home-card:hover {
-  background: var(--color-card-hover);
-  border-color: var(--color-accent);
   border-left-color: var(--color-accent);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
 }
 
 .home-card h2 {
-  font-family: var(--font-heading);
   font-size: 1.15rem;
   color: var(--color-heading);
   margin-bottom: 0.3rem;
@@ -163,24 +142,6 @@
   font-size: 0.9rem;
   color: var(--color-text-secondary);
   line-height: 1.5;
-}
-
-/* ---------- Page Header ---------- */
-.page-header {
-  padding: 3rem 0 1.5rem;
-  border-bottom: 1px solid var(--color-border);
-  margin-bottom: 2rem;
-}
-
-.page-header h1 {
-  font-size: 1.9rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.page-header p {
-  color: var(--color-text-secondary);
-  margin-top: 0.5rem;
 }
 
 /* ---------- 404 ---------- */
@@ -261,8 +222,6 @@
 .page-404 .back-home {
   font-family: var(--font-heading);
   font-size: 0.95rem;
-  color: var(--color-link);
-  text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 1.2rem;
   border: 1px solid var(--color-border);
@@ -271,49 +230,30 @@
 }
 
 .page-404 .back-home:hover {
-  color: var(--color-link-hover);
   border-color: var(--color-accent);
 }
 
 /* ---------- Post List ---------- */
-.post-list {
-  list-style: none;
-}
-
 .post-item {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--color-border);
   transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  animation: fadeIn 0.4s ease both;
 }
-
-.post-item:nth-child(1) { animation-delay: 0.05s; }
-.post-item:nth-child(2) { animation-delay: 0.1s; }
-.post-item:nth-child(3) { animation-delay: 0.15s; }
-.post-item:nth-child(4) { animation-delay: 0.2s; }
-.post-item:nth-child(5) { animation-delay: 0.25s; }
 
 .post-item:hover {
   transform: translateX(0.5rem);
-}
-
-.post-item:last-child {
-  border-bottom: none;
 }
 
 .post-item > a {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  text-decoration: none;
   gap: 0.15rem 1rem;
+  color: inherit;
 }
 
 .post-title {
   font-weight: 600;
   font-size: 1.05rem;
   color: var(--color-heading);
-  transition: color 0.2s;
 }
 
 .post-item > a:hover .post-title {
@@ -321,18 +261,14 @@
 }
 
 .post-reading-time {
-  font-family: var(--font-heading);
   font-size: 0.82rem;
-  color: var(--color-text-secondary);
   white-space: nowrap;
   width: 100%;
   order: 3;
 }
 
 .post-date {
-  font-family: var(--font-heading);
   font-size: 0.85rem;
-  color: var(--color-text-secondary);
   white-space: nowrap;
   margin-left: auto;
 }
@@ -354,20 +290,12 @@
 
 .pagination a {
   font-family: var(--font-heading);
-  color: var(--color-link);
-  text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
 }
 
-.pagination a:hover {
-  color: var(--color-link-hover);
-}
-
 .pagination-info {
-  font-family: var(--font-heading);
   font-size: 0.85rem;
-  color: var(--color-text-secondary);
 }
 
 /* ---------- Footer ---------- */
@@ -415,8 +343,6 @@
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--color-text);
-  text-decoration: none;
-  transition: color 0.2s;
 }
 
 .footer-latest-link:hover {
@@ -433,7 +359,7 @@
 .footer-social a {
   color: var(--color-text-secondary);
   font-size: 1.1rem;
-  transition: color 0.2s, transform 0.2s;
+  transition: transform 0.2s;
 }
 
 .footer-social a:hover {
@@ -447,9 +373,11 @@
   text-align: center;
 }
 
+/* Footer prose links get underlines */
 .site-footer p a {
-  color: var(--color-link);
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
 }
 
 /* ---------- Back to Top ---------- */
@@ -491,10 +419,8 @@
 .rss-link {
   font-size: 0.55em;
   color: var(--color-text-secondary);
-  text-decoration: none;
   vertical-align: middle;
   margin-left: 0.3rem;
-  transition: color 0.2s;
 }
 
 .rss-link:hover {

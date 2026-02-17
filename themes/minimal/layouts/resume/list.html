@@ -28,7 +28,7 @@
     <h2>Experience</h2>
     {{ range $resume.experience }}
     <div class="resume-company">
-      <div class="resume-company-header">
+      <div class="resume-header">
         <h3>{{ .company }}</h3>
         {{- $roles := .roles -}}
         {{- $first := index $roles 0 -}}
@@ -38,7 +38,7 @@
       {{ with .description }}<p class="resume-company-desc">{{ . }}</p>{{ end }}
       {{ range .roles }}
       <div class="resume-role">
-        <div class="resume-role-header">
+        <div class="resume-header">
           <h4>{{ .title }}</h4>
           <span class="meta">{{ partial "format-period.html" (dict "start" .start_date "end" .end_date) }}</span>
         </div>

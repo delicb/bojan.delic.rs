@@ -70,10 +70,21 @@
 {{- partial "accent-color.html" . -}}
 {{- partial "syntax-theme.html" . -}}
 <script>
-  // Apply saved theme immediately to prevent flash
+  // Resolve and set data-theme immediately to prevent flash.
+  // This lets CSS use a single [data-theme="dark"] selector
+  // instead of duplicating tokens in @media + [data-theme].
   (function() {
-    var t = localStorage.getItem('theme');
-    if (t) document.documentElement.setAttribute('data-theme', t);
+    var saved = localStorage.getItem('theme');
+    var t = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', t);
+    // When no manual preference, follow OS changes
+    if (!saved) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        if (!localStorage.getItem('theme')) {
+          document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        }
+      });
+    }
     // Suppress transitions during initial paint, then enable
     document.documentElement.classList.add('no-transition');
     requestAnimationFrame(function() {

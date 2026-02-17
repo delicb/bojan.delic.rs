@@ -7,13 +7,13 @@
   </div>
   {{ end }}
 
-  <header class="article-header">
+  <header class="page-header article-header">
     <h1>{{ .Title }}</h1>
-    {{ with .Date }}<time class="article-date">{{ .Format "January 2, 2006" }}</time>{{ end }}
-    <span class="article-reading-time">{{ .ReadingTime }} min read</span>
+    {{ with .Date }}<time class="meta article-date">{{ .Format "January 2, 2006" }}</time>{{ end }}
+    <span class="meta article-reading-time">{{ .ReadingTime }} min read</span>
     {{ with .Params.tags }}
     <div class="article-tags">
-      {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+      {{ range . }}<span class="chip">{{ . }}</span>{{ end }}
     </div>
     {{ end }}
   </header>

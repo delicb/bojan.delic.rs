@@ -15,14 +15,7 @@
   border-left: 3px solid var(--color-accent);
   border-radius: var(--radius);
   background: var(--color-card-bg);
-  animation: fadeInUp 0.4s ease both;
 }
-
-.quote-item:nth-child(1) { animation-delay: 0.05s; }
-.quote-item:nth-child(2) { animation-delay: 0.1s; }
-.quote-item:nth-child(3) { animation-delay: 0.15s; }
-.quote-item:nth-child(4) { animation-delay: 0.2s; }
-.quote-item:nth-child(5) { animation-delay: 0.25s; }
 
 .quote-text {
   font-size: 1.05rem;
@@ -42,33 +35,12 @@
   content: "— ";
 }
 
-/* ---------- Page Content Links ---------- */
-.page-content a {
-  color: var(--color-link);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-  transition: color 0.2s;
-}
-
-.page-content a:hover {
-  color: var(--color-link-hover);
-}
-
 /* ---------- Resume ---------- */
 .resume-section {
   margin-bottom: 2.5rem;
-  animation: fadeInUp 0.4s ease both;
 }
 
-.resume-section:nth-child(1) { animation-delay: 0.05s; }
-.resume-section:nth-child(2) { animation-delay: 0.1s; }
-.resume-section:nth-child(3) { animation-delay: 0.15s; }
-.resume-section:nth-child(4) { animation-delay: 0.2s; }
-.resume-section:nth-child(5) { animation-delay: 0.25s; }
-
 .resume-section h2 {
-  font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -76,12 +48,8 @@
   border-bottom: 2px solid var(--color-accent);
 }
 
-/* --- Company grouping --- */
-.resume-company {
-  margin-bottom: 2rem;
-}
-
-.resume-company-header {
+/* Shared flex header for company and role rows */
+.resume-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -89,8 +57,12 @@
   gap: 0.5rem;
 }
 
-.resume-company-header h3 {
-  font-family: var(--font-heading);
+/* --- Company grouping --- */
+.resume-company {
+  margin-bottom: 2rem;
+}
+
+.resume-company h3 {
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0;
@@ -115,26 +87,10 @@
   margin-bottom: 0;
 }
 
-.resume-role-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.resume-role-header h4 {
-  font-family: var(--font-heading);
+.resume-role h4 {
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
-}
-
-.resume-role .meta,
-.resume-company-header .meta {
-  font-size: 0.85rem;
-  color: var(--color-text-secondary);
-  white-space: nowrap;
 }
 
 .resume-role ul {
@@ -178,12 +134,6 @@
   font-weight: 600;
 }
 
-.resume-entry .meta {
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 0.5rem;
-}
-
 .resume-entry p,
 .resume-entry ul {
   font-size: 0.95rem;
@@ -208,29 +158,10 @@
 }
 
 .project-card-featured {
-  display: block;
   padding: 1.75rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  background: var(--color-card-bg);
-  text-decoration: none;
-  transition: background 0.2s, border-color 0.2s, transform 0.2s ease, box-shadow 0.2s ease;
-  animation: fadeInUp 0.4s ease both;
-}
-
-.project-card-featured:nth-child(1) { animation-delay: 0.05s; }
-.project-card-featured:nth-child(2) { animation-delay: 0.1s; }
-.project-card-featured:nth-child(3) { animation-delay: 0.15s; }
-
-.project-card-featured:hover {
-  background: var(--color-card-hover);
-  border-color: var(--color-accent);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
 }
 
 .project-card-featured h3 {
-  font-family: var(--font-heading);
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   color: var(--color-text);
@@ -242,7 +173,7 @@
   line-height: 1.6;
 }
 
-.project-card-featured .project-tech {
+.project-card-featured .chips {
   margin-top: 1rem;
 }
 
@@ -253,28 +184,6 @@
   font-weight: 600;
   margin: 2.5rem 0 1rem;
   color: var(--color-text-secondary);
-}
-
-.project-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.project-list-item {
-  padding: 0.9rem 0;
-  border-bottom: 1px solid var(--color-border);
-  animation: fadeInUp 0.4s ease both;
-}
-
-.project-list-item:nth-child(1) { animation-delay: 0.05s; }
-.project-list-item:nth-child(2) { animation-delay: 0.1s; }
-.project-list-item:nth-child(3) { animation-delay: 0.15s; }
-.project-list-item:nth-child(4) { animation-delay: 0.2s; }
-.project-list-item:nth-child(5) { animation-delay: 0.25s; }
-
-.project-list-item:last-child {
-  border-bottom: none;
 }
 
 .project-list-header {
@@ -289,7 +198,6 @@
   font-weight: 600;
   font-size: 1rem;
   color: var(--color-text);
-  text-decoration: none;
 }
 
 .project-list-name:hover {
@@ -302,19 +210,11 @@
   margin-top: 0.25rem;
 }
 
-/* --- Shared tech tags --- */
-.project-tech {
+/* --- Shared chip group container --- */
+.chips {
   display: flex;
   gap: 0.4rem;
   flex-wrap: wrap;
-}
-
-.project-tech span {
-  font-size: 0.75rem;
-  background: var(--color-tag-bg);
-  color: var(--color-tag-text);
-  padding: 0.1rem 0.5rem;
-  border-radius: 3px;
 }
 
 /* ---------- Contact ---------- */
@@ -410,18 +310,11 @@
   color: #b33;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .form-message-error {
-    background: #2a1a1a;
-    color: #e66;
-  }
-}
-[data-theme="dark"] .form-message-error {
+:root[data-theme="dark"] .form-message-error {
   background: #2a1a1a;
   color: #e66;
 }
 
 .form-message a {
   color: inherit;
-  text-decoration: underline;
 }

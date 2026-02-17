@@ -17,9 +17,9 @@
 
 {{ with .Site.Params.homeCards }}
 <section class="home-sections scroll-reveal">
-  <div class="home-grid">
+  <div class="home-grid stagger-fade">
     {{ range . }}
-    <a href="{{ .url }}" class="home-card">
+    <a href="{{ .url }}" class="home-card card-interactive">
       <h2>{{ .title }}</h2>
       <p>{{ .description }}</p>
     </a>

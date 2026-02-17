@@ -9,14 +9,14 @@
   {{ $rest := where .Site.Data.projects "featured" "ne" true }}
 
   {{ if $featured }}
-  <div class="project-grid-featured">
+  <div class="project-grid-featured stagger-fade">
     {{ range $featured }}
-    <a href="{{ .url }}" class="project-card project-card-featured" target="_blank" rel="noopener noreferrer">
+    <a href="{{ .url }}" class="project-card card-interactive project-card-featured" target="_blank" rel="noopener noreferrer">
       <h3>{{ .name }}</h3>
       <p>{{ .description }}</p>
       {{ with .tech }}
-      <div class="project-tech">
-        {{ range . }}<span>{{ . }}</span>{{ end }}
+      <div class="chips">
+        {{ range . }}<span class="chip">{{ . }}</span>{{ end }}
       </div>
       {{ end }}
     </a>
@@ -26,14 +26,14 @@
 
   {{ if $rest }}
   <h2 class="project-section-heading">Other Projects</h2>
-  <ul class="project-list">
+  <ul class="project-list list-separated stagger-fade">
     {{ range $rest }}
     <li class="project-list-item scroll-reveal">
       <div class="project-list-header">
         <a href="{{ .url }}" class="project-list-name" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
         {{ with .tech }}
-        <div class="project-tech">
-          {{ range . }}<span>{{ . }}</span>{{ end }}
+        <div class="chips">
+          {{ range . }}<span class="chip">{{ . }}</span>{{ end }}
         </div>
         {{ end }}
       </div>

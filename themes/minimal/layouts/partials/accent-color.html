@@ -46,16 +46,6 @@
   --color-tag-bg: {{ $p.tagBg }};
   --color-tag-text: {{ $p.tagText }};
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-accent: {{ $p.darkAccent }};
-    --color-accent-hover: {{ $p.darkAccentHover }};
-    --color-link: {{ $p.darkLink }};
-    --color-link-hover: {{ $p.darkLinkHover }};
-    --color-tag-bg: {{ $p.darkTagBg }};
-    --color-tag-text: {{ $p.darkTagText }};
-  }
-}
 :root[data-theme="dark"] {
   --color-accent: {{ $p.darkAccent }};
   --color-accent-hover: {{ $p.darkAccentHover }};
