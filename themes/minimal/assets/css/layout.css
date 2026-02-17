@@ -235,11 +235,11 @@
 
 /* ---------- Post List ---------- */
 .post-item {
-  transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: translate 0.2s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .post-item:hover {
-  transform: translateX(0.5rem);
+  translate: 0.5rem 0;
 }
 
 .post-item > a {
