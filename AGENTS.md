@@ -50,6 +50,7 @@ Projects, resume, and quotes are driven by YAML data files, not individual conte
 - `assets/icons/` — inline SVG icons (sourced from Font Awesome Free 6.x). No external icon library is loaded; icons are inlined at build time via the `icon.html` partial.
 - `layouts/partials/icon.html` — partial for inlining SVG icons. Usage: `{{ partial "icon.html" (dict "name" "github") }}`. The `name` maps to a file in `assets/icons/<name>.svg`.
 - `layouts/shortcodes/include.html` — shortcode for including code from page bundle files.
+- `layouts/shortcodes/kbd.html`: shortcode for keyboard shortcuts. `{{< kbd "cmd+shift+d" >}}` renders one keycap per key, with macOS symbols for modifiers.
 - `layouts/partials/` — head (with SEO meta), header, footer, theme toggle, JSON-LD.
 - `layouts/404.html` — custom 404 page.
 

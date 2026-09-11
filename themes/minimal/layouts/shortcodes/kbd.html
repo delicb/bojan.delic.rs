@@ -1,0 +1,27 @@
+{{- /* Usage: {{< kbd "cmd+shift+d" >}}. Modifiers render as macOS symbols. */ -}}
+{{- $known := dict
+  "cmd" (slice "⌘" "Cmd") "command" (slice "⌘" "Cmd") "super" (slice "⌘" "Cmd")
+  "shift" (slice "⇧" "Shift")
+  "alt" (slice "⌥" "Alt") "opt" (slice "⌥" "Option") "option" (slice "⌥" "Option")
+  "ctrl" (slice "⌃" "Ctrl") "control" (slice "⌃" "Ctrl")
+  "enter" (slice "↩" "Enter") "return" (slice "↩" "Return")
+  "tab" (slice "⇥" "Tab") "esc" (slice "Esc" "Esc") "space" (slice "Space" "Space")
+  "backspace" (slice "⌫" "Backspace") "delete" (slice "⌦" "Delete")
+  "left" (slice "←" "Left") "right" (slice "→" "Right")
+  "up" (slice "↑" "Up") "down" (slice "↓" "Down")
+-}}
+{{- $labels := slice -}}
+{{- $names := slice -}}
+{{- range split (.Get 0) "+" -}}
+  {{- $key := lower (trim . " ") -}}
+  {{- with index $known $key -}}
+    {{- $labels = $labels | append (index . 0) -}}
+    {{- $names = $names | append (index . 1) -}}
+  {{- else -}}
+    {{- $label := cond (eq (len $key) 1) (upper $key) (title $key) -}}
+    {{- $labels = $labels | append $label -}}
+    {{- $names = $names | append $label -}}
+  {{- end -}}
+{{- end -}}
+<kbd class="kbd-combo" title="{{ delimit $names "+" }}">{{ range $labels }}<kbd>{{ . }}</kbd>{{ end }}</kbd>
+{{- /* trim trailing newline */ -}}

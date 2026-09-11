@@ -54,8 +54,11 @@
   --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.08);
   --color-mark-bg: #fff3b0;
   --color-mark-text: inherit;
-  --color-kbd-bg: #f0f0f4;
-  --color-kbd-border: #c8c8d0;
+  --color-kbd-bg: #f3f3f6;
+  --color-kbd-bg-top: #ffffff;
+  --color-kbd-border: #cdcdd6;
+  --color-kbd-edge: #a6a6b4;
+  --color-kbd-text: #2e2e44;
 
   --max-width: 720px;
   --spacing: 1.5rem;
@@ -85,8 +88,11 @@
   --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
   --color-mark-bg: #5c4b00;
   --color-mark-text: #f5e6b8;
-  --color-kbd-bg: #2a2a32;
-  --color-kbd-border: #4a4a55;
+  --color-kbd-bg: #34343f;
+  --color-kbd-bg-top: #454552;
+  --color-kbd-border: #5a5a68;
+  --color-kbd-edge: #50505e;
+  --color-kbd-text: #f0f0f5;
 }
 
 /* ---------- Reset ---------- */

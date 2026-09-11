@@ -268,7 +268,20 @@ Use raw `<kbd>` HTML tags to style keyboard shortcuts (requires `unsafe = true` 
 Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.
 ```
 
-Renders with a keycap appearance (border, shadow, monospace font) in both light and dark modes.
+Renders as a raised keycap (text font, deeper bottom edge) in both light and dark modes, so keys look
+different from inline `code`.
+
+### `kbd` shortcode
+
+For shortcuts, prefer the shortcode. It splits the value on `+` and renders one keycap per key:
+
+```text
+{{< kbd "cmd+shift+d" >}}
+```
+
+Modifiers and special keys render as macOS symbols: `cmd` ⌘, `shift` ⇧, `alt`/`opt` ⌥, `ctrl` ⌃,
+`enter` ↩, `tab` ⇥, `backspace` ⌫, `left`/`right`/`up`/`down` as arrows. Other single characters
+render in upper case. The full key names show on hover (`title`).
 
 ---
 
