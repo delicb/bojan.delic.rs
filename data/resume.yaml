@@ -3,9 +3,22 @@ summary: >
   record of leading large engineering organizations (100+ engineers across multiple locations).
   Delivered measurable impact: tripled release cadence, reduced cloud costs by double-digit
   percentages, and decreased production incidents by 50%. Technical depth in Python, Go, Kubernetes,
-  and AWS with hands-on experience scaling systems from monoliths to microservices.
+  and AWS with hands-on experience scaling systems from monoliths to microservices. Daily
+  agent-assisted development, including MCP server integration and custom agent skills and
+  extensions.
 
 experience:
+  - company: "Linear"
+    location: "Remote"
+    description: >
+      Linear is an issue tracking and project planning tool for software teams.
+    roles:
+      - title: "Engineer"
+        start_date: 2026-03-01
+        end_date: present
+        highlights:
+          - "Working on Linear infrastructure."
+
   - company: "Orgnostic (acquired by CultureAmp, 2024)"
     location: "Belgrade, Serbia"
     description: >
@@ -14,7 +27,7 @@ experience:
     roles:
       - title: "Principal Engineer"
         start_date: 2021-10-01
-        end_date: present
+        end_date: 2026-03-01
         highlights:
           - "Built self-service customer onboarding platform reducing setup time from days to hours,
             and created declarative data integration framework that reduced new source integration
@@ -150,6 +163,10 @@ skills:
     items: "PostgreSQL, Redis, RabbitMQ, SQS"
   - category: "Platforms & Tools"
     items: "GitHub Actions, GitLab CI"
+  - category: "AI & Agents"
+    items:
+      "Agent-assisted development and review workflows, MCP server integration, authoring agent
+      skills and extensions, parallel agent workflows"
   - category: "Architecture"
     items:
       "Event-driven systems, distributed tracing, SAML 2.0/OIDC SSO, policy-based authorization"
