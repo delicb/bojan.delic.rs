@@ -6,24 +6,24 @@
   <form id="contact-form" class="contact-form" method="POST" action="/api/contact">
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" required autocomplete="name">
+      <input type="text" id="name" name="name" required maxlength="100" autocomplete="name">
     </div>
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" required autocomplete="email">
+      <input type="email" id="email" name="email" required maxlength="254" autocomplete="email">
     </div>
 
     <div class="form-group">
       <label for="message">Message</label>
-      <textarea id="message" name="message" rows="6" required></textarea>
+      <textarea id="message" name="message" rows="6" required maxlength="5000"></textarea>
     </div>
 
     {{/* Honeypot field: hidden from users, bots fill it in */}}
     <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
     {{/* Turnstile widget */}}
-    <div class="cf-turnstile" data-sitekey="{{ .Site.Params.turnstileSiteKey }}" data-theme="auto"></div>
+    <div class="cf-turnstile" data-sitekey="{{ .Site.Params.turnstileSiteKey }}" data-theme="auto" data-action="contact"></div>
 
     <button type="submit" class="form-submit">Send Message</button>
   </form>
@@ -62,6 +62,13 @@
       return;
     }
 
+    const resetTurnstile = () => {
+      const widget = form.querySelector('.cf-turnstile');
+      if (widget && window.turnstile) {
+        window.turnstile.reset(widget);
+      }
+    };
+
     try {
       const res = await fetch(form.action, {
         method: 'POST',
@@ -72,11 +79,13 @@
         form.hidden = true;
         successEl.hidden = false;
       } else {
+        resetTurnstile();
         errorEl.hidden = false;
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
       }
     } catch {
+      resetTurnstile();
       errorEl.hidden = false;
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send Message';

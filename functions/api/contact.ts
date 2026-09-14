@@ -1,57 +1,165 @@
+import turnstilePlugin, { type PluginData } from "@cloudflare/pages-plugin-turnstile";
+
+const TURNSTILE_ACTION = "contact";
+const MAX_REQUEST_BYTES = 32 * 1024;
+const MAX_TURNSTILE_TOKEN_LENGTH = 2048;
+const MAX_NAME_LENGTH = 100;
+const MAX_EMAIL_LENGTH = 254;
+const MAX_MESSAGE_LENGTH = 5000;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 interface Env {
+  TURNSTILE_SECRET_KEY: string;
   RESEND_API_KEY: string;
   CONTACT_EMAIL: string;
 }
 
-export async function onRequestPost(
-  context: EventContext<Env, string, unknown>
-): Promise<Response> {
-  const { request, env } = context;
+type ContactData = {
+  [key: string]: unknown;
+  formData?: FormData;
+  turnstile?: PluginData["turnstile"];
+};
 
-  // Turnstile verification is handled by _middleware.ts.
-  const formData = await request.formData();
-  const name = (formData.get("name") as string || "").trim();
-  const email = (formData.get("email") as string || "").trim();
-  const message = (formData.get("message") as string || "").trim();
+type ContactFunction = PagesFunction<Env, string, ContactData>;
 
-  // Honeypot: hidden field that real users never see. Bots fill it in.
-  // Return 200 so the bot thinks it worked.
-  if (formData.get("website")) {
-    return new Response(JSON.stringify({ success: true }), {
-      headers: { "Content-Type": "application/json" },
-    });
+const validateContactRequest: ContactFunction = async (context) => {
+  const { request } = context;
+  const contentType = request.headers.get("content-type")?.toLowerCase() || "";
+
+  if (
+    !contentType.includes("multipart/form-data") &&
+    !contentType.includes("application/x-www-form-urlencoded")
+  ) {
+    return errorResponse(415, "Expected form data.");
   }
+
+  const contentLengthHeader = request.headers.get("content-length");
+  const contentLength = contentLengthHeader ? Number(contentLengthHeader) : 0;
+  if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) {
+    return errorResponse(413, "Request is too large.");
+  }
+
+  let formData: FormData;
+  try {
+    formData = await request.clone().formData();
+  } catch {
+    return errorResponse(400, "Invalid form data.");
+  }
+
+  if (getFormValue(formData, "website")) {
+    return successResponse();
+  }
+
+  const token = getFormValue(formData, "cf-turnstile-response");
+  if (!token || token.length > MAX_TURNSTILE_TOKEN_LENGTH) {
+    return errorResponse(400, "Turnstile verification missing.");
+  }
+
+  context.data.formData = formData;
+
+  return turnstilePlugin({
+    secret: context.env.TURNSTILE_SECRET_KEY,
+    response: token,
+    onError: (turnstileContext) => {
+      const result = turnstileContext.data.turnstile;
+      console.warn(
+        JSON.stringify({
+          event: "turnstile_rejected",
+          errorCodes: result.success ? [] : result["error-codes"],
+        }),
+      );
+      return errorResponse(403, "Turnstile verification failed.");
+    },
+  })(context);
+};
+
+const sendContactEmail: ContactFunction = async (context) => {
+  const { request, env } = context;
+  const turnstile = context.data.turnstile;
+  const expectedHostname = new URL(request.url).hostname;
+
+  if (
+    !turnstile?.success ||
+    turnstile.hostname !== expectedHostname ||
+    turnstile.action !== TURNSTILE_ACTION
+  ) {
+    console.warn(
+      JSON.stringify({
+        event: "turnstile_metadata_mismatch",
+        expectedHostname,
+        hostname: turnstile?.success ? turnstile.hostname : undefined,
+        action: turnstile?.success ? turnstile.action : undefined,
+      }),
+    );
+    return errorResponse(403, "Turnstile verification failed.");
+  }
+
+  const formData = context.data.formData;
+  if (!formData) {
+    return errorResponse(400, "Invalid form data.");
+  }
+
+  const name = getFormValue(formData, "name");
+  const email = getFormValue(formData, "email");
+  const message = getFormValue(formData, "message");
 
   if (!name || !email || !message) {
     return errorResponse(400, "All fields are required.");
   }
 
+  if (name.length > MAX_NAME_LENGTH) {
+    return errorResponse(400, "Name is too long.");
+  }
 
-  // Send email via Resend
-  const emailResult = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: "Contact Form <noreply@bojan.delic.rs>",
-      to: [env.CONTACT_EMAIL],
-      reply_to: email,
-      subject: `Contact form: ${name}`,
-      text: `From: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-      html: contactEmailHtml(name, email, message),
-    }),
-  });
+  if (email.length > MAX_EMAIL_LENGTH || !EMAIL_PATTERN.test(email)) {
+    return errorResponse(400, "Email address is invalid.");
+  }
 
-  if (!emailResult.ok) {
+  if (message.length > MAX_MESSAGE_LENGTH) {
+    return errorResponse(400, "Message is too long.");
+  }
+
+  let emailResult: Response;
+  try {
+    emailResult = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Contact Form <noreply@bojan.delic.rs>",
+        to: [env.CONTACT_EMAIL],
+        reply_to: email,
+        subject: `Contact form: ${name}`,
+        text: `From: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+        html: contactEmailHtml(name, email, message),
+      }),
+    });
+  } catch (error) {
+    console.error(
+      JSON.stringify({
+        event: "contact_email_request_failed",
+        error: error instanceof Error ? error.name : "unknown",
+      }),
+    );
     return errorResponse(500, "Failed to send message. Please try again later.");
   }
 
-  return new Response(JSON.stringify({ success: true }), {
-    headers: { "Content-Type": "application/json" },
-  });
-}
+  if (!emailResult.ok) {
+    console.error(
+      JSON.stringify({
+        event: "contact_email_rejected",
+        status: emailResult.status,
+      }),
+    );
+    return errorResponse(500, "Failed to send message. Please try again later.");
+  }
+
+  return successResponse();
+};
+
+export const onRequestPost: ContactFunction[] = [validateContactRequest, sendContactEmail];
 
 function contactEmailHtml(name: string, email: string, message: string): string {
   const escapedName = escapeHtml(name);
@@ -112,6 +220,17 @@ function escapeHtml(str: string): string {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+function getFormValue(formData: FormData, name: string): string {
+  const value = formData.get(name);
+  return typeof value === "string" ? value.trim() : "";
+}
+
+function successResponse(): Response {
+  return new Response(JSON.stringify({ success: true }), {
+    headers: { "Content-Type": "application/json" },
+  });
 }
 
 function errorResponse(status: number, error: string): Response {
