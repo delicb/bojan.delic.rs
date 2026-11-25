@@ -1,0 +1,8 @@
+# Development toolchain. Picked up automatically by mise (locally and in the
+# Linear agent sandbox). Keep the Hugo version in sync with
+# .github/workflows/deploy.yml.
+[tools]
+hugo-extended = "0.155.3"
+node = "24"
+# Cloudflare Pages CLI, for running `functions/` locally (`wrangler pages dev`).
+"npm:wrangler" = "4"

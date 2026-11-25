@@ -11,6 +11,7 @@ Personal website for **Bojan Delić**, hosted at https://bojan.delic.rs/
 - **No JS frameworks** — minimal JavaScript (theme toggle only)
 - **Build command**: `hugo` (output in `public/`)
 - **Dev server**: `hugo server --buildDrafts`
+- **Toolchain**: pinned in `mise.toml` (Hugo extended, Node, Wrangler); run `mise install`. Keep the Hugo version in sync with `.github/workflows/deploy.yml`.
 
 ## Site Structure
 
