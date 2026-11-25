@@ -260,9 +260,9 @@ This ensures print output doesn't depend on Google Fonts CDN.
 
 - [x] 1. Add Google Fonts `<link>` tags to `themes/minimal/layouts/partials/head.html`
 - [x] 2. Add `--font-heading` and update `--font-body` in `:root` in
-     `themes/minimal/assets/css/base.css`
+      `themes/minimal/assets/css/base.css`
 - [x] 3. Add global `h1-h6 { font-family: var(--font-heading) }` in
-     `themes/minimal/assets/css/base.css`
+      `themes/minimal/assets/css/base.css`
 - [x] 4. Update layout headings/UI in `themes/minimal/assets/css/layout.css`
 - [x] 5. Update article headings/meta in `themes/minimal/assets/css/article.css`
 - [x] 6. Update section headings in `themes/minimal/assets/css/sections.css`

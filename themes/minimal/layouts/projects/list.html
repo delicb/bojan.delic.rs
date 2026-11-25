@@ -5,8 +5,8 @@
 </section>
 
 <section class="page-content">
-  {{ $featured := where .Site.Data.projects "featured" true }}
-  {{ $rest := where .Site.Data.projects "featured" "ne" true }}
+  {{ $featured := where hugo.Data.projects "featured" true }}
+  {{ $rest := where hugo.Data.projects "featured" "ne" true }}
 
   {{ if $featured }}
   <div class="project-grid-featured stagger-fade">

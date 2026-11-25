@@ -4,15 +4,15 @@ Personal website for **Bojan Delić**, hosted at https://bojan.delic.rs/
 
 ## Tech Stack
 
-- **Static site generator**: Hugo (v0.155+)
+- **Static site generator**: Hugo (v0.170+)
 - **Theme**: Custom minimal theme at `themes/minimal/`
 - **Hosting**: Cloudflare Pages
 - **CI**: GitHub Actions (`.github/workflows/deploy.yml`)
 - **No JS frameworks** — minimal JavaScript (theme toggle only)
 - **Build command**: `hugo` (output in `public/`)
 - **Dev server**: `hugo server --buildDrafts`
-- **Toolchain**: pinned in `mise.toml` (Hugo extended, Node, Wrangler); run `mise install`. Keep the
-  Hugo version in sync with `.github/workflows/deploy.yml`.
+- **Toolchain**: pinned in `mise.toml` (Hugo, Node, Wrangler); run `mise install`. Keep the Hugo and
+  Node versions in sync with `.github/workflows/deploy.yml` and `test.yml`.
 
 ## Site Structure
 

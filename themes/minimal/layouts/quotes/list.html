@@ -6,7 +6,7 @@
 
 <section class="page-content">
   <div class="quotes-list stagger-fade">
-    {{ $quotes := .Site.Data.quotes }}
+    {{ $quotes := hugo.Data.quotes }}
     {{ range $quotes }}
     <div class="quote-item scroll-reveal">
       <p class="quote-text">{{ .text }}</p>

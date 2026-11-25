@@ -5,7 +5,7 @@
 </section>
 
 <section class="page-content">
-  {{ $resume := .Site.Data.resume }}
+  {{ $resume := hugo.Data.resume }}
 
   {{ with $resume.summary }}
   <div class="resume-section">
