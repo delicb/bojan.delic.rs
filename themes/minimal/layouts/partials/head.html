@@ -68,7 +68,10 @@
 {{ $sections := resources.Get "css/sections.css" }}
 {{ $responsive := resources.Get "css/responsive.css" }}
 {{ $syntax := resources.Get "css/syntax.css" }}
-{{ $style := slice $base $layout $article $sections $responsive $syntax | resources.Concat "css/style.css" | minify | fingerprint }}
+{{ $parts := slice $base $layout $article $sections $responsive $syntax }}
+{{- /* Optional style variant: site.Params.themeStyle loads css/styles/<name>.css last so it overrides the defaults */ -}}
+{{ with site.Params.themeStyle }}{{ with resources.Get (printf "css/styles/%s.css" .) }}{{ $parts = $parts | append . }}{{ end }}{{ end }}
+{{ $style := $parts | resources.Concat "css/style.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
 {{- partial "accent-color.html" . -}}
 {{- partial "syntax-theme.html" . -}}

@@ -1,0 +1,97 @@
+/* ==========================================================================
+   Style variant: Quiet
+   Same fonts and accent, but strips decoration: no boxes, pills, shadows,
+   lifts or entrance animations. Content sits on a left-aligned text column.
+   Enable with `themeStyle = "quiet"` in site params.
+   ========================================================================== */
+
+:root {
+  --max-width: 640px;
+  --radius: 4px;
+  --shadow-hover: none;
+  --shadow-subtle: none;
+}
+
+body { border-top: none; }
+
+/* Motion off — content is static */
+.stagger-fade > *,
+.hero, .hero h1, .tagline, .social-links,
+.article-header h1, .article-date, .article-reading-time,
+.article-tags, .article-content, .contact-form {
+  animation: none;
+}
+.scroll-reveal { opacity: 1; transform: none; }
+
+/* Header: no rule, lighter nav */
+.site-header { border-bottom: none; padding: 1.75rem 0 0.5rem; }
+.site-nav { gap: 1.25rem; align-items: center; }
+.site-nav a.active { font-weight: 400; color: var(--color-heading); }
+.theme-toggle { border: none; padding: 0.2rem; filter: grayscale(1); opacity: 0.7; }
+.theme-toggle:hover { opacity: 1; }
+
+/* Hero: left-aligned, no accent bar, social links as plain text */
+.hero { text-align: left; padding: 4rem 0 2rem; }
+.hero-accent { display: none; }
+.hero h1 { font-size: 2rem; }
+.tagline {
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+}
+.social-links { justify-content: flex-start; gap: 1.25rem; }
+.social-pill { padding: 0; border: none; border-radius: 0; }
+.social-pill:hover { background: none; }
+
+/* Home cards become a plain index */
+.home-sections { padding: 1rem 0 3rem; }
+.home-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+.card-interactive,
+.card-interactive:hover {
+  border: none;
+  background: none;
+  transform: none;
+  box-shadow: none;
+}
+.home-card { padding: 0; }
+.home-card h2 { font-size: 1.05rem; }
+.home-card:hover h2 { color: var(--color-accent); }
+
+/* Page headers without rules */
+.page-header { border-bottom: none; padding: 3rem 0 1rem; }
+
+/* Post list: no separators, no slide */
+.list-separated > * { border-bottom: none; padding: 0.6rem 0; }
+.post-item:hover { translate: none; }
+
+/* Chips as muted text */
+.chip { background: none; padding: 0; color: var(--color-text-secondary); }
+.chip::before { content: "#"; }
+
+/* Quotes: just text with a hairline */
+.quote-item {
+  border: none;
+  border-left: 1px solid var(--color-border);
+  border-radius: 0;
+  background: none;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+}
+.quote-author { text-align: left; }
+
+/* Resume / projects */
+.resume-section h2 { border-bottom: 1px solid var(--color-border); }
+.project-card-featured { padding: 0; }
+.project-card-featured:hover h3 { color: var(--color-accent); }
+
+/* Article */
+.article-cover { margin-top: 2rem; }
+.article-content blockquote,
+.article-content .alert { background: none; }
+.article-content hr { border-top: 1px solid var(--color-border); }
+
+/* Footer: plain rule instead of gradient, left-aligned */
+.site-footer::before { background: var(--color-border); }
+.footer-latest, .site-footer p { text-align: left; }
+.footer-social { justify-content: flex-start; }
+.back-to-top { box-shadow: none; }

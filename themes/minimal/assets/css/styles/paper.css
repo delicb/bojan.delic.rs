@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Style variant: Paper
+   Editorial reading layout: system serif body, narrow measure, warm
+   off-white background, small-caps metadata. Centered like a book page.
+   No extra font files — uses the platform's serif stack.
+   Enable with `themeStyle = "paper"` in site params.
+   ========================================================================== */
+
+:root,
+:root[data-theme="dark"] {
+  --font-body: Charter, "Bitstream Charter", "Iowan Old Style", "Sitka Text",
+    Cambria, Georgia, serif;
+  --shadow-hover: none;
+  --shadow-subtle: none;
+  --max-width: 620px;
+  --radius: 2px;
+}
+
+:root {
+  --color-bg: #fbfaf7;
+  --color-bg-secondary: #f3f1ec;
+  --color-card-bg: transparent;
+  --color-border: #e6e2d9;
+  --color-text: #2b2a27;
+  --color-text-secondary: #6f6b63;
+  --color-heading: #1c1b19;
+}
+:root[data-theme="dark"] {
+  --color-bg: #1a1917;
+  --color-bg-secondary: #22211e;
+  --color-card-bg: transparent;
+  --color-border: #34322e;
+  --color-text: #dcd8cf;
+  --color-text-secondary: #9a958b;
+  --color-heading: #f1ede4;
+}
+
+body { border-top: none; font-size: 1.075rem; }
+
+.stagger-fade > *,
+.hero, .hero h1, .tagline, .social-links,
+.article-header h1, .article-date, .article-reading-time,
+.article-tags, .article-content, .contact-form {
+  animation: none;
+}
+.scroll-reveal { opacity: 1; transform: none; }
+
+/* Small-caps metadata */
+.meta, .tagline, .footer-latest-label {
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+}
+
+/* Header */
+.site-header { border-bottom: none; padding: 1.5rem 0 0; }
+.site-nav a.active { font-weight: 400; color: var(--color-heading); }
+.theme-toggle { border: none; filter: grayscale(1); opacity: 0.6; }
+
+/* Hero */
+.hero { padding: 5rem 0 2.5rem; }
+.hero-accent { width: 1px; height: 32px; border-radius: 0; background: var(--color-border); }
+.hero h1 { font-size: 2.2rem; font-weight: 600; }
+.tagline { font-size: 1rem; }
+.social-pill { border: none; padding: 0.2rem 0.4rem; }
+.social-pill:hover { background: none; }
+
+/* Home cards: centred table of contents */
+.home-grid { gap: 2rem 2.5rem; }
+.card-interactive,
+.card-interactive:hover {
+  border: none;
+  background: none;
+  transform: none;
+  box-shadow: none;
+}
+.home-card { padding: 0; text-align: center; }
+.home-card h2 { font-weight: 600; }
+.home-card:hover h2 { color: var(--color-accent); }
+.home-card p { font-size: 0.95rem; }
+
+/* Page header: centred title, short rule */
+.page-header { text-align: center; border-bottom: none; padding: 3.5rem 0 1rem; }
+.page-header::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  margin: 1.5rem auto 0;
+  border-top: 1px solid var(--color-border);
+}
+.article-tags { justify-content: center; }
+
+.list-separated > * { border-bottom: none; padding: 0.75rem 0; }
+.post-item:hover { translate: none; }
+
+.chip { background: none; padding: 0; font-style: italic; }
+
+/* Quotes: centred epigraphs */
+.quotes-list { gap: 2.5rem; }
+.quote-item { border: none; background: none; padding: 0; text-align: center; }
+.quote-text { font-size: 1.15rem; }
+.quote-author { text-align: center; }
+
+.resume-section h2 { border-bottom: 1px solid var(--color-border); }
+.resume-role { border-left-width: 1px; }
+.project-card-featured { padding: 0; }
+.project-card-featured:hover h3 { color: var(--color-accent); }
+
+/* Article */
+.article-cover { margin-top: 2rem; }
+.article-content { font-size: 1.1rem; line-height: 1.75; }
+.article-content blockquote { background: none; border-left-width: 1px; }
+.article-content .alert { background: none; }
+.article-content hr { border-top: 1px solid var(--color-border); width: 30%; margin: 2.5rem auto; }
+
+/* Footer */
+.site-footer::before { background: var(--color-border); width: 2.5rem; margin: 0 auto 2rem; }
+.back-to-top { box-shadow: none; }
