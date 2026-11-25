@@ -189,8 +189,8 @@ Run `npm test` before pushing (requires `npm ci` and the `mise` toolchain). It r
 
 `scripts/check-output.mjs` sanity-checks generated HTML, sitemap and feeds: required meta tags,
 canonical URLs, valid JSON-LD, broken internal links, Hugo template error markers, required static
-files and the `security.txt` expiry date. CI runs `npm test` on every push and pull request
-(`.github/workflows/test.yml`).
+files and the `security.txt` expiry date. CI runs `npm test` on every pull request and on pushes to
+`main` (`.github/workflows/test.yml`).
 
 ## CI/Deployment
 

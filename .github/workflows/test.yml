@@ -1,7 +1,9 @@
 name: Test
 
 on:
+  # Branch pushes are covered by pull_request; limiting push to main avoids duplicate runs.
   push:
+    branches: [main]
   pull_request:
 
 jobs:
