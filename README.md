@@ -5,7 +5,7 @@ Personal website. Built with [Hugo](https://gohugo.io/), deployed to
 
 ## Development
 
-Tools (Hugo extended, Node, Wrangler) are pinned in `mise.toml`. Install them with
+Tools (Hugo, Node, Wrangler) are pinned in `mise.toml`. Install them with
 [mise](https://mise.jdx.dev/):
 
 ```bash

@@ -1,5 +1,5 @@
 baseURL = 'https://bojan.delic.rs/'
-languageCode = 'en'
+locale = 'en'
 title = 'Bojan Delić'
 theme = 'minimal'
 enableGitInfo = true

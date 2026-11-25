@@ -519,13 +519,13 @@ Replace with:
 
 - [x] 1. Update hero template in `themes/minimal/layouts/index.html`
 - [x] 2. Replace hero CSS in `themes/minimal/assets/css/layout.css` (hero section + social-pill +
-     remove old `.social-links a`)
+      remove old `.social-links a`)
 - [x] 3. Update 404 template in `themes/minimal/layouts/404.html`
 - [x] 4. Replace 404 CSS in `themes/minimal/assets/css/layout.css` (page-404 section + glitch
-     keyframes)
+      keyframes)
 - [x] 5. Update footer template in `themes/minimal/layouts/partials/footer.html`
 - [x] 6. Replace footer CSS in `themes/minimal/assets/css/layout.css` (footer section); delete
-     `.footer-rss` rules
+      `.footer-rss` rules
 - [x] 7. Replace mobile styles in `themes/minimal/assets/css/responsive.css`
 - [x] 8. Add print overrides for new elements in `themes/minimal/assets/css/responsive.css`
 - [x] 9. Verify with `hugo server --buildDrafts`

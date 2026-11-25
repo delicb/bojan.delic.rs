@@ -3,7 +3,7 @@
 A clean, minimal Hugo theme for personal websites. Supports a blog, resume, projects, quotes, and
 contact page — all driven by simple configuration and YAML data files.
 
-![Hugo](https://img.shields.io/badge/Hugo-%3E%3D0.128-ff4088?logo=hugo)
+![Hugo](https://img.shields.io/badge/Hugo-%3E%3D0.158-ff4088?logo=hugo)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 ## Features
@@ -72,7 +72,7 @@ hugo server
 
 ```toml
 baseURL = 'https://example.com/'
-languageCode = 'en-us'
+locale = 'en-us'
 title = 'Your Name'
 theme = 'minimal'
 

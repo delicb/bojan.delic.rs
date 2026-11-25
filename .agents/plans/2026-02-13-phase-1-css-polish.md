@@ -386,17 +386,17 @@ body {
 
 - [x] 1. Add `@keyframes fadeInUp` and `@keyframes fadeIn` to `themes/minimal/assets/css/base.css`
 - [x] 2. Add `body { border-top: 3px solid var(--color-accent); }` to
-     `themes/minimal/assets/css/base.css`
+      `themes/minimal/assets/css/base.css`
 - [x] 3. Add theme transition CSS + `.no-transition` suppressor to
-     `themes/minimal/assets/css/base.css`
+      `themes/minimal/assets/css/base.css`
 - [x] 4. Update the inline `<script>` in `themes/minimal/layouts/partials/head.html` to add/remove
-     `.no-transition`
+      `.no-transition`
 - [x] 5. Add hero animation delays to `.hero`, `.hero h1`, `.tagline`, `.social-links` in
-     `themes/minimal/assets/css/layout.css`
+      `themes/minimal/assets/css/layout.css`
 - [x] 6. Update `.home-card` with enhanced hover + staggered animation in
-     `themes/minimal/assets/css/layout.css`
+      `themes/minimal/assets/css/layout.css`
 - [x] 7. Add dark mode shadow override for `.home-card:hover` in
-     `themes/minimal/assets/css/layout.css`
+      `themes/minimal/assets/css/layout.css`
 - [x] 8. Update `themes/minimal/layouts/partials/header.html` with active nav class conditionals
 - [x] 9. Add `.site-nav a.active` styles to `themes/minimal/assets/css/layout.css`
 - [x] 10. Update `.post-title` font-size and `.post-item` hover indent in
