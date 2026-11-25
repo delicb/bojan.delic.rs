@@ -4,6 +4,13 @@ Personal website. Built with [Hugo](https://gohugo.io/), deployed to [Cloudflare
 
 ## Development
 
+Tools (Hugo extended, Node, Wrangler) are pinned in `mise.toml`. Install them with [mise](https://mise.jdx.dev/):
+
+```bash
+mise install
+npm ci
+```
+
 ```bash
 hugo server --buildDrafts
 ```
