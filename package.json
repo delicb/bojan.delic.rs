@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "test": "npm run test:format && npm run test:types && npm run test:site && npm run test:drafts && npm run test:theme",
-    "test:format": "prettier --check 'content/**/*.md' 'data/**/*.{yaml,yml}'",
+    "test:format": "prettier --check '**/*.{md,yaml,yml}'",
     "test:types": "tsc -p .",
     "test:site": "hugo --minify --panicOnWarning --cleanDestinationDir && node scripts/check-output.mjs public --site",
     "test:drafts": "hugo --minify --panicOnWarning --buildDrafts --buildFuture --destination .test-output/drafts --cleanDestinationDir && node scripts/check-output.mjs .test-output/drafts",
