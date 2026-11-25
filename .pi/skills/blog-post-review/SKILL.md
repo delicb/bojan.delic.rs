@@ -5,7 +5,8 @@ description: Review and proofread a blog post draft. Checks grammar, clarity, to
 
 # Blog Post Review
 
-Review a blog post for quality before publishing. Follow all steps in order and present findings as a single consolidated report at the end.
+Review a blog post for quality before publishing. Follow all steps in order and present findings as
+a single consolidated report at the end.
 
 ## Step 1: Identify the Post
 
@@ -15,7 +16,8 @@ If the user didn't specify which post to review, list drafts:
 grep -rl 'draft: true' content/blog/*/index.md
 ```
 
-If there are multiple drafts, ask which one to review. If there's only one, use it. If there are no drafts, list recent posts and ask.
+If there are multiple drafts, ask which one to review. If there's only one, use it. If there are no
+drafts, list recent posts and ask.
 
 Read the full post content with the `read` tool.
 
@@ -25,9 +27,11 @@ Verify the front matter has:
 
 - **title** — present and not placeholder text
 - **date** — present and valid format (YYYY-MM-DD)
-- **description** — present and not empty (used for meta tags and post listings; should be 1-2 sentences, under 160 characters for SEO)
+- **description** — present and not empty (used for meta tags and post listings; should be 1-2
+  sentences, under 160 characters for SEO)
 - **tags** — present and not empty (at least one tag recommended)
-- **draft** — note whether it's `true` or `false`; remind the user to set `false` when ready to publish
+- **draft** — note whether it's `true` or `false`; remind the user to set `false` when ready to
+  publish
 
 Flag anything missing or problematic.
 
@@ -39,30 +43,35 @@ Check if the post bundle contains a cover image:
 ls content/blog/<slug>/cover.* 2>/dev/null
 ```
 
-If missing, note it as optional but recommended for social sharing (Open Graph image falls back to the site default).
+If missing, note it as optional but recommended for social sharing (Open Graph image falls back to
+the site default).
 
 ## Step 4: Content Review
 
 Review the post body for:
 
 ### Grammar & Spelling
+
 - Typos, misspellings, grammatical errors
 - Subject-verb agreement
 - Incorrect homophones (their/there/they're, its/it's, etc.)
 
 ### Clarity & Readability
+
 - Sentences that are confusing or ambiguous
 - Paragraphs that are too long (suggest breaking up if 5+ sentences)
 - Jargon used without explanation (consider the target audience)
 - Missing context or assumptions about reader knowledge
 
 ### Structure
+
 - Logical flow from section to section
 - Headings used appropriately (H2 for sections, H3 for subsections)
 - Introduction sets up what the post is about
 - Conclusion or clear ending (not just stopping abruptly)
 
 ### Tone & Style
+
 - Consistent voice throughout
 - Appropriate for a personal tech blog (conversational but informed)
 - Flag any of these patterns (per the site's writing rules):
@@ -72,6 +81,7 @@ Review the post body for:
   - **LLM-sounding text** — formulaic phrasing, excessive hedging, overly polished corporate tone
 
 ### Technical Accuracy
+
 - Code blocks have correct language annotations (e.g., ` ```go `, ` ```python `)
 - Commands or code snippets look syntactically correct
 - Links are present where referencing external tools, libraries, or concepts

@@ -268,8 +268,8 @@ Use raw `<kbd>` HTML tags to style keyboard shortcuts (requires `unsafe = true` 
 Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.
 ```
 
-Renders as a raised keycap (text font, deeper bottom edge) in both light and dark modes, so keys look
-different from inline `code`.
+Renders as a raised keycap (text font, deeper bottom edge) in both light and dark modes, so keys
+look different from inline `code`.
 
 ### `kbd` shortcode
 

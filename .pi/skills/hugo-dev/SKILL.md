@@ -7,7 +7,8 @@ description: Develop and preview Hugo static sites. Use when editing Hugo templa
 
 ## Dev Server
 
-Always start the Hugo dev server in the background before making changes, so the user can see updates live in their browser.
+Always start the Hugo dev server in the background before making changes, so the user can see
+updates live in their browser.
 
 ### Start Server
 
@@ -31,7 +32,8 @@ for i in $(seq 1 10); do
 done
 ```
 
-**Important**: Always use `nohup ... & disown` and poll with a `for` loop. Do NOT use `grep -m1` or `tail -f` to wait — they block the terminal.
+**Important**: Always use `nohup ... & disown` and poll with a `for` loop. Do NOT use `grep -m1` or
+`tail -f` to wait — they block the terminal.
 
 Tell the user the site is available at **http://localhost:1313/** after starting.
 
@@ -62,7 +64,8 @@ Hugo's dev server watches for file changes and automatically rebuilds. The workf
 3. Changes appear in the browser automatically (Fast Render Mode)
 4. If changes don't appear (e.g. config changes), restart the server
 
-**Note**: Changes to `hugo.toml` require a server restart. Template and content changes are picked up automatically.
+**Note**: Changes to `hugo.toml` require a server restart. Template and content changes are picked
+up automatically.
 
 ## Content
 
@@ -98,7 +101,8 @@ Projects, resume, and quotes are not individual content pages. They are driven b
 - `data/resume.yaml` — experience, education, skills
 - `data/quotes.yaml` — quote entries (text, author, source)
 
-Edit the YAML files to update these sections. The templates in `themes/minimal/layouts/<section>/list.html` render them.
+Edit the YAML files to update these sections. The templates in
+`themes/minimal/layouts/<section>/list.html` render them.
 
 ## Theme Development
 
@@ -132,11 +136,13 @@ themes/minimal/
 
 - Edit `:root { ... }` for light mode colors
 - Edit `@media (prefers-color-scheme: dark) { :root { ... } }` for dark mode
-- Key variables: `--color-bg`, `--color-text`, `--color-accent`, `--color-link`, `--font-body`, `--font-mono`, `--max-width`, `--spacing`, `--radius`
+- Key variables: `--color-bg`, `--color-text`, `--color-accent`, `--color-link`, `--font-body`,
+  `--font-mono`, `--max-width`, `--spacing`, `--radius`
 
 ### Override Without Modifying Theme
 
-To override a template without changing the theme, copy it to the site-level `layouts/` directory with the same path:
+To override a template without changing the theme, copy it to the site-level `layouts/` directory
+with the same path:
 
 ```bash
 # Example: override the footer
@@ -159,4 +165,5 @@ Output goes to `public/`. This is the only command needed for CI/CD.
 - **Blank page**: Check `hugo.toml` has `theme = 'minimal'` and templates exist
 - **CSS not updating**: Hard-refresh browser (Cmd+Shift+R) — Hugo fingerprints CSS
 - **Template errors**: Check `tail -20 /tmp/hugo-server.log` for error messages
-- **New section not appearing**: Ensure `content/<section>/_index.md` exists and a matching layout exists in `themes/minimal/layouts/<section>/`
+- **New section not appearing**: Ensure `content/<section>/_index.md` exists and a matching layout
+  exists in `themes/minimal/layouts/<section>/`
