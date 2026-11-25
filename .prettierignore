@@ -1,0 +1,2 @@
+# Hugo archetypes contain template syntax ({{ .Date }}) that Prettier mangles.
+**/archetypes/

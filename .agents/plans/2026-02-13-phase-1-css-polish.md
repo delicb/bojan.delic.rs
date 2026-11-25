@@ -13,11 +13,17 @@ dependents:
 
 ## Goal/Overview
 
-Add visual polish to the existing Hugo personal website through **primarily CSS-only changes**. The site (bojan.delic.rs) is a minimalist personal site built with Hugo and a custom theme at `themes/minimal/`. It's technically well-built but visually flat — no animations, minimal hover feedback, no visual indicator for active navigation, and jarring instant theme switching.
+Add visual polish to the existing Hugo personal website through **primarily CSS-only changes**. The
+site (bojan.delic.rs) is a minimalist personal site built with Hugo and a custom theme at
+`themes/minimal/`. It's technically well-built but visually flat — no animations, minimal hover
+feedback, no visual indicator for active navigation, and jarring instant theme switching.
 
-This phase makes the existing design feel more alive and intentional through micro-interactions, page load animations, and stronger accent color application — without changing fonts, templates (except one small nav fix), or the overall layout.
+This phase makes the existing design feel more alive and intentional through micro-interactions,
+page load animations, and stronger accent color application — without changing fonts, templates
+(except one small nav fix), or the overall layout.
 
 **Items addressed:**
+
 - Page load animations (fade-in + staggered reveals)
 - Home card hover micro-interactions (lift + shadow)
 - Bolder accent color application (body top border, HR styling)
@@ -33,14 +39,14 @@ None. Pure CSS changes plus one small Hugo template conditional for active nav.
 
 **Modified files only** (no new files created):
 
-| File (relative to project root) | Changes |
-|---|---|
-| `themes/minimal/assets/css/base.css` | Add `@keyframes`, body accent border, dark mode transition properties, `.no-transition` suppressor |
-| `themes/minimal/assets/css/layout.css` | Home card hover effects + stagger, hero animation, active nav styles, post list refinements |
-| `themes/minimal/assets/css/article.css` | Article header staggered entrance, HR accent color |
-| `themes/minimal/assets/css/responsive.css` | `prefers-reduced-motion` media query |
-| `themes/minimal/layouts/partials/header.html` | Add `active` class to current section's nav link |
-| `themes/minimal/layouts/partials/head.html` | Extend inline theme-restore script with `.no-transition` logic |
+| File (relative to project root)               | Changes                                                                                            |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `themes/minimal/assets/css/base.css`          | Add `@keyframes`, body accent border, dark mode transition properties, `.no-transition` suppressor |
+| `themes/minimal/assets/css/layout.css`        | Home card hover effects + stagger, hero animation, active nav styles, post list refinements        |
+| `themes/minimal/assets/css/article.css`       | Article header staggered entrance, HR accent color                                                 |
+| `themes/minimal/assets/css/responsive.css`    | `prefers-reduced-motion` media query                                                               |
+| `themes/minimal/layouts/partials/header.html` | Add `active` class to current section's nav link                                                   |
+| `themes/minimal/layouts/partials/head.html`   | Extend inline theme-restore script with `.no-transition` logic                                     |
 
 ## Component Breakdown
 
@@ -67,7 +73,8 @@ Add **before** the `/* ---------- Inline SVG Icons ---------- */` section at the
 }
 ```
 
-These keyframes are reused across layout.css and article.css. Only `transform` and `opacity` are animated (GPU-composited, no layout thrashing).
+These keyframes are reused across layout.css and article.css. Only `transform` and `opacity` are
+animated (GPU-composited, no layout thrashing).
 
 ### 2. Body Accent Border — `base.css`
 
@@ -80,13 +87,15 @@ body {
 }
 ```
 
-This is a classic editorial touch — a thin colored stripe at the very top of the viewport that ties to the site's green accent color.
+This is a classic editorial touch — a thin colored stripe at the very top of the viewport that ties
+to the site's green accent color.
 
 ### 3. Dark Mode Smooth Transitions — `base.css` + `head.html`
 
 **Problem**: When the user clicks the theme toggle, all colors change instantly, which is jarring.
 
-**Solution**: Add CSS transitions on key elements, but suppress them during initial page load (to prevent a flash when the saved theme is applied from localStorage).
+**Solution**: Add CSS transitions on key elements, but suppress them during initial page load (to
+prevent a flash when the saved theme is applied from localStorage).
 
 **In `base.css`**, add after the Theme Toggle section:
 
@@ -109,9 +118,11 @@ body,
 }
 ```
 
-**In `themes/minimal/layouts/partials/head.html`**, replace the existing inline `<script>` block (the last element in the file):
+**In `themes/minimal/layouts/partials/head.html`**, replace the existing inline `<script>` block
+(the last element in the file):
 
 Current:
+
 ```js
 <script>
   // Apply saved theme immediately to prevent flash
@@ -123,6 +134,7 @@ Current:
 ```
 
 Replace with:
+
 ```js
 <script>
   // Apply saved theme immediately to prevent flash
@@ -140,7 +152,9 @@ Replace with:
 </script>
 ```
 
-The double-`requestAnimationFrame` ensures the browser has painted the initial state before enabling transitions. This prevents the theme-restore from triggering a visible color transition on page load.
+The double-`requestAnimationFrame` ensures the browser has painted the initial state before enabling
+transitions. This prevents the theme-restore from triggering a visible color transition on page
+load.
 
 ### 4. Home Card Hover Effects + Stagger — `layout.css`
 
@@ -185,11 +199,13 @@ The double-`requestAnimationFrame` ensures the browser has painted the initial s
 }
 ```
 
-This follows the existing triple-selector pattern used throughout `base.css` and `syntax.css` for theme-specific overrides (auto dark via `@media`, manual dark via `[data-theme="dark"]`).
+This follows the existing triple-selector pattern used throughout `base.css` and `syntax.css` for
+theme-specific overrides (auto dark via `@media`, manual dark via `[data-theme="dark"]`).
 
 ### 5. Hero Animation — `layout.css`
 
-**Add** animation properties to the existing hero rules (don't replace — just add the `animation` lines):
+**Add** animation properties to the existing hero rules (don't replace — just add the `animation`
+lines):
 
 ```css
 .hero {
@@ -243,7 +259,8 @@ This follows the existing triple-selector pattern used throughout `base.css` and
 </header>
 ```
 
-Hugo's `hasPrefix` on `.RelPermalink` matches both the section index and any child pages (e.g., `/blog/` and `/blog/2024/01/my-post/`).
+Hugo's `hasPrefix` on `.RelPermalink` matches both the section index and any child pages (e.g.,
+`/blog/` and `/blog/2024/01/my-post/`).
 
 **CSS** — add after `.site-nav a:hover` in `layout.css`:
 
@@ -318,7 +335,8 @@ Hugo's `hasPrefix` on `.RelPermalink` matches both the section index and any chi
 }
 ```
 
-Was: `1px solid var(--color-border)` with `margin: 2rem 0`. Now uses accent color and slightly more breathing room.
+Was: `1px solid var(--color-border)` with `margin: 2rem 0`. Now uses accent color and slightly more
+breathing room.
 
 ### 10. Reduced Motion — `responsive.css`
 
@@ -337,7 +355,8 @@ Was: `1px solid var(--color-border)` with `margin: 2rem 0`. Now uses accent colo
 }
 ```
 
-This respects the OS-level "Reduce motion" accessibility setting. All animations and transitions are effectively disabled.
+This respects the OS-level "Reduce motion" accessibility setting. All animations and transitions are
+effectively disabled.
 
 ### 11. Print: Hide Body Accent Border — `responsive.css`
 
@@ -351,60 +370,86 @@ body {
 
 ## Integration Points
 
-- All CSS changes go into existing files following their established section comment structure (`/* ---------- Section ---------- */`)
-- The `header.html` change uses Hugo's built-in `hasPrefix` function — no custom logic or partials needed
-- The `head.html` script change extends the existing inline theme-restore script — keep it inline, don't create a separate JS file
-- Dark mode shadow overrides follow the same selector pattern already used in `base.css` (lines 35-62) and extensively in `syntax.css`
-- The `@keyframes` in `base.css` are referenced by selectors in `layout.css` and `article.css` — this works because Hugo Pipes concatenates all CSS files into one output file (see `head.html` lines 55-60)
+- All CSS changes go into existing files following their established section comment structure
+  (`/* ---------- Section ---------- */`)
+- The `header.html` change uses Hugo's built-in `hasPrefix` function — no custom logic or partials
+  needed
+- The `head.html` script change extends the existing inline theme-restore script — keep it inline,
+  don't create a separate JS file
+- Dark mode shadow overrides follow the same selector pattern already used in `base.css` (lines
+  35-62) and extensively in `syntax.css`
+- The `@keyframes` in `base.css` are referenced by selectors in `layout.css` and `article.css` —
+  this works because Hugo Pipes concatenates all CSS files into one output file (see `head.html`
+  lines 55-60)
 
 ## Implementation Order
 
 - [x] 1. Add `@keyframes fadeInUp` and `@keyframes fadeIn` to `themes/minimal/assets/css/base.css`
-- [x] 2. Add `body { border-top: 3px solid var(--color-accent); }` to `themes/minimal/assets/css/base.css`
-- [x] 3. Add theme transition CSS + `.no-transition` suppressor to `themes/minimal/assets/css/base.css`
-- [x] 4. Update the inline `<script>` in `themes/minimal/layouts/partials/head.html` to add/remove `.no-transition`
-- [x] 5. Add hero animation delays to `.hero`, `.hero h1`, `.tagline`, `.social-links` in `themes/minimal/assets/css/layout.css`
-- [x] 6. Update `.home-card` with enhanced hover + staggered animation in `themes/minimal/assets/css/layout.css`
-- [x] 7. Add dark mode shadow override for `.home-card:hover` in `themes/minimal/assets/css/layout.css`
+- [x] 2. Add `body { border-top: 3px solid var(--color-accent); }` to
+     `themes/minimal/assets/css/base.css`
+- [x] 3. Add theme transition CSS + `.no-transition` suppressor to
+     `themes/minimal/assets/css/base.css`
+- [x] 4. Update the inline `<script>` in `themes/minimal/layouts/partials/head.html` to add/remove
+     `.no-transition`
+- [x] 5. Add hero animation delays to `.hero`, `.hero h1`, `.tagline`, `.social-links` in
+     `themes/minimal/assets/css/layout.css`
+- [x] 6. Update `.home-card` with enhanced hover + staggered animation in
+     `themes/minimal/assets/css/layout.css`
+- [x] 7. Add dark mode shadow override for `.home-card:hover` in
+     `themes/minimal/assets/css/layout.css`
 - [x] 8. Update `themes/minimal/layouts/partials/header.html` with active nav class conditionals
 - [x] 9. Add `.site-nav a.active` styles to `themes/minimal/assets/css/layout.css`
-- [x] 10. Update `.post-title` font-size and `.post-item` hover indent in `themes/minimal/assets/css/layout.css`
+- [x] 10. Update `.post-title` font-size and `.post-item` hover indent in
+      `themes/minimal/assets/css/layout.css`
 - [x] 11. Add article header staggered animations to `themes/minimal/assets/css/article.css`
 - [x] 12. Update `hr` styling in `themes/minimal/assets/css/article.css`
 - [x] 13. Add `prefers-reduced-motion` media query to `themes/minimal/assets/css/responsive.css`
-- [x] 14. Add `body { border-top: none; }` to `@media print` in `themes/minimal/assets/css/responsive.css`
+- [x] 14. Add `body { border-top: none; }` to `@media print` in
+      `themes/minimal/assets/css/responsive.css`
 - [x] 15. Verify with `hugo server --buildDrafts`
 
 ## Error Handling
 
-- **Flash of wrong theme on load**: The `.no-transition` class + double-rAF prevents jarring transitions. If `requestAnimationFrame` is unavailable (very old browsers), the fallback is the same as current behavior (instant switch, no regression).
-- **Animation performance**: All animations use only `transform` and `opacity` (GPU-composited). No width/height/layout animations.
-- **Dark mode shadow selectors**: Must handle three cases following existing pattern: (a) auto dark via `@media (prefers-color-scheme: dark)`, (b) manual dark via `[data-theme="dark"]`, (c) implicit light (no attribute). See `base.css` lines 35-62 for the exact pattern to follow.
+- **Flash of wrong theme on load**: The `.no-transition` class + double-rAF prevents jarring
+  transitions. If `requestAnimationFrame` is unavailable (very old browsers), the fallback is the
+  same as current behavior (instant switch, no regression).
+- **Animation performance**: All animations use only `transform` and `opacity` (GPU-composited). No
+  width/height/layout animations.
+- **Dark mode shadow selectors**: Must handle three cases following existing pattern: (a) auto dark
+  via `@media (prefers-color-scheme: dark)`, (b) manual dark via `[data-theme="dark"]`, (c) implicit
+  light (no attribute). See `base.css` lines 35-62 for the exact pattern to follow.
 
 ## Testing Strategy
 
 1. `hugo server --buildDrafts`
-2. **Home page**: Hero fades in with staggered children (h1 → tagline → social links). Cards stagger in (0.05s increments). Cards lift + shadow on hover.
-3. **Navigation**: Click through Blog, Resume, Projects, Quotes, Contact — active link shows in accent color with font-weight 600. Home page should have NO active nav link.
-4. **Blog list**: Hover over post items — subtle 0.5rem left indent animation. Post titles slightly larger (1.05rem).
+2. **Home page**: Hero fades in with staggered children (h1 → tagline → social links). Cards stagger
+   in (0.05s increments). Cards lift + shadow on hover.
+3. **Navigation**: Click through Blog, Resume, Projects, Quotes, Contact — active link shows in
+   accent color with font-weight 600. Home page should have NO active nav link.
+4. **Blog list**: Hover over post items — subtle 0.5rem left indent animation. Post titles slightly
+   larger (1.05rem).
 5. **Blog post**: Title/date/tags animate in sequence. `<hr>` elements use accent color (2px).
-6. **Theme toggle**: Click toggle — colors transition smoothly over 0.3s. Toggle rapidly — no glitches.
-7. **Fresh load in dark mode**: Set OS to dark, clear localStorage, reload — NO color transition flash on load.
-8. **Reduced motion**: Enable "Reduce motion" in OS settings → reload — no animations, no transitions.
+6. **Theme toggle**: Click toggle — colors transition smoothly over 0.3s. Toggle rapidly — no
+   glitches.
+7. **Fresh load in dark mode**: Set OS to dark, clear localStorage, reload — NO color transition
+   flash on load.
+8. **Reduced motion**: Enable "Reduce motion" in OS settings → reload — no animations, no
+   transitions.
 9. **Body accent border**: Green stripe at top of viewport in both light and dark mode.
-10. **Print preview**: Accent border NOT visible. Header/footer hidden (already handled by existing print styles).
+10. **Print preview**: Accent border NOT visible. Header/footer hidden (already handled by existing
+    print styles).
 
 ## Decision Points
 
-| Decision | Choice | Why |
-|---|---|---|
-| Animation approach | CSS `@keyframes` only | Respects "minimal JS" project principle |
-| Animation duration | 0.4–0.5s | Noticeable but not sluggish |
-| Home card hover | `translateY(-2px)` + box-shadow | Subtle lift; -2px avoids cartoonish feel |
-| Active nav styling | Color + font-weight (not underline) | Underline felt too heavy for minimal aesthetic |
-| Post list hover | Left padding indent | Background color change was considered but adds visual noise |
-| Theme transition suppression | `.no-transition` + double-rAF | More reliable than `setTimeout(0)` |
-| Reduced motion | Blanket `animation-duration: 0.01ms` | Standard pattern; covers all elements without listing each |
+| Decision                     | Choice                               | Why                                                          |
+| ---------------------------- | ------------------------------------ | ------------------------------------------------------------ |
+| Animation approach           | CSS `@keyframes` only                | Respects "minimal JS" project principle                      |
+| Animation duration           | 0.4–0.5s                             | Noticeable but not sluggish                                  |
+| Home card hover              | `translateY(-2px)` + box-shadow      | Subtle lift; -2px avoids cartoonish feel                     |
+| Active nav styling           | Color + font-weight (not underline)  | Underline felt too heavy for minimal aesthetic               |
+| Post list hover              | Left padding indent                  | Background color change was considered but adds visual noise |
+| Theme transition suppression | `.no-transition` + double-rAF        | More reliable than `setTimeout(0)`                           |
+| Reduced motion               | Blanket `animation-duration: 0.01ms` | Standard pattern; covers all elements without listing each   |
 
 ## Future Enhancements
 
@@ -417,11 +462,17 @@ body {
 All 15 steps completed successfully. Hugo build passes cleanly with no errors.
 
 **Files modified (6):**
-- `themes/minimal/assets/css/base.css` — Added keyframes (fadeInUp, fadeIn), body accent border, theme transition CSS + .no-transition suppressor
-- `themes/minimal/assets/css/layout.css` — Hero animations, home card hover/stagger, dark mode shadow override, active nav styles, post list hover indent + font-size bump
-- `themes/minimal/assets/css/article.css` — Article header staggered animations, HR accent color styling
-- `themes/minimal/assets/css/responsive.css` — prefers-reduced-motion media query, print body border-top: none
+
+- `themes/minimal/assets/css/base.css` — Added keyframes (fadeInUp, fadeIn), body accent border,
+  theme transition CSS + .no-transition suppressor
+- `themes/minimal/assets/css/layout.css` — Hero animations, home card hover/stagger, dark mode
+  shadow override, active nav styles, post list hover indent + font-size bump
+- `themes/minimal/assets/css/article.css` — Article header staggered animations, HR accent color
+  styling
+- `themes/minimal/assets/css/responsive.css` — prefers-reduced-motion media query, print body
+  border-top: none
 - `themes/minimal/layouts/partials/header.html` — Active nav class conditionals using hasPrefix
-- `themes/minimal/layouts/partials/head.html` — Extended inline script with .no-transition + double-rAF logic
+- `themes/minimal/layouts/partials/head.html` — Extended inline script with .no-transition +
+  double-rAF logic
 
 No deviations from the plan. All changes implemented exactly as specified.

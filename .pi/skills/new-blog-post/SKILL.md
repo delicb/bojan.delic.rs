@@ -18,6 +18,7 @@ Wait for their response before continuing.
 ## Step 2: Generate Slug and Paths
 
 Derive the slug from the title:
+
 - Lowercase
 - Replace spaces and special characters with hyphens
 - Remove consecutive hyphens
@@ -59,8 +60,12 @@ Use today's date. Leave `description` and `tags` empty for the author to fill in
 ## Step 4: Confirm
 
 Tell the user:
+
 - The file path that was created
-- That the post is marked as `draft: true` (won't appear in production builds, visible with `hugo server --buildDrafts`)
+- That the post is marked as `draft: true` (won't appear in production builds, visible with
+  `hugo server --buildDrafts`)
 - Remind them to fill in `description` and `tags`
-- They can optionally add a cover image by placing a `cover.jpg` (or `.png`, `.svg`, `.webp`) in the post's directory — the template picks it up automatically
-- If the Hugo dev server is running, they can preview immediately at `http://localhost:1313/blog/<year>/<month>/<slug>/`
+- They can optionally add a cover image by placing a `cover.jpg` (or `.png`, `.svg`, `.webp`) in the
+  post's directory — the template picks it up automatically
+- If the Hugo dev server is running, they can preview immediately at
+  `http://localhost:1313/blog/<year>/<month>/<slug>/`

@@ -1,10 +1,20 @@
 {
   "private": true,
+  "scripts": {
+    "test": "npm run test:format && npm run test:types && npm run test:site && npm run test:drafts && npm run test:theme",
+    "test:format": "prettier --check '**/*.{md,yaml,yml}'",
+    "test:types": "tsc -p .",
+    "test:site": "hugo --minify --panicOnWarning --cleanDestinationDir && node scripts/check-output.mjs public --site",
+    "test:drafts": "hugo --minify --panicOnWarning --buildDrafts --buildFuture --destination .test-output/drafts --cleanDestinationDir && node scripts/check-output.mjs .test-output/drafts",
+    "test:theme": "hugo --source themes/minimal/exampleSite --minify --panicOnWarning --cleanDestinationDir && node scripts/check-output.mjs themes/minimal/exampleSite/public --no-links"
+  },
   "dependencies": {
     "@cloudflare/pages-plugin-turnstile": "^1.0.2"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261125.1",
     "lefthook": "^2.1.1",
-    "prettier": "^3.8.1"
+    "prettier": "^3.8.1",
+    "typescript": "^7.0.2"
   }
 }

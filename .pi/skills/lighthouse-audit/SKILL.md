@@ -13,14 +13,16 @@ Decide what to audit:
 
 - If the user specified a URL, use that.
 - If the user said "production" or "live", use `https://bojan.delic.rs/`.
-- If the user said "local" or "dev", use `http://localhost:1313/`. Check the dev server is running first:
+- If the user said "local" or "dev", use `http://localhost:1313/`. Check the dev server is running
+  first:
   ```bash
   pgrep -f 'hugo server' && echo "Running" || echo "Not running"
   ```
   If not running, tell the user to start it (or offer to start it using the hugo-dev skill).
 - If the user didn't specify, ask whether to audit production or local.
 
-Default to auditing the homepage. If the user asked about a specific page (e.g., "check my blog page"), map it to the correct URL path.
+Default to auditing the homepage. If the user asked about a specific page (e.g., "check my blog
+page"), map it to the correct URL path.
 
 ## Step 2: Run Lighthouse
 
@@ -38,6 +40,7 @@ npx lighthouse "<URL>" \
 **Timeout**: Use a 60-second timeout. Lighthouse can hang on unreachable URLs.
 
 If Lighthouse fails, check:
+
 - Is the URL reachable? (`curl -sI <URL>`)
 - Is Chrome installed? (`which google-chrome || which chromium`)
 - Show the error output to the user.
@@ -105,6 +108,7 @@ Briefly note any perfect (100) scores or notable passes.
 ### Prioritization
 
 Order issues by impact:
+
 1. **Accessibility** failures — these affect real users
 2. **Performance** — largest contentful paint, CLS, blocking resources
 3. **SEO** — missing meta, crawlability issues
@@ -113,6 +117,7 @@ Order issues by impact:
 ### Be Specific
 
 Don't just repeat Lighthouse's generic advice. Map findings to this project:
+
 - CSS issue → `themes/minimal/assets/css/<file>.css`
 - Meta tag issue → `themes/minimal/layouts/partials/head.html`
 - Image issue → `static/` or the specific post bundle
@@ -130,5 +135,7 @@ Open it with: open /tmp/lighthouse-report.html
 ## Notes
 
 - Lighthouse scores vary between runs. If a score seems off, offer to run it again.
-- Local dev server results differ from production (no minification, no CDN, no HTTP/2). Note this if auditing locally.
-- The site uses Hugo's CSS fingerprinting and minification in production (`hugo --minify`), so some performance warnings on local may not apply.
+- Local dev server results differ from production (no minification, no CDN, no HTTP/2). Note this if
+  auditing locally.
+- The site uses Hugo's CSS fingerprinting and minification in production (`hugo --minify`), so some
+  performance warnings on local may not apply.

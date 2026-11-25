@@ -13,9 +13,12 @@ dependents: []
 
 ## Goal/Overview
 
-Add personality and distinctive design touches to the site's key layout areas. This final phase transforms the site from "well-built minimal template" to "memorably designed personal brand." Changes involve both Hugo template modifications and CSS additions.
+Add personality and distinctive design touches to the site's key layout areas. This final phase
+transforms the site from "well-built minimal template" to "memorably designed personal brand."
+Changes involve both Hugo template modifications and CSS additions.
 
 **Items addressed:**
+
 - Hero section: decorative accent line, uppercase tagline treatment, pill-shaped social links
 - 404 page: CSS-only glitch animation, playful copy
 - Footer: gradient separator, social icon row, remove redundant RSS line
@@ -30,21 +33,23 @@ Add personality and distinctive design touches to the site's key layout areas. T
 
 **Modified files only** (no new files):
 
-| File | Changes |
-|---|---|
-| `themes/minimal/layouts/index.html` | Hero section redesign (accent line, social pill markup) |
-| `themes/minimal/layouts/404.html` | Glitch effect 404 with updated copy |
-| `themes/minimal/layouts/partials/footer.html` | Social icon row, remove RSS line |
-| `themes/minimal/assets/css/layout.css` | Hero, 404, footer styles + glitch keyframes |
-| `themes/minimal/assets/css/responsive.css` | Mobile nav, mobile hero, mobile 404, mobile footer, print overrides |
+| File                                          | Changes                                                             |
+| --------------------------------------------- | ------------------------------------------------------------------- |
+| `themes/minimal/layouts/index.html`           | Hero section redesign (accent line, social pill markup)             |
+| `themes/minimal/layouts/404.html`             | Glitch effect 404 with updated copy                                 |
+| `themes/minimal/layouts/partials/footer.html` | Social icon row, remove RSS line                                    |
+| `themes/minimal/assets/css/layout.css`        | Hero, 404, footer styles + glitch keyframes                         |
+| `themes/minimal/assets/css/responsive.css`    | Mobile nav, mobile hero, mobile 404, mobile footer, print overrides |
 
 ## Component Breakdown
 
 ### 1. Hero Section Redesign
 
-**Template** — replace the hero `<section>` in `themes/minimal/layouts/index.html`. The rest of the file (home-sections, home-grid, .Content block) stays unchanged:
+**Template** — replace the hero `<section>` in `themes/minimal/layouts/index.html`. The rest of the
+file (home-sections, home-grid, .Content block) stays unchanged:
 
 Current hero:
+
 ```html
 <section class="hero">
   <h1>{{ .Site.Title }}</h1>
@@ -60,6 +65,7 @@ Current hero:
 ```
 
 Replace with:
+
 ```html
 <section class="hero">
   <div class="hero-accent" aria-hidden="true"></div>
@@ -83,7 +89,8 @@ Replace with:
 </section>
 ```
 
-**CSS** — **replace** the entire `/* ---------- Hero (Home) ---------- */` section in `layout.css` (from the hero comment through `.social-links a:hover`):
+**CSS** — **replace** the entire `/* ---------- Hero (Home) ---------- */` section in `layout.css`
+(from the hero comment through `.social-links a:hover`):
 
 ```css
 /* ---------- Hero (Home) ---------- */
@@ -154,12 +161,16 @@ Replace with:
 }
 ```
 
-**Remove** the old `.social-links a` and `.social-links a:hover` rules — they're replaced by `.social-pill`.
+**Remove** the old `.social-links a` and `.social-links a:hover` rules — they're replaced by
+`.social-pill`.
 
 **Design notes:**
+
 - `.hero-accent` is a 40×3px green bar centered above the name — subtle visual anchor
-- Tagline gets `text-transform: uppercase` + wide `letter-spacing` for editorial/magazine feel at smaller size
-- Social links become pill buttons (border + rounded ends) — more visual weight, better touch targets
+- Tagline gets `text-transform: uppercase` + wide `letter-spacing` for editorial/magazine feel at
+  smaller size
+- Social links become pill buttons (border + rounded ends) — more visual weight, better touch
+  targets
 - Social text shortened: "X (Twitter)" → "X", etc. Icon provides context.
 
 ### 2. 404 Page — Glitch Effect
@@ -276,7 +287,9 @@ Replace with:
 ```
 
 **Design notes:**
-- Glitch effect is 90% static — only tiny shifts in the last 10% of the 3s cycle. Subtle, not distracting.
+
+- Glitch effect is 90% static — only tiny shifts in the last 10% of the 3s cycle. Subtle, not
+  distracting.
 - `clip-path: inset()` splits the "404" into top/bottom halves that shift independently
 - Accent color peeks through the `::before` layer, tying to site identity
 - `data-text="404"` attribute drives `attr()` in CSS — pure CSS, no JS
@@ -287,6 +300,7 @@ Replace with:
 **Template** — replace entire content of `themes/minimal/layouts/partials/footer.html`:
 
 Current:
+
 ```html
 <footer class="site-footer">
   <div class="container">
@@ -297,6 +311,7 @@ Current:
 ```
 
 Replace with:
+
 ```html
 <footer class="site-footer">
   <div class="container">
@@ -312,7 +327,8 @@ Replace with:
 </footer>
 ```
 
-**CSS** — **replace** the entire `/* ---------- Footer ---------- */` section in `layout.css`. Also **delete** the old `.footer-rss`, `.footer-rss a`, and `.footer-rss a:hover` rules:
+**CSS** — **replace** the entire `/* ---------- Footer ---------- */` section in `layout.css`. Also
+**delete** the old `.footer-rss`, `.footer-rss a`, and `.footer-rss a:hover` rules:
 
 ```css
 /* ---------- Footer ---------- */
@@ -369,7 +385,9 @@ Replace with:
 ```
 
 **Changes from current:**
-- `border-top: 1px solid` → gradient `::before` that fades transparent → border → accent → border → transparent
+
+- `border-top: 1px solid` → gradient `::before` that fades transparent → border → accent → border →
+  transparent
 - RSS link merged into icon row (no longer a separate text line)
 - Social icons get subtle -1px lift on hover
 - Email link added (`mailto:` using `.Site.Params.email`)
@@ -377,7 +395,8 @@ Replace with:
 
 ### 4. Mobile Nav Refinements
 
-**Replace** the entire `@media (max-width: 600px)` block in `themes/minimal/assets/css/responsive.css`:
+**Replace** the entire `@media (max-width: 600px)` block in
+`themes/minimal/assets/css/responsive.css`:
 
 ```css
 @media (max-width: 600px) {
@@ -454,6 +473,7 @@ Replace with:
 ```
 
 **Key changes from current mobile styles:**
+
 - Header stays horizontal — title on left, theme toggle on right (both `order` controlled)
 - Nav wraps to second row with a subtle `border-top` separator
 - All interactive elements get `min-height: 44px` (WCAG / Apple HIG touch target)
@@ -480,59 +500,79 @@ Replace with:
 
 ## Integration Points
 
-- **Hero template change** modifies `index.html` markup — old `.social-links a` CSS must be removed and replaced by `.social-pill` CSS. Don't leave orphaned rules.
-- **Footer template** removes the `.footer-rss` paragraph entirely. Delete corresponding CSS rules (`.footer-rss`, `.footer-rss a`, `.footer-rss a:hover`) from `layout.css`.
-- **Glitch keyframes** (`glitch-1`, `glitch-2`) are defined in `layout.css`, separate from the `fadeInUp`/`fadeIn` keyframes in `base.css` (from Phase 1). Both are available site-wide because Hugo Pipes concatenates all CSS.
+- **Hero template change** modifies `index.html` markup — old `.social-links a` CSS must be removed
+  and replaced by `.social-pill` CSS. Don't leave orphaned rules.
+- **Footer template** removes the `.footer-rss` paragraph entirely. Delete corresponding CSS rules
+  (`.footer-rss`, `.footer-rss a`, `.footer-rss a:hover`) from `layout.css`.
+- **Glitch keyframes** (`glitch-1`, `glitch-2`) are defined in `layout.css`, separate from the
+  `fadeInUp`/`fadeIn` keyframes in `base.css` (from Phase 1). Both are available site-wide because
+  Hugo Pipes concatenates all CSS.
 - **`data-text` attribute** on `.glitch-text` is consumed by CSS `attr()` — no JS involved.
-- **Social pills** reference `--font-heading` from Phase 2. If Phase 2 isn't done yet, they'll fall back to the inherited font (still functional, just not as refined).
-- All icons used in the new footer (`github`, `linkedin`, `x-twitter`, `envelope`, `rss`) already exist in `themes/minimal/assets/icons/`.
-- The `prefers-reduced-motion` media query from Phase 1 automatically disables all glitch and entrance animations.
+- **Social pills** reference `--font-heading` from Phase 2. If Phase 2 isn't done yet, they'll fall
+  back to the inherited font (still functional, just not as refined).
+- All icons used in the new footer (`github`, `linkedin`, `x-twitter`, `envelope`, `rss`) already
+  exist in `themes/minimal/assets/icons/`.
+- The `prefers-reduced-motion` media query from Phase 1 automatically disables all glitch and
+  entrance animations.
 
 ## Implementation Order
 
 - [x] 1. Update hero template in `themes/minimal/layouts/index.html`
-- [x] 2. Replace hero CSS in `themes/minimal/assets/css/layout.css` (hero section + social-pill + remove old `.social-links a`)
+- [x] 2. Replace hero CSS in `themes/minimal/assets/css/layout.css` (hero section + social-pill +
+     remove old `.social-links a`)
 - [x] 3. Update 404 template in `themes/minimal/layouts/404.html`
-- [x] 4. Replace 404 CSS in `themes/minimal/assets/css/layout.css` (page-404 section + glitch keyframes)
+- [x] 4. Replace 404 CSS in `themes/minimal/assets/css/layout.css` (page-404 section + glitch
+     keyframes)
 - [x] 5. Update footer template in `themes/minimal/layouts/partials/footer.html`
-- [x] 6. Replace footer CSS in `themes/minimal/assets/css/layout.css` (footer section); delete `.footer-rss` rules
+- [x] 6. Replace footer CSS in `themes/minimal/assets/css/layout.css` (footer section); delete
+     `.footer-rss` rules
 - [x] 7. Replace mobile styles in `themes/minimal/assets/css/responsive.css`
 - [x] 8. Add print overrides for new elements in `themes/minimal/assets/css/responsive.css`
 - [x] 9. Verify with `hugo server --buildDrafts`
 
 ## Error Handling
 
-- **Glitch + reduced motion**: Phase 1's `prefers-reduced-motion` rule makes glitch static automatically.
+- **Glitch + reduced motion**: Phase 1's `prefers-reduced-motion` rule makes glitch static
+  automatically.
 - **Social pills overflow on tiny screens**: `flex-wrap: wrap` ensures pills wrap at <320px.
-- **Footer gradient in high-contrast mode**: The gradient uses `var(--color-border)` and `var(--color-accent)` which are already defined for both themes. In forced-colors mode, the `::before` may be invisible — acceptable since it's decorative.
-- **Missing Phase 2 fonts**: Social pills declare `font-family: var(--font-heading)`. If `--font-heading` isn't defined (Phase 2 skipped), it inherits from `body` — degraded but functional.
+- **Footer gradient in high-contrast mode**: The gradient uses `var(--color-border)` and
+  `var(--color-accent)` which are already defined for both themes. In forced-colors mode, the
+  `::before` may be invisible — acceptable since it's decorative.
+- **Missing Phase 2 fonts**: Social pills declare `font-family: var(--font-heading)`. If
+  `--font-heading` isn't defined (Phase 2 skipped), it inherits from `body` — degraded but
+  functional.
 
 ## Testing Strategy
 
 1. `hugo server --buildDrafts`
-2. **Hero**: Green accent line above name, uppercase small tagline, pill-shaped social links with hover border+color change
-3. **404**: Navigate to `/nonexistent/` — "404" displays with subtle glitch (mostly static, small shifts every ~3s), playful copy, button-style back link
-4. **Footer**: Gradient separator (green accent center), 5 icon-only social links in a row, hover shows accent color + lift
-5. **Mobile 375px** (DevTools): Title left + toggle right, nav wraps below with border separator, pills fit, 404 text = 5rem
+2. **Hero**: Green accent line above name, uppercase small tagline, pill-shaped social links with
+   hover border+color change
+3. **404**: Navigate to `/nonexistent/` — "404" displays with subtle glitch (mostly static, small
+   shifts every ~3s), playful copy, button-style back link
+4. **Footer**: Gradient separator (green accent center), 5 icon-only social links in a row, hover
+   shows accent color + lift
+5. **Mobile 375px** (DevTools): Title left + toggle right, nav wraps below with border separator,
+   pills fit, 404 text = 5rem
 6. **Mobile 320px**: Nothing overflows, all interactive elements ≥44px tall
-7. **Dark mode**: All new elements correct — gradient separator visible, glitch accent color matches dark accent, pill borders use dark border color
+7. **Dark mode**: All new elements correct — gradient separator visible, glitch accent color matches
+   dark accent, pill borders use dark border color
 8. **Reduced motion**: Glitch is completely static, no entrance animations
 9. **Accessibility**: Tab through hero pills → footer icons — focus visible and logical order
 10. **Print**: Hero accent, footer social row, gradient separator all hidden
 
 ## Decision Points
 
-| Decision | Choice | Why |
-|---|---|---|
-| Hero decoration | 40px accent line | Subtle, ties to accent color, doesn't compete with name |
-| Tagline treatment | Uppercase + letter-spacing | Editorial feel; subtitle rather than plain sentence |
-| Social links | Pill buttons | More visual weight, better touch targets than plain text |
-| 404 effect | CSS-only glitch | Playful, professional, mostly static; no JS |
-| Footer separator | Gradient with accent center | More distinctive than plain border; subtle accent integration |
-| Footer social | Icon-only row | Compact; text labels redundant (title attrs provide a11y) |
-| Mobile nav | Wrap below title (no hamburger) | User explicitly rejected hamburger menu |
-| Hamburger menu | **Rejected** | User decision: "Lets go without hamburger menu, just refine spacing/sizing" |
-| Code copy button | **Deferred** | User decision: "Lets skip copy button for now" |
+| Decision          | Choice                          | Why                                                                         |
+| ----------------- | ------------------------------- | --------------------------------------------------------------------------- |
+| Hero decoration   | 40px accent line                | Subtle, ties to accent color, doesn't compete with name                     |
+| Tagline treatment | Uppercase + letter-spacing      | Editorial feel; subtitle rather than plain sentence                         |
+| Social links      | Pill buttons                    | More visual weight, better touch targets than plain text                    |
+| 404 effect        | CSS-only glitch                 | Playful, professional, mostly static; no JS                                 |
+| Footer separator  | Gradient with accent center     | More distinctive than plain border; subtle accent integration               |
+| Footer social     | Icon-only row                   | Compact; text labels redundant (title attrs provide a11y)                   |
+| Mobile nav        | Wrap below title (no hamburger) | User explicitly rejected hamburger menu                                     |
+| Hamburger menu    | **Rejected**                    | User decision: "Lets go without hamburger menu, just refine spacing/sizing" |
+| Code copy button  | **Deferred**                    | User decision: "Lets skip copy button for now"                              |
 
 ## Future Enhancements
 
@@ -547,8 +587,15 @@ Replace with:
 All 9 steps completed successfully. Hugo build passes with no errors (73ms, 31 pages).
 
 **Changes made:**
-1. **Hero** (`index.html` + `layout.css`): Added decorative accent line, uppercase tagline, pill-shaped social links replacing plain text links. Removed old `.social-links a` rules.
-2. **404** (`404.html` + `layout.css`): CSS-only glitch effect with `clip-path` + pseudo-elements, playful copy, button-styled back link. Added `glitch-1`/`glitch-2` keyframes.
-3. **Footer** (`footer.html` + `layout.css`): Gradient separator via `::before`, icon-only social row (GitHub, LinkedIn, X, Email, RSS), removed `.footer-rss` class and rules. Email uses existing `email` param from `hugo.toml`.
-4. **Mobile** (`responsive.css`): Header stays horizontal with nav wrapping below, 44px min touch targets, mobile sizes for pills/glitch/footer.
-5. **Print** (`responsive.css`): Hide decorative elements (accent line, footer social, gradient separator, glitch pseudo-elements).
+
+1. **Hero** (`index.html` + `layout.css`): Added decorative accent line, uppercase tagline,
+   pill-shaped social links replacing plain text links. Removed old `.social-links a` rules.
+2. **404** (`404.html` + `layout.css`): CSS-only glitch effect with `clip-path` + pseudo-elements,
+   playful copy, button-styled back link. Added `glitch-1`/`glitch-2` keyframes.
+3. **Footer** (`footer.html` + `layout.css`): Gradient separator via `::before`, icon-only social
+   row (GitHub, LinkedIn, X, Email, RSS), removed `.footer-rss` class and rules. Email uses existing
+   `email` param from `hugo.toml`.
+4. **Mobile** (`responsive.css`): Header stays horizontal with nav wrapping below, 44px min touch
+   targets, mobile sizes for pills/glitch/footer.
+5. **Print** (`responsive.css`): Hide decorative elements (accent line, footer social, gradient
+   separator, glitch pseudo-elements).

@@ -1,0 +1,50 @@
+name: Test
+
+on:
+  # Branch pushes are covered by pull_request; limiting push to main avoids duplicate runs.
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history so `enableGitInfo` (lastmod) works the same as in the deploy build.
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.155.3"
+          extended: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run test:format
+
+      - name: Type-check Pages functions
+        run: npm run test:types
+
+      - name: Build site and check output
+        run: npm run test:site
+
+      - name: Build with drafts and future posts and check output
+        run: npm run test:drafts
+
+      - name: Build theme exampleSite and check output
+        run: npm run test:theme
