@@ -33,6 +33,9 @@ jobs:
         env:
           HUGO_PARAMS_TURNSTILESITEKEY: ${{ secrets.TURNSTILE_SITE_KEY }}
 
+      - name: Check output
+        run: node scripts/check-output.mjs public --site
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:

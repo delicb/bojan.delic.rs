@@ -135,6 +135,21 @@ When adding a feature that references this specific site (a specific service, AP
 - `static/robots.txt` — pre-existing, allows all crawlers
 - `static/.well-known/security.txt` — update `Expires` date annually
 
+## Testing
+
+Run `npm test` before pushing (requires `npm ci` and the `mise` toolchain). It runs:
+
+- `test:format` — Prettier check on `content/` and `data/`
+- `test:types` — TypeScript check of `functions/` (Cloudflare Pages Functions)
+- `test:site` — strict Hugo build (`--panicOnWarning`) plus `scripts/check-output.mjs` on `public/`
+- `test:drafts` — same, including drafts and future-dated posts (built to `.test-output/`)
+- `test:theme` — builds the theme's `exampleSite` to check the theme works outside this site
+
+`scripts/check-output.mjs` sanity-checks generated HTML, sitemap and feeds: required meta tags,
+canonical URLs, valid JSON-LD, broken internal links, Hugo template error markers, required static
+files and the `security.txt` expiry date. CI runs `npm test` on every push and pull request
+(`.github/workflows/test.yml`).
+
 ## CI/Deployment
 
-GitHub Actions workflow builds with `hugo --minify` and deploys to Cloudflare Pages via Wrangler. Triggered on push to `main`. Required secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`. Required variable: `CLOUDFLARE_PROJECT_NAME`.
+GitHub Actions workflow builds with `hugo --minify` and deploys to Cloudflare Pages via Wrangler. The output check runs before deploying. Triggered on push to `main`. Required secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`. Required variable: `CLOUDFLARE_PROJECT_NAME`.
