@@ -94,7 +94,8 @@
 .article-content .table-wrapper,
 .article-content dl,
 .article-content .alert,
-.article-content > pre {
+.article-content > pre,
+.article-content .code-block-wrapper > pre {
   margin: 1.5rem 0;
 }
 
@@ -170,9 +171,11 @@
   border-radius: 3px;
 }
 
-/* Code (block) — only for raw <pre> not wrapped by Hugo's .highlight.
-   Hugo-highlighted blocks are styled in syntax.css. */
-.article-content > pre {
+/* Code (block) — only for raw <pre> not wrapped by Hugo's .highlight
+   (e.g. fenced blocks without a language). Hugo-highlighted blocks are
+   styled in syntax.css. */
+.article-content > pre,
+.article-content .code-block-wrapper > pre {
   background: var(--color-code-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);

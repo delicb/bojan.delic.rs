@@ -291,7 +291,8 @@
 }
 
 /* When title is present, remove top margin and top border-radius from the code block */
-.code-block-wrapper[data-titled] .highlight pre {
+.code-block-wrapper[data-titled] .highlight pre,
+.code-block-wrapper[data-titled] > pre {
   margin-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
